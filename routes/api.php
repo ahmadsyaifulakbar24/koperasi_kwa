@@ -3,6 +3,9 @@
 use App\Http\Controllers\API\Auth\LoginController;
 use App\Http\Controllers\API\Auth\LogoutController;
 use App\Http\Controllers\API\Auth\RegisterController;
+use App\Http\Controllers\API\Param\GetParamController;
+use App\Http\Controllers\API\Pinjaman\CreatePinjamanController;
+use App\Http\Controllers\API\Pinjaman\StatusPinjamanController;
 use App\Http\Controllers\API\Transaction\AcceptTransactionController;
 use App\Http\Controllers\API\Transaction\CreateTransactionController;
 use App\Http\Controllers\API\Transaction\UploadBuktiController;
@@ -32,6 +35,12 @@ Route::group(['middleware'  => 'auth:sanctum'], function () {
         Route::get('/logout', LogoutController::class);
     });
 
+    Route::group(['prefix' => 'param'], function () {
+        Route::get('/pendidikan', [GetParamController::class, 'pendidikan']);
+        Route::get('/jabatan', [GetParamController::class, 'jabatan']);
+        Route::get('/status_keluarga', [GetParamController::class, 'status_keluarga']);
+    });
+
     Route::group(['prefix' => 'user'], function () {
         Route::get('/', [GetUserController::class, 'all']);
         Route::get('/{user_id}', [GetUserController::class, 'by_id']);
@@ -43,6 +52,14 @@ Route::group(['middleware'  => 'auth:sanctum'], function () {
         Route::post('/bukti_pembayaran/{transaction_id}', UploadBuktiController::class);
         Route::patch('/accept_transaction/{transaction_id}', AcceptTransactionController::class);
         Route::post('/create_transction/{user_id}', CreateTransactionController::class);
+    });
+
+    Route::group(['prefix' => 'pinjaman'], function () {
+        Route::post('/create_pinjaman/{user_id}/detail', [CreatePinjamanController::class, 'detail']);
+        Route::post('/create_pinjaman/{user_id}', [CreatePinjamanController::class, 'create_pinjaman']);
+        Route::patch('/accept_pinjaman/{pinjaman_id}', [StatusPinjamanController::class, 'accept']);
+        Route::patch('/reject_pinjaman/{pinjaman_id}', [StatusPinjamanController::class, 'reject']);
+        Route::patch('/paid_off_pinjaman/{pinjaman_id}', [StatusPinjamanController::class, 'paid_off']);
     });
 });
 

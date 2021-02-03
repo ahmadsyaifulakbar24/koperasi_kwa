@@ -19,6 +19,6 @@ class Pinjaman extends Model
         'sisa_bayar',
         'status',
         'approved_date',
-        'paid_of_date',
+        'paid_off_date',
     ];
 }

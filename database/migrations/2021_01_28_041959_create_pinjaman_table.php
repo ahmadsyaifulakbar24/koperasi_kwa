@@ -23,7 +23,7 @@ class CreatePinjamanTable extends Migration
             $table->bigInteger('sisa_bayar');
             $table->enum('status', ['approved', 'rejected', 'pending', 'paid_of']);
             $table->timestamp('approved_date')->nullable();
-            $table->timestamp('paid_of_date')->nullable();
+            $table->timestamp('paid_off_date')->nullable();
             $table->timestamps();
         });
     }
