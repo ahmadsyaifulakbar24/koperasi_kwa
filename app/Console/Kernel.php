@@ -27,6 +27,7 @@ class Kernel extends ConsoleKernel
         // insert tagihan simpanan wajib setiap bulan
         // $schedule->command('insert:tagihanSimpananWajib')->everyMinute();
         $schedule->command('insert:tagihanSimpananWajib')->monthlyOn(3, '08:00');
+        $schedule->command('insert:tagihanPinjaman')->monthlyOn(3, '08:00');
 
     }
 

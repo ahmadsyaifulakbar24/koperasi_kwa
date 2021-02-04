@@ -43,9 +43,10 @@ class StatusPinjamanController extends Controller
     {
         $pinjaman = Pinjaman::find($pinjaman_id);
         if($pinjaman) {
-            $data['status'] = 'paid_of';
-            $data['paid_off_date'] = now();
-            $pinjaman->update($data);
+            $pinjamanData['paid_off_date'] = now();
+            $pinjamanData['sisa_bayar'] = 0;
+            $pinjamanData['status'] = 'paid_off';
+            $pinjaman->update($pinjamanData);
             return new PinjamanResource($pinjaman);
         } else {
             return response()->json([

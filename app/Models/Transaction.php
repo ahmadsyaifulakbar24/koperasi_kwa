@@ -13,8 +13,10 @@ class Transaction extends Model
 
     protected $fillable = [
         'user_id',
+        'pinjaman_id',
         'title',
         'message',
+        'type',
         'bukti_pembayaran',
         'approved_date',
     ];

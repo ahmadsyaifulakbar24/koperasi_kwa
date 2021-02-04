@@ -21,10 +21,14 @@ class CreatePinjamanTable extends Migration
             $table->integer('tenor');
             $table->bigInteger('total_bayar');
             $table->bigInteger('sisa_bayar');
-            $table->enum('status', ['approved', 'rejected', 'pending', 'paid_of']);
+            $table->enum('status', ['approved', 'rejected', 'pending', 'paid_off']);
             $table->timestamp('approved_date')->nullable();
             $table->timestamp('paid_off_date')->nullable();
             $table->timestamps();
+        });
+
+        Schema::table('transactions', function (Blueprint $table) {
+            $table->foreign('pinjaman_id')->references('id')->on('pinjaman')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

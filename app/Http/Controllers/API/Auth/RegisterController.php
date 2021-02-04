@@ -72,7 +72,8 @@ class RegisterController extends Controller
         $transaction_data = [
             'user_id' => $user->id,
             'title' => 'Tagihan Pertama',
-            'message' => 'ini adalah pesan'
+            'message' => 'ini adalah pesan',
+            'type' => 'simpanan',
         ];
         $simpanan_pokok = MainSetting::where('name_setting', 'simpanan_pokok')->first();
         $sub_transaction_data = [

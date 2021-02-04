@@ -47,6 +47,7 @@ class InsertTagihanSimpananWajib extends Command
                 'user_id' => $user->id,
                 'title' => 'Tagihan bulanan',
                 'message' => 'ini notifikasi tagihan bulanan',
+                'type' => 'simpanan',
             ];
             $sub_transaction_data = [
                 'type' => 'simpanan_wajib',

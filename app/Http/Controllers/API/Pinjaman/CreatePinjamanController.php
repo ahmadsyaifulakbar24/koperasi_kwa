@@ -11,12 +11,6 @@ use Illuminate\Http\Request;
 
 class CreatePinjamanController extends Controller
 {
-    /**
-     * Handle the incoming request.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function detail(Request $request, $user_id)
     {
         $this->validate($request, [
@@ -64,6 +58,7 @@ class CreatePinjamanController extends Controller
             $data['tenor'] = $request->tenor;
             $data['total_bayar'] = $request->total_bayar;
             $data['sisa_bayar'] = $request->total_bayar;
+            $data['total_payment'] = 0;
             $data['status'] = 'pending';
     
             $pinjaman = Pinjaman::create($data);

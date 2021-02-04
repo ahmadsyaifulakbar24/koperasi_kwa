@@ -3,6 +3,7 @@
 use App\Http\Controllers\API\Auth\LoginController;
 use App\Http\Controllers\API\Auth\LogoutController;
 use App\Http\Controllers\API\Auth\RegisterController;
+use App\Http\Controllers\API\MainSetting\MainSettingController;
 use App\Http\Controllers\API\Param\GetParamController;
 use App\Http\Controllers\API\Pinjaman\CreatePinjamanController;
 use App\Http\Controllers\API\Pinjaman\StatusPinjamanController;
@@ -60,6 +61,10 @@ Route::group(['middleware'  => 'auth:sanctum'], function () {
         Route::patch('/accept_pinjaman/{pinjaman_id}', [StatusPinjamanController::class, 'accept']);
         Route::patch('/reject_pinjaman/{pinjaman_id}', [StatusPinjamanController::class, 'reject']);
         Route::patch('/paid_off_pinjaman/{pinjaman_id}', [StatusPinjamanController::class, 'paid_off']);
+    });
+
+    Route::group(['prefix' => 'main_setting'], function () {
+        Route::post('/update', [MainSettingController::class, 'update']);
     });
 });
 
