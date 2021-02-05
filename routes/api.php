@@ -33,7 +33,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::group(['middleware'  => 'auth:sanctum'], function () {
     Route::group(['prefix' => 'auth'], function () {
-        Route::get('/logout', LogoutController::class);
+        Route::post('/logout', LogoutController::class);
     });
 
     Route::group(['prefix' => 'param'], function () {
@@ -65,6 +65,7 @@ Route::group(['middleware'  => 'auth:sanctum'], function () {
 
     Route::group(['prefix' => 'main_setting'], function () {
         Route::post('/update', [MainSettingController::class, 'update']);
+        Route::get('/', [MainSettingController::class, 'getData']);
     });
 });
 

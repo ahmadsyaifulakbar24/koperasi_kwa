@@ -19,6 +19,8 @@ class UserResource extends JsonResource
     {
         return [
             'id' => $this->id,
+            'code' => $this->code,
+            'username' => $this->username,
             'name' => $this->name,
             'email' => $this->email,
             'no_id' => $this->no_id,
@@ -30,6 +32,7 @@ class UserResource extends JsonResource
             'pendidikan' => new PendidikanResource($this->pendidikan),
             'jabatan' => new JabatanResource($this->jabatan),
             'user_level_id' => $this->user_level_id,
+            'profile' => !empty($this->profile) ? asset('images/profile/'.$this->profile) : NULL,
             'user_koperasi_detail' => new UserKoperasiDetailResource($this->user_koperasi_detail)
         ];
     }

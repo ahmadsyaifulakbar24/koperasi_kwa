@@ -17,6 +17,8 @@ class UserSeeder extends Seeder
     public function run()
     {
         DB::table('users')->insert([
+            'code' => 2020010000,
+            'username' => 'ahmadsyaifulakbar',
             'name' => 'Ahmad Syaiful Akbar',
             'email' => 'ipulbelcram@gmail.com',
             'email_verified_at' => now(),
@@ -29,6 +31,7 @@ class UserSeeder extends Seeder
             'pendidikan_id' => 4,
             'jabatan_id' => 9,
             'user_level_id' => 1,
+            'profile' => NULL,
             'active' => true,
             'password' => Hash::make('12345678'),
             'remember_token' => Str::random(10),

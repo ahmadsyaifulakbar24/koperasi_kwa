@@ -41,11 +41,17 @@ class UpdateUserController extends Controller
             'nama_ahliwaris' => ['required', 'string'],
             'besar_simpanan_wajib' => ['required', 'numeric'],
             'upload_ktp' => ['nullable', 'image', 'mimes:jpeg,png,jpg,gif,svg', 'max:2048'],
+            'profile' => ['nullable', 'image', 'mimes:jpeg,png,jpg,gif,svg', 'max:2048'],
         ]);
 
         $user = User::find($user_id);
         if($user) {
             $input = $request->all();
+            if($request->profile->isValid()) {
+                !empty($user->profile) ? FileHelpers::removeFile('images/profile/'.$user->profile) : '';
+                $profile = FileHelpers::uploadFile('images/profile/', $request->profile);
+                $input['profile'] = $profile;
+            }
             $user->update($input);
 
             $inputDetail['status_keluarga_id'] = $request->status_keluarga_id;

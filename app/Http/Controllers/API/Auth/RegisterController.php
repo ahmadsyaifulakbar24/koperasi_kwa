@@ -20,6 +20,7 @@ class RegisterController extends Controller
     {   
         // validasi form register
         $this->validate($request, [
+            'username' => ['required', 'string', 'unique:users,username'],
             'name' => ['required', 'string'],
             'email' => ['required', 'email', 'unique:users,email'],
             'no_id' => ['required', 'numeric', 'unique:users,no_id'],
@@ -56,7 +57,9 @@ class RegisterController extends Controller
         ]);
 
         // insert user
+        $cek_user = User::orderBy('code', 'DESC')->first();
         $input = $request->all();
+        $input['code'] = $cek_user->code+1;
         $input['password'] = Hash::make($request->password);
         $user = User::create($input);
 
