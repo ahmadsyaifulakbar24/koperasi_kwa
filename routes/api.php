@@ -36,12 +36,6 @@ Route::group(['middleware'  => 'auth:sanctum'], function () {
         Route::post('/logout', LogoutController::class);
     });
 
-    Route::group(['prefix' => 'param'], function () {
-        Route::get('/pendidikan', [GetParamController::class, 'pendidikan']);
-        Route::get('/jabatan', [GetParamController::class, 'jabatan']);
-        Route::get('/status_keluarga', [GetParamController::class, 'status_keluarga']);
-    });
-
     Route::group(['prefix' => 'user'], function () {
         Route::get('/', [GetUserController::class, 'all']);
         Route::get('/{user_id}', [GetUserController::class, 'by_id']);
@@ -72,4 +66,10 @@ Route::group(['middleware'  => 'auth:sanctum'], function () {
 Route::group(['prefix' => 'auth'], function () {
     Route::post('/login', LoginController::class);
     Route::post('/register', RegisterController::class);
+});
+
+Route::group(['prefix' => 'param'], function () {
+    Route::get('/pendidikan', [GetParamController::class, 'pendidikan']);
+    Route::get('/jabatan', [GetParamController::class, 'jabatan']);
+    Route::get('/status_keluarga', [GetParamController::class, 'status_keluarga']);
 });
