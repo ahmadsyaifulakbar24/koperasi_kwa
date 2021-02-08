@@ -2,9 +2,11 @@
 
 namespace App\Console;
 
+use App\Models\Transaction;
+use App\Models\User;
+use App\Models\UserKoperasiDetail;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
-use Illuminate\Support\Facades\DB;
 
 class Kernel extends ConsoleKernel
 {
@@ -29,13 +31,22 @@ class Kernel extends ConsoleKernel
         // $schedule->command('insert:tagihanSimpananWajib')->monthlyOn(3, '08:00');
         // $schedule->command('insert:tagihanPinjaman')->monthlyOn(3, '08:00');
         $schedule->call(function () {
-            DB::table('params')->insert([
-                'param_id' => null,
-                'category_param' => 'jabatan',
-                'param' => 'Sales / Marketing',
-                'order' => 4,
-                'active' => 1,
-            ]);
+            $users =  User::where([['user_level_id', 101], ['active', 1]])->get();
+            foreach ($users as $user) {
+                $user_koperasi_detail = UserKoperasiDetail::where('user_id', $user->id)->first();
+                $transaction_data = [
+                    'user_id' => $user->id,
+                    'title' => 'Tagihan bulanan',
+                    'message' => 'ini notifikasi tagihan bulanan',
+                    'type' => 'simpanan',
+                ];
+                $sub_transaction_data = [
+                    'type' => 'simpanan_wajib',
+                    'besaran' => $user_koperasi_detail['besar_simpanan_wajib'],
+                ];
+                $transaction = Transaction::create($transaction_data);
+                $transaction->sub_transaction()->create($sub_transaction_data);
+            }
         })->everyMinute();
     }
 
