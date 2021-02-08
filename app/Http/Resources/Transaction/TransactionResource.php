@@ -20,6 +20,7 @@ class TransactionResource extends JsonResource
             'user_id' => $this->user_id,
             'title' => $this->title,
             'message' => $this->message,
+            'type' => $this->type,
             'bukti_pembayaran' => !empty($this->bukti_pembayaran) ? asset('images/bukti_pembayaran/'.$this->bukti_pembayaran) : NULL,
             'approved_date' => $this->approved_date,
             'sub_transaction' => SubTransactionResource::collection($this->sub_transaction),

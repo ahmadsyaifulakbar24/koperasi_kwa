@@ -9,6 +9,7 @@ use App\Http\Controllers\API\Pinjaman\CreatePinjamanController;
 use App\Http\Controllers\API\Pinjaman\StatusPinjamanController;
 use App\Http\Controllers\API\Transaction\AcceptTransactionController;
 use App\Http\Controllers\API\Transaction\CreateTransactionController;
+use App\Http\Controllers\API\Transaction\GetTransactionController;
 use App\Http\Controllers\API\Transaction\UploadBuktiController;
 use App\Http\Controllers\API\User\DeleteUserController;
 use App\Http\Controllers\API\User\GetUserController;
@@ -44,6 +45,7 @@ Route::group(['middleware'  => 'auth:sanctum'], function () {
     });
 
     Route::group(['prefix' => 'transaction'], function () {
+        Route::get('/filter/{user_id?}', [GetTransactionController::class, 'filter']);
         Route::post('/bukti_pembayaran/{transaction_id}', UploadBuktiController::class);
         Route::patch('/accept_transaction/{transaction_id}', AcceptTransactionController::class);
         Route::post('/create_transction/{user_id}', CreateTransactionController::class);
