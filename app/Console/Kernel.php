@@ -2,9 +2,6 @@
 
 namespace App\Console;
 
-use App\Models\Transaction;
-use App\Models\User;
-use App\Models\UserKoperasiDetail;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
@@ -28,9 +25,8 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         // insert tagihan simpanan wajib setiap bulan
-        $schedule->command('insert:tagihanSimpananWajib')->everyMinute();
-        // $schedule->command('insert:tagihanSimpananWajib')->monthlyOn(3, '08:00');
-        // $schedule->command('insert:tagihanPinjaman')->monthlyOn(3, '08:00');
+        $schedule->command('insert:tagihanSimpananWajib')->monthlyOn(3, '08:00');
+        $schedule->command('insert:tagihanPinjaman')->monthlyOn(3, '08:00');
     }
 
     /**
