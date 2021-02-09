@@ -39,7 +39,7 @@ class GetTransactionController extends Controller
                                             ->whereYear('created_at', $year)
                                             ->whereMonth('created_at', $month)
                                             ->whereDay('created_at', $day)
-                                            ->whereNull('created_at')
+                                            ->whereNull('approved_date')
                                             ->paginate(15);
             }
         } else if ($type && $year && $month && $day) {
