@@ -52,8 +52,8 @@ Route::group(['middleware'  => 'auth:sanctum'], function () {
     });
 
     Route::group(['prefix' => 'pinjaman'], function () {
-        Route::post('/create_pinjaman/{user_id}/detail', [CreatePinjamanController::class, 'detail']);
-        Route::post('/create_pinjaman/{user_id}', [CreatePinjamanController::class, 'create_pinjaman']);
+        Route::post('/create_pinjaman/detail', [CreatePinjamanController::class, 'detail']);
+        Route::post('/create_pinjaman', [CreatePinjamanController::class, 'create_pinjaman']);
         Route::patch('/accept_pinjaman/{pinjaman_id}', [StatusPinjamanController::class, 'accept']);
         Route::patch('/reject_pinjaman/{pinjaman_id}', [StatusPinjamanController::class, 'reject']);
         Route::patch('/paid_off_pinjaman/{pinjaman_id}', [StatusPinjamanController::class, 'paid_off']);
