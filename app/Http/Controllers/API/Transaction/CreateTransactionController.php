@@ -26,7 +26,7 @@ class CreateTransactionController extends Controller
             // Transaction
             $transaction_data = [
                 'user_id' => $user->id,
-                'title' => $request->message,
+                'title' => $request->title,
                 'message' => $request->message,
                 'type' => 'simpanan',
             ];

@@ -33,35 +33,35 @@ class GetTransactionController extends Controller
                                             ->whereMonth('created_at', $month)
                                             ->whereDay('created_at', $day)
                                             ->whereNotNull('approved_date')
-                                            ->paginate(15);
+                                            ->orderBy('id', 'desc')->paginate(15);
             } else {
                 $trasaction = $trasactionQuery->where('type', $type)
                                             ->whereYear('created_at', $year)
                                             ->whereMonth('created_at', $month)
                                             ->whereDay('created_at', $day)
                                             ->whereNull('approved_date')
-                                            ->paginate(15);
+                                            ->orderBy('id', 'desc')->paginate(15);
             }
         } else if ($type && $year && $month && $day) {
             $trasaction = $trasactionQuery->where('type', $type)
                                         ->whereYear('created_at', $year)
                                         ->whereMonth('created_at', $month)
                                         ->whereDay('created_at', $day)
-                                        ->paginate(15);
+                                        ->orderBy('id', 'desc')->paginate(15);
         } else if ($type && $year && $month) {
             $trasaction = $trasactionQuery->where('type', $type)
                                         ->whereYear('created_at', $year)
                                         ->whereMonth('created_at', $month)
-                                        ->paginate(15);
+                                        ->orderBy('id', 'desc')->paginate(15);
         } else if ($type && $year) {
             $trasaction = $trasactionQuery->where('type', $type)
                                         ->whereYear('created_at', $year)
-                                        ->paginate(15);
+                                        ->orderBy('id', 'desc')->paginate(15);
         } else if ($type) {
             $trasaction = $trasactionQuery->where('type', $type)
-                                        ->paginate(15);
+                                        ->orderBy('id', 'desc')->paginate(15);
         } else {
-            $trasaction = $trasactionQuery->paginate(15);
+            $trasaction = $trasactionQuery->orderBy('id', 'desc')->paginate(15);
         }
         return TransactionResource::collection($trasaction);
     }
