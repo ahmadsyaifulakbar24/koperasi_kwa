@@ -11,8 +11,9 @@ class CreateTransactionController extends Controller
 {
     use TraitTransaction;
 
-    public function __invoke(Request $request, $user_id)
+    public function __invoke(Request $request)
     {
+        $user_id = auth()->user()->id;
         $this->validate($request, [
             'title' => ['required', 'string'],
             'message' => ['required', 'string'],

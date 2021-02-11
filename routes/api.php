@@ -48,7 +48,7 @@ Route::group(['middleware'  => 'auth:sanctum'], function () {
         Route::get('/filter/{user_id?}', [GetTransactionController::class, 'filter']);
         Route::post('/bukti_pembayaran/{transaction_id}', UploadBuktiController::class);
         Route::patch('/accept_transaction/{transaction_id}', AcceptTransactionController::class);
-        Route::post('/create_transction/{user_id}', CreateTransactionController::class);
+        Route::post('/create_transaction', CreateTransactionController::class);
     });
 
     Route::group(['prefix' => 'pinjaman'], function () {
