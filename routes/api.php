@@ -6,6 +6,7 @@ use App\Http\Controllers\API\Auth\RegisterController;
 use App\Http\Controllers\API\MainSetting\MainSettingController;
 use App\Http\Controllers\API\Param\GetParamController;
 use App\Http\Controllers\API\Pinjaman\CreatePinjamanController;
+use App\Http\Controllers\API\Pinjaman\GetPinjamanController;
 use App\Http\Controllers\API\Pinjaman\StatusPinjamanController;
 use App\Http\Controllers\API\Transaction\AcceptTransactionController;
 use App\Http\Controllers\API\Transaction\CreateTransactionController;
@@ -45,6 +46,7 @@ Route::group(['middleware'  => 'auth:sanctum'], function () {
     });
 
     Route::group(['prefix' => 'transaction'], function () {
+        Route::get('/get/{transaction_id}', [GetTransactionController::class, 'byId']);
         Route::get('/filter/{user_id?}', [GetTransactionController::class, 'filter']);
         Route::post('/bukti_pembayaran/{transaction_id}', UploadBuktiController::class);
         Route::patch('/accept_transaction/{transaction_id}', AcceptTransactionController::class);
@@ -52,6 +54,9 @@ Route::group(['middleware'  => 'auth:sanctum'], function () {
     });
 
     Route::group(['prefix' => 'pinjaman'], function () {
+        Route::get('/get/{pinjaman_id}', [GetPinjamanController::class, 'byId']);
+        Route::get('/filter/{user_id?}', [GetPinjamanController::class, 'filter']);
+        Route::post('/detail', [CreatePinjamanController::class, 'detail']);
         Route::post('/create_pinjaman/detail', [CreatePinjamanController::class, 'detail']);
         Route::post('/create_pinjaman', [CreatePinjamanController::class, 'create_pinjaman']);
         Route::patch('/accept_pinjaman/{pinjaman_id}', [StatusPinjamanController::class, 'accept']);

@@ -69,6 +69,12 @@ class GetTransactionController extends Controller
     public function byId($trasaction_id)
     {
         $trasaction = Transaction::find($trasaction_id);
-        return new Transaction($trasaction);
+        if($trasaction) {
+            return new TransactionResource($trasaction);
+        } else {
+            return response()->json([
+                'message' => 'data not found'
+            ], 404);
+        }
     }
 }
