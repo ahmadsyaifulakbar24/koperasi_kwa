@@ -47,17 +47,16 @@ class UpdateUserController extends Controller
         $user = User::find($user_id);
         if($user) {
             $input = $request->all();
-            if($request->profile->isValid()) {
+            if($request->profile) {
                 !empty($user->profile) ? FileHelpers::removeFile('images/profile/'.$user->profile) : '';
-                $profile = FileHelpers::uploadFile('images/profile/', $request->profile);
-                $input['profile'] = $profile;
+                $input['profile'] = FileHelpers::uploadFile('images/profile/', $request->profile);
             }
             $user->update($input);
 
             $inputDetail['status_keluarga_id'] = $request->status_keluarga_id;
             $inputDetail['nama_ahliwaris'] = $request->nama_ahliwaris;
             $inputDetail['besar_simpanan_wajib'] = $request->besar_simpanan_wajib;
-            if($request->upload_ktp->isValid()) {
+            if($request->upload_ktp) {
                 FileHelpers::removeFile('images/ktp/'.$user->user_koperasi_detail->upload_ktp);
                 $ktp = FileHelpers::uploadFile('images/ktp/', $request->upload_ktp);
                 $inputDetail['upload_ktp'] = $ktp;
