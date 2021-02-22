@@ -90,13 +90,14 @@ class GetTransactionController extends Controller
     {
         $this->validate($request, [
             'month' => ['required', 'numeric', 'max:12'],
+            'year' => ['required', 'numeric'],
             'page' => ['nullable', 'numeric']
         ]);
         $users = User::where('user_level_id', '!=' , 1)->paginate(10);
         foreach($users as $user) {
             $user_id = $user->id;
-            $simpanan_sukarela = VwUserTransaction::select(DB::raw('sum(besaran) as total'))->where([['type_transaction', 'simpanan'], ['user_id', $user_id]])->whereNotNull('transaction_approved_date')->whereMonth('transaction_created_at', $request->month)->where('type_sub_transaction', 'simpanan_sukarela')->first();
-            $simpanan_wajib = VwUserTransaction::select(DB::raw('sum(besaran) as total'))->where([['type_transaction', 'simpanan'], ['user_id', $user_id]])->whereNotNull('transaction_approved_date')->whereMonth('transaction_created_at', $request->month)->where('type_sub_transaction', 'simpanan_wajib')->first();
+            $simpanan_sukarela = VwUserTransaction::select(DB::raw('sum(besaran) as total'))->where([['type_transaction', 'simpanan'], ['user_id', $user_id]])->whereNotNull('transaction_approved_date')->whereMonth('transaction_created_at', $request->month)->whereYear('transaction_created_at', $request->year)->where('type_sub_transaction', 'simpanan_sukarela')->first();
+            $simpanan_wajib = VwUserTransaction::select(DB::raw('sum(besaran) as total'))->where([['type_transaction', 'simpanan'], ['user_id', $user_id]])->whereNotNull('transaction_approved_date')->whereMonth('transaction_created_at', $request->month)->whereYear('transaction_created_at', $request->year)->where('type_sub_transaction', 'simpanan_wajib')->first();
             $items[] = [
                 'name' => $user->name,
                 'simpanan_sukarela' => ($simpanan_sukarela['total']) ?? 0 ,
