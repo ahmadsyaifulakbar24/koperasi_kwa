@@ -50,7 +50,7 @@ class CreatePinjamanController extends Controller
             $data['besar_pinjaman'] = $request->besar_pinjaman;
             $data['tenor'] = $request->tenor;
             $data['total_bayar'] = $request->total_bayar;
-            $data['sisa_bayar'] = $request->total_bayar;
+            $data['sisa_bayar'] = $request->besar_pinjaman;
             $data['total_payment'] = 0;
             $data['status'] = 'pending';
     

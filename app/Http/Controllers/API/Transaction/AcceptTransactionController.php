@@ -28,7 +28,8 @@ class AcceptTransactionController extends Controller
                 $user->user_koperasi_detail->update($userData);
             } else {
                 $pinjaman = Pinjaman::find($transaction->pinjaman_id);
-                $pinjamanData['sisa_bayar'] = $pinjaman['sisa_bayar'] - $total;
+                $potongan = $pinjaman->besar_pinjaman / $pinjaman->tenor;
+                $pinjamanData['sisa_bayar'] = $pinjaman['sisa_bayar'] - $potongan;
                 $pinjaman->update($pinjamanData);
             }
             return new TransactionResource($transaction);
