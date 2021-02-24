@@ -16,4 +16,9 @@ class SubTransaction extends Model
         'type',
         'besaran',
     ];
+
+    public function transaction()
+    {
+        return $this->belongsTo(Transaction::class, 'transaction_id');
+    }
 }

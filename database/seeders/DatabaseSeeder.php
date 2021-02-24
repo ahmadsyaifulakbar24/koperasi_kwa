@@ -19,6 +19,7 @@ class DatabaseSeeder extends Seeder
             ParamSeeder::class,
             UserLevelSeeder::class,
             UserSeeder::class,
+            UserKoperasiDetailSeeder::class,
         ]);
     }
 }

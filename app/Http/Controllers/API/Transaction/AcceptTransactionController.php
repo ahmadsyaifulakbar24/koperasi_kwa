@@ -10,6 +10,7 @@ use App\Models\User;
 
 class AcceptTransactionController extends Controller
 {
+    use TraitTransaction;
     public function __invoke($transaction_id)
     {
         $transaction = Transaction::find($transaction_id);
@@ -32,6 +33,12 @@ class AcceptTransactionController extends Controller
                 $pinjamanData['sisa_bayar'] = $pinjaman['sisa_bayar'] - $potongan;
                 $pinjaman->update($pinjamanData);
             }
+            $total2 = 0;
+            $sub_transaction_all = $transaction->sub_transaction()->get();
+            foreach($sub_transaction_all as $transaction_all) {
+                $total2 += $transaction_all->besaran;
+            }
+            $this->saldo_koperasi($total2, 'simpanan');
             return new TransactionResource($transaction);
         } else {
             return response()->json([

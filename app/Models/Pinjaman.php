@@ -21,4 +21,14 @@ class Pinjaman extends Model
         'approved_date',
         'paid_off_date',
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
+
+    public function transaction()
+    {
+        return $this->hasMany(Transaction::class, 'pinjaman_id');
+    }
 }

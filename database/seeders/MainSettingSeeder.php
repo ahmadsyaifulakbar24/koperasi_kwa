@@ -23,5 +23,10 @@ class MainSettingSeeder extends Seeder
             'name_setting' => 'simpanan_pokok',
             'value' => 20000
         ]);
+
+        DB::table('main_settings')->insert([
+            'name_setting' => 'saldo',
+            'value' => 0
+        ]);
     }
 }
