@@ -16,7 +16,7 @@ class CreateSubTransactionsTable extends Migration
         Schema::create('sub_transactions', function (Blueprint $table) {
             $table->id();
             $table->foreignId('transaction_id')->constrained('transactions')->onDelete('cascade')->onUpdate('cascade');
-            $table->string('type');
+            $table->enum('type', ['simpanan_sukarela', 'simpanan_wajib', 'simpanan_pokok', 'tagihan_pinjaman', 'saldo_koperasi']);
             $table->bigInteger('besaran');
             $table->timestamps();
         });

@@ -18,6 +18,7 @@ class ReportTransactionDebitResource extends JsonResource
                 'simpanan_wajib' => $this->sub_transaction->where('type', 'simpanan_wajib')->first()->besaran ?? NULL,
                 'simpanan_sukarela' => $this->sub_transaction->where('type', 'simpanan_sukarela')->first()->besaran ?? NULL,
                 'simpanan_pokok' => $this->sub_transaction->where('type', 'simpanan_pokok')->first()->besaran ?? NULL,
+                'saldo_koperasi' => $this->sub_transaction->where('type', 'saldo_koperasi')->first()->besaran ?? NULL,
                 'cicilan' => $this->sub_transaction->where('type', 'tagihan_pinjaman')->first()->besaran ?? NULL,
                 'total' => $this->sub_transaction_sum_besaran,
             ]
