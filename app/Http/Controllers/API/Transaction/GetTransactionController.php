@@ -110,7 +110,7 @@ class GetTransactionController extends Controller
         $per_page = 10;
         $from = ($current_page - 1) * $per_page + 1;
         $last_page = ceil($total/$per_page);
-        $to = $from + $per_page;
+        $to = ($from - 1) + $users->count();
         $next_page = $current_page + 1;
         $prev_page = $current_page - 1;
         $next_page_url = ($next_page >= $last_page) ? NULL : url()->current().'?page=' . $next_page;
