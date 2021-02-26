@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Api\MainSetting;
+namespace App\Http\Controllers\API\MainSetting;
 
 use App\Http\Controllers\API\Transaction\TraitTransaction;
 use App\Http\Controllers\Controller;
@@ -8,9 +8,10 @@ use App\Models\MainSetting;
 use App\Models\User;
 use Illuminate\Http\Request;
 
-class SaldoKoperasiController extends Controller
+class SaldoKoperasiKontroller extends Controller
 {
     use TraitTransaction;
+    
     public function add_saldo(Request $request)
     {
         $user_id = auth()->user()->id;
