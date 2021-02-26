@@ -4,6 +4,7 @@ namespace App\Http\Controllers\API\Transaction;
 
 use App\Http\Controllers\Controller;
 use App\Http\Resources\Transaction\TransactionResource;
+use App\Models\MainSetting;
 use App\Models\Pinjaman;
 use App\Models\Transaction;
 use App\Models\User;
@@ -22,6 +23,14 @@ class AcceptTransactionController extends Controller
             foreach($sub_transactions as $sub_transaction) {
                 $total += $sub_transaction->besaran; 
             }
+
+            $total2 = 0;
+            $sub_transaction_all = $transaction->sub_transaction()->get();
+            foreach($sub_transaction_all as $transaction_all) {
+                $total2 += $transaction_all->besaran;
+            }
+            $this->saldo_koperasi($total2, 'simpanan');
+
             if($transaction->type == 'simpanan') {
                 $user = User::find($transaction->user_id);
                 $saldo_simpanan = $user->user_koperasi_detail->saldo_simpanan;
@@ -29,16 +38,13 @@ class AcceptTransactionController extends Controller
                 $user->user_koperasi_detail->update($userData);
             } else {
                 $pinjaman = Pinjaman::find($transaction->pinjaman_id);
-                $potongan = $pinjaman->besar_pinjaman / $pinjaman->tenor;
+                $bunga = MainSetting::where('name_setting', 'bunga')->first();
+                $bunga_pinjaman = $pinjaman->besar_pinjaman * $bunga / 100;
+                $potongan = $total2 / $bunga_pinjaman;
                 $pinjamanData['sisa_bayar'] = $pinjaman['sisa_bayar'] - $potongan;
                 $pinjaman->update($pinjamanData);
             }
-            $total2 = 0;
-            $sub_transaction_all = $transaction->sub_transaction()->get();
-            foreach($sub_transaction_all as $transaction_all) {
-                $total2 += $transaction_all->besaran;
-            }
-            $this->saldo_koperasi($total2, 'simpanan');
+            
             return new TransactionResource($transaction);
         } else {
             return response()->json([
