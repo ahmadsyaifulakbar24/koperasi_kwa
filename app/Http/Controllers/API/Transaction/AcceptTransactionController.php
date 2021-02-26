@@ -39,8 +39,8 @@ class AcceptTransactionController extends Controller
             } else {
                 $pinjaman = Pinjaman::find($transaction->pinjaman_id);
                 $bunga = MainSetting::where('name_setting', 'bunga')->first();
-                $bunga_pinjaman = $pinjaman->besar_pinjaman * $bunga / 100;
-                $potongan = $total2 / $bunga_pinjaman;
+                $bunga_pinjaman = $pinjaman->besar_pinjaman * $bunga->value / 100;
+                $potongan = $total2 - $bunga_pinjaman;
                 $pinjamanData['sisa_bayar'] = $pinjaman['sisa_bayar'] - $potongan;
                 $pinjaman->update($pinjamanData);
             }
