@@ -4,7 +4,7 @@ use App\Http\Controllers\API\Auth\LoginController;
 use App\Http\Controllers\API\Auth\LogoutController;
 use App\Http\Controllers\API\Auth\RegisterController;
 use App\Http\Controllers\API\MainSetting\MainSettingController;
-use App\Http\Controllers\Api\MainSetting\SaldoKoperasiController;
+use App\Http\Controllers\API\MainSetting\SaldoKoperasiController;
 use App\Http\Controllers\API\Param\GetParamController;
 use App\Http\Controllers\API\Pinjaman\CreatePinjamanController;
 use App\Http\Controllers\API\Pinjaman\GetPinjamanController;
