@@ -8,7 +8,7 @@ use App\Models\MainSetting;
 use App\Models\User;
 use Illuminate\Http\Request;
 
-class SaldoKopersiController extends Controller
+class SaldoKoperasiController extends Controller
 {
     use TraitTransaction;
     public function add_saldo(Request $request)
