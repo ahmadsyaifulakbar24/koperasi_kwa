@@ -4,6 +4,7 @@ use App\Http\Controllers\API\Auth\LoginController;
 use App\Http\Controllers\API\Auth\LogoutController;
 use App\Http\Controllers\API\Auth\RegisterController;
 use App\Http\Controllers\API\MainSetting\MainSettingController;
+use App\Http\Controllers\Api\MainSetting\SaldoKopersiController;
 use App\Http\Controllers\API\Param\GetParamController;
 use App\Http\Controllers\API\Pinjaman\CreatePinjamanController;
 use App\Http\Controllers\API\Pinjaman\GetPinjamanController;
@@ -75,6 +76,7 @@ Route::group(['middleware'  => 'auth:sanctum'], function () {
     Route::group(['prefix' => 'main_setting'], function () {
         Route::post('/update', [MainSettingController::class, 'update']);
         Route::get('/', [MainSettingController::class, 'getData']);
+        Route::post('/add_saldo_koperasi', [SaldoKopersiController::class, 'add_saldo']);
     });
 });
 
