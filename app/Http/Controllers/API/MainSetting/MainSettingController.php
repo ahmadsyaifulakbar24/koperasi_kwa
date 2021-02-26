@@ -35,7 +35,6 @@ class MainSettingController extends Controller
         $data_setting = [];
         foreach ($main_setting_all as $setting) {
             $data_setting[$setting->name_setting] = $setting->value;
-            $data_setting[$setting->name_setting] = $setting->value;
         }
         return new MainSettingResource($data_setting); 
     }
