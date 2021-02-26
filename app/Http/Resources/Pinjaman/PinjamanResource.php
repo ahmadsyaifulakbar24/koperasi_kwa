@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources\Pinjaman;
 
+use App\Http\Resources\Transaction\TransactionResource;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class PinjamanResource extends JsonResource
@@ -26,6 +27,7 @@ class PinjamanResource extends JsonResource
             'approved_date' => !empty($this->approved_date) ? $this->approved_date : NULL,
             'paid_off_date' => !empty($this->paid_off_date) ? $this->paid_off_date : NULL,
             'created_at' => !empty($this->created_at) ? $this->created_at : NULL,
+            'transaction' => TransactionResource::collection($this->transaction),
         ];
     }
 }
