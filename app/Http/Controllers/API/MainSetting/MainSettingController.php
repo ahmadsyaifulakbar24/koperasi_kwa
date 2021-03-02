@@ -5,6 +5,8 @@ namespace App\Http\Controllers\API\MainSetting;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\MainSetting\MainSettingResource;
 use App\Models\MainSetting;
+use App\Models\Pinjaman;
+use App\Models\Transaction;
 use Illuminate\Http\Request;
 
 class MainSettingController extends Controller
@@ -36,6 +38,13 @@ class MainSettingController extends Controller
         foreach ($main_setting_all as $setting) {
             $data_setting[$setting->name_setting] = $setting->value;
         }
+
+        $total_kredit = Pinjaman::whereNotNull('approved_date')->get()->sum('besar_pinjaman');
+        $data_setting['total_kredit'] = $total_kredit;
+
+        $total_debit = Transaction::withSum('sub_transaction', 'besaran') ->whereNotNull('approved_date') ->get()->sum('sub_transaction_sum_besaran');
+        $data_setting['total_debit'] = $total_debit;
+        
         return new MainSettingResource($data_setting); 
     }
 }

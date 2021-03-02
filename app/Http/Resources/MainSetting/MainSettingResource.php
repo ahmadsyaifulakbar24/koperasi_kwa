@@ -11,7 +11,9 @@ class MainSettingResource extends JsonResource
         return [
             'bunga' => $this['bunga'],
             'simpanan_pokok' => $this['simpanan_pokok'],
-            'saldo' => $this['saldo']
+            'saldo' => $this['saldo'],
+            'total_kredit' => $this['total_kredit'],
+            'total_debit' => $this['total_debit']
         ];
     }
 }
