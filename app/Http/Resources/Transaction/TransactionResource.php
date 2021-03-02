@@ -22,7 +22,7 @@ class TransactionResource extends JsonResource
             'message' => $this->message,
             'type' => $this->type,
             'bukti_pembayaran' => !empty($this->bukti_pembayaran) ? asset('images/bukti_pembayaran/'.$this->bukti_pembayaran) : NULL,
-            'approved_date' => \Carbon\Carbon::parse($this->approved_date)->timezone('Asia/Jakarta')->format('Y-m-d H:i:s'),
+            'approved_date' => !empty($this->approved_date) ? \Carbon\Carbon::parse($this->approved_date)->timezone('Asia/Jakarta')->format('Y-m-d H:i:s') : NULL,
             'sub_transaction' => SubTransactionResource::collection($this->sub_transaction),
             'created_at' => \Carbon\Carbon::parse($this->created_at)->timezone('Asia/Jakarta')->format('Y-m-d H:i:s'),
         ];
