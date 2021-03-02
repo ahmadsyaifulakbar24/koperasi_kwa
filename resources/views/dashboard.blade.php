@@ -95,10 +95,10 @@
 		<h6 class="text-secondary">Menu</h6>
 		<div class="row">
 			<div class="col-6 col-md-4 col-xl-3 mb-4">
-				<a href="{{url('admin/pivot')}}">
+				<a href="{{url('admin/rekapitulasi')}}">
 					<div class="card card-custom">
 						<div class="card-body">
-							<h6>Pivot</h6>
+							<h6>Rekapitulasi</h6>
 							<div class="d-flex justify-content-between align-items-center position-relative">
 								<i class="mdi mdi-file-table-box-outline mdi-36px"></i>
 								<h4 class="mb-0" id="">
@@ -141,26 +141,6 @@
 							<h6>Pinjaman</h6>
 							<div class="d-flex justify-content-between align-items-center position-relative">
 								<i class="mdi mdi-notebook-outline mdi-36px"></i>
-								<h4 class="mb-0" id="">
-									<!-- <div class="loader loader-sm btn-loading">
-										<svg class="circular" viewBox="25 25 50 50">
-											<circle class="path-dark" cx="50" cy="50" r="20" fill="none" stroke-width="6" stroke-miterlimit="1"/>
-										</svg>
-									</div> -->
-								</h4>
-								<div class="notification none"></div>
-							</div>
-						</div>
-					</div>
-				</a>
-			</div>
-			<div class="col-6 col-md-4 col-xl-3 mb-4">
-				<a href="{{url('admin/rekapitulasi')}}">
-					<div class="card card-custom">
-						<div class="card-body">
-							<h6>Rekapitulasi</h6>
-							<div class="d-flex justify-content-between align-items-center position-relative">
-								<i class="mdi mdi-chart-bar mdi-36px"></i>
 								<h4 class="mb-0" id="">
 									<!-- <div class="loader loader-sm btn-loading">
 										<svg class="circular" viewBox="25 25 50 50">
