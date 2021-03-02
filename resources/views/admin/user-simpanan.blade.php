@@ -10,7 +10,7 @@
 		<div class="card card-custom">
 			<div class="card-header border-bottom-0">
 				<div class="d-flex align-items-center">
-					<b>Anggota</b>
+					<b>Anggota Koperasi</b>
 				</div>
 			</div>
 			<div class="table-custom">

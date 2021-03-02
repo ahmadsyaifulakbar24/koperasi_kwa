@@ -54,17 +54,14 @@
 		</a>
 		<!-- <small class="text-secondary text-uppercase font-weight-bold">Simpanan</small> -->
 		@if(session("level") == 1 || session("level") == 100)
-		<a href="{{url('admin/pivot')}}" class="{{Request::is('admin/pivot')?'active':''}}">
-			<i class="mdi mdi-file-table-box-outline mdi-18px"></i><span>Pivot</span>
+		<a href="{{url('admin/rekapitulasi')}}" class="{{Request::is('admin/rekapitulasi')?'active':''}}">
+			<i class="mdi mdi-file-table-box-outline mdi-18px"></i><span>Rekapitulasi</span>
 		</a>
 		<a href="{{url('admin/simpanan')}}" class="{{Request::is('admin/simpanan')?'active':''}}">
 			<i class="mdi mdi-wallet-outline mdi-18px"></i><span>Simpanan</span>
 		</a>
 		<a href="{{url('admin/pinjaman')}}" class="{{Request::is('admin/pinjaman')?'active':''}}">
 			<i class="mdi mdi-notebook-outline mdi-18px"></i><span>Pinjaman</span>
-		</a>
-		<a href="{{url('admin/rekapitulasi')}}" class="{{Request::is('admin/rekapitulasi')?'active':''}}">
-			<i class="mdi mdi-chart-bar mdi-18px"></i><span>Rekapitulasi</span>
 		</a>
 		@elseif(session("level") == 101)
 		<a href="{{url('simpanan')}}" class="{{Request::is('simpanan')?'active':''}}">

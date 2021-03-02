@@ -24,8 +24,8 @@ Route::group(['middleware'=>['beforeMiddleware']], function () {
 	});
 
 	Route::group(['middleware'=>['adminMiddleware']], function () {
-		Route::get('admin/pivot', function () {
-			return view('admin/pivot');
+		Route::get('admin/rekapitulasi', function () {
+			return view('admin/rekapitulasi');
 		});
 
 		Route::get('admin/simpanan', function () {
