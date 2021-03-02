@@ -25,7 +25,7 @@
 							<tr>
 								<th class="text-truncate pl-4">No.</th>
 								<th class="text-truncate">Nama</th>
-								<th class="text-truncate">Total Simpanan Wajib</th>
+								<th class="text-truncate">Simpanan Wajib</th>
 								<th class="text-truncate pr-4">Total Simpanan Sukarela</th>
 							</tr>
 						</thead>
