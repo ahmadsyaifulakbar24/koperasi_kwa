@@ -4,7 +4,7 @@ function get_data(page, status) {
     $('#table').empty()
     $('#pagination').addClass('hide')
     $('#loading_table').show()
-    axios.get('api/pinjaman/filter', {
+    axios.get('api/pinjaman/filter/' + session.user_id, {
         params: {
         	page: page,
             status: status
