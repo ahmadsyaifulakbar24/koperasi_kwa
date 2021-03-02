@@ -9,7 +9,7 @@ axios.get('api/transaction/get/' + id).then((response) => {
         $('#message').html(bulan_tahun(month, year))
         let total_sub_transaction = 0
         $.each(value.sub_transaction, function(index, value) {
-            total_sub_transaction += value.besaran
+            total_sub_transaction += parseInt(value.besaran)
         })
         $('#total_sub_transaction').html(rupiah(total_sub_transaction))
         $('#data').removeClass('hide')

@@ -1,16 +1,16 @@
 @extends('layouts/app')
 
-@section('title','Pivot')
+@section('title','Rekapitulasi')
 
 @section('content')
 	<div class="container">
 		<div class="d-flex justify-content-between align-items-center mb-2">
-			<h4>Pivot</h4>
+			<h4>Rekapitulasi</h4>
 		</div>
 		<div class="card card-custom">
 			<div class="card-header border-bottom-0">
 				<div class="d-flex align-items-center">
-					<b>Anggota</b>
+					<b>Anggota Koperasi <span id="bulan" class="text-secondary"></span></b>
 					<div class="ml-auto">
 						<div class="form-control form-control-sm" role="button" data-toggle="modal" data-target="#modal-filter">
 							Filter <i class="mdi mdi-chevron-down pr-0 pl-1"></i>
@@ -25,7 +25,6 @@
 							<tr>
 								<th class="text-truncate pl-4">No.</th>
 								<th class="text-truncate">Nama</th>
-								<th class="text-truncate">Bulan</th>
 								<th class="text-truncate">Total Simpanan Wajib</th>
 								<th class="text-truncate pr-4">Total Simpanan Sukarela</th>
 							</tr>
@@ -99,5 +98,5 @@
 
 @section('script')
 	<script src="{{asset('assets/js/number.js')}}"></script>
-	<script src="{{asset('api/admin/pivot.js')}}"></script>
+	<script src="{{asset('api/admin/rekapitulasi.js')}}"></script>
 @endsection

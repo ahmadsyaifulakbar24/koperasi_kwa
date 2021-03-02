@@ -8,6 +8,7 @@ function get_data(page, month, year) {
     $('#table').empty()
     $('#pagination').addClass('hide')
     $('#loading_table').show()
+	$('#bulan').html(`(${bulan_tahun(month, year)})`)
     axios.get('api/transaction/get_simpanan_perbulan', {
     	params: {
     		page: page,
@@ -39,7 +40,6 @@ function get_data(page, month, year) {
                 append = `<tr>
 	        		<td class="text-center pl-4">${index + 1}.</td>
 	        		<td class="text-truncate">${value.name}</td>
-	        		<td class="text-truncate">${bulan_tahun(month, year)}</td>
 	        		<td class="text-truncate">Rp${convert(value.simpanan_wajib)}</td>
 	        		<td class="text-truncate pr-4">Rp${convert(value.simpanan_sukarela)}</td>
 	        	</tr>`
