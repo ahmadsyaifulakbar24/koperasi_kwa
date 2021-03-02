@@ -88,7 +88,7 @@ class ParamSeeder extends Seeder
         DB::table('params')->insert([
             'param_id' => null,
             'category_param' => 'jabatan',
-            'param' => 'Teknisi',
+            'param' => 'TEKNISI',
             'order' => 3,
             'active' => 1,
         ]);
@@ -96,7 +96,7 @@ class ParamSeeder extends Seeder
         DB::table('params')->insert([
             'param_id' => null,
             'category_param' => 'jabatan',
-            'param' => 'Sales / Marketing',
+            'param' => 'SALES / MARKETING',
             'order' => 4,
             'active' => 1,
         ]);

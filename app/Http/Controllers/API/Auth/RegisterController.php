@@ -74,8 +74,8 @@ class RegisterController extends Controller
         // insert transaction
         $transaction_data = [
             'user_id' => $user->id,
-            'title' => 'Tagihan Pertama',
-            'message' => 'ini adalah pesan',
+            'title' => 'Tagihan Ke-1',
+            'message' => '-',
             'type' => 'simpanan',
         ];
         $simpanan_pokok = MainSetting::where('name_setting', 'simpanan_pokok')->first();
