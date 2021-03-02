@@ -17,7 +17,7 @@ function get_data(page) {
                 append = `<tr>
 	        		<td class="text-center pl-4">${index + 1}.</td>
 	        		<td class="text-truncate font-weight-bold"><a href="${root}admin/simpanan/${value.id}">${value.name}</td>
-	        		<td class="text-truncate">Rp${convert(value.user_koperasi_detail.bersar_simpanan_wajib)}<text-secondary></text-secondary>">/Bulan</small></td>
+	        		<td class="text-truncate">Rp${convert(value.user_koperasi_detail.bersar_simpanan_wajib)}<small class="text-secondary">/bulan</small></td>
 	        		<td class="text-truncate">Rp${convert(value.user_koperasi_detail.saldo_simpanan)}</td>
 	        		<td class="text-truncate pr-4" id="approve${value.id}"></td>
 	        	</tr>`
