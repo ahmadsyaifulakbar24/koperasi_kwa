@@ -174,7 +174,7 @@ $('#download_kredit').click(function() {
                 append += `<tr>
         		<td>${tanggal(value.date)}</td>
         		<td>${value.name}</td>
-        		<td>${value.nik}</td>
+        		<td>'${value.nik}</td>
         		<td>Pinjaman</td>
         		<td>${value.tenor}</td>
         		<td>Approve</td>
