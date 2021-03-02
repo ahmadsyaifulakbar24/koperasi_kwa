@@ -7,7 +7,10 @@ axios.get('api/transaction/get/' + id).then((response) => {
         let sub_transaction = '', total_sub_transaction = 0
         $.each(value.sub_transaction, function(index, value) {
             besaran = rupiah(value.besaran)
-            if (value.type == 'simpanan_wajib') {
+            if (value.type == 'simpanan_pokok') {
+                sub_transaction += `<li>Simpanan Pokok: ${besaran}</li>`
+	            total_sub_transaction += parseInt(value.besaran)
+            } else if (value.type == 'simpanan_wajib') {
                 sub_transaction += `<li>Simpanan Wajib: ${besaran}</li>`
 	            total_sub_transaction += parseInt(value.besaran)
             } else if (value.type == 'simpanan_sukarela') {

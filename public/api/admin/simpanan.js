@@ -23,7 +23,7 @@ function get_data(page, day, month, year, approved) {
     $('#table').empty()
     $('#pagination').addClass('hide')
     $('#loading_table').show()
-    axios.get('api/transaction/filter', {
+    axios.get('api/transaction/filter/' + id, {
         params: {
             page: page,
             day: day,
@@ -53,7 +53,9 @@ function get_data(page, day, month, year, approved) {
                 sub_append = ''
                 $.each(value.sub_transaction, function(index, value) {
                     besaran = rupiah(value.besaran)
-                    if (value.type == 'simpanan_wajib') {
+                    if (value.type == 'simpanan_pokok') {
+                        sub_append += `<li>Simpanan Pokok: ${besaran}</li>`
+                    } else if (value.type == 'simpanan_wajib') {
                         sub_append += `<li>Simpanan Wajib: ${besaran}</li>`
                     } else if (value.type == 'simpanan_sukarela') {
                         sub_append += `<li>Simpanan Sukarela: ${besaran}</li>`
