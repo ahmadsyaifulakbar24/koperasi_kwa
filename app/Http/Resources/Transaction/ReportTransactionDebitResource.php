@@ -12,7 +12,7 @@ class ReportTransactionDebitResource extends JsonResource
         return [
             'name' => $this->user->name,
             'nik' => $this->user->no_id,
-            'date' => $this->approved_date,
+            'date' => \Carbon\Carbon::parse($this->approved_date)->timezone('Asia/Jakarta')->format('Y-m-d H:i:s'),
             'total_debit' => $this->sub_transaction_sum_besaran,
             'sub_transaction' => [
                 'simpanan_wajib' => $this->sub_transaction->where('type', 'simpanan_wajib')->first()->besaran ?? NULL,
