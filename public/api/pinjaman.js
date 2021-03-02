@@ -45,7 +45,7 @@ function get_data(page, status) {
         }
         $('#loading_table').hide()
     }).catch((err) => {
-        // console.log(err)
+        // console.log(err.response)
     })
 }
 
