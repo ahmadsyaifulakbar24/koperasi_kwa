@@ -9,10 +9,10 @@ axios.get('api/transaction/get/' + id).then((response) => {
             besaran = rupiah(value.besaran)
             if (value.type == 'simpanan_wajib') {
                 sub_transaction += `<li>Simpanan Wajib: ${besaran}</li>`
-	            total_sub_transaction += value.besaran
+	            total_sub_transaction += parseInt(value.besaran)
             } else if (value.type == 'simpanan_sukarela') {
                 sub_transaction += `<li>Simpanan Sukarela: ${besaran}</li>`
-	            total_sub_transaction += value.besaran
+	            total_sub_transaction += parseInt(value.besaran)
             }
         })
         $('#sub_transaction').html(sub_transaction)
