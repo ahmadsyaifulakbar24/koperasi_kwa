@@ -54,7 +54,7 @@ function get_jabatan() {
                 }
                 append = `<div class="form-check">
 					<input class="form-check-input" type="radio" name="jabatan_id" id="j${value.id}" value="${value.id}">
-					<label class="form-check-label" for="j${value.id}" role="button">${value.jabatan}</label>
+					<label class="form-check-label text-capitalize" for="j${value.id}" role="button">${value.jabatan}</label>
 				</div>`
                 $('#jabatan_id').append(append)
             })
@@ -67,7 +67,7 @@ function get_jabatan() {
         $.each(jabatan_id, function(index, value) {
             append = `<div class="form-check">
 				<input class="form-check-input" type="radio" name="jabatan_id" id="j${value.id}" value="${value.id}">
-				<label class="form-check-label" for="j${value.id}" role="button">${value.jabatan}</label>
+				<label class="form-check-label text-capitalize" for="j${value.id}" role="button">${value.jabatan}</label>
 			</div>`
             $('#jabatan_id').append(append)
         })
@@ -93,6 +93,12 @@ function get_status_keluarga() {
                 $('#status_keluarga_id').append(append)
             })
             localStorage.setItem('status_keluarga_id', JSON.stringify(status_keluarga_id))
+            if (document.URL.indexOf('daftar') <= 0) {
+                get_user()
+            } else {
+                $('#data').removeClass('hide')
+                $('#loading').remove()
+            }
         }).catch((err) => {
             // console.log(err.response)
         })
@@ -105,10 +111,13 @@ function get_status_keluarga() {
 			</div>`
             $('#status_keluarga_id').append(append)
         })
+        if (document.URL.indexOf('daftar') <= 0) {
+            get_user()
+        } else {
+            $('#data').removeClass('hide')
+            $('#loading').remove()
+        }
     }
-    $('#data').removeClass('hide')
-    $('#loading').remove()
-    get_user()
 }
 
 function customAlert(status, param) {
@@ -299,20 +308,20 @@ function currentDate() {
 $('#date').val(currentDate())
 
 function bulan_tahun(month, year) {
-	let bulan = []
-	bulan['1'] = 'Januari'
-	bulan['2'] = 'Februari'
-	bulan['3'] = 'Maret'
-	bulan['4'] = 'April'
-	bulan['5'] = 'Mei'
-	bulan['6'] = 'Juni'
-	bulan['7'] = 'Juli'
-	bulan['8'] = 'Agustus'
-	bulan['9'] = 'September'
-	bulan['10'] = 'Oktober'
-	bulan['11'] = 'November'
-	bulan['12'] = 'Desember'
-	return `${bulan[month]} ${year}`
+    let bulan = []
+    bulan['1'] = 'Januari'
+    bulan['2'] = 'Februari'
+    bulan['3'] = 'Maret'
+    bulan['4'] = 'April'
+    bulan['5'] = 'Mei'
+    bulan['6'] = 'Juni'
+    bulan['7'] = 'Juli'
+    bulan['8'] = 'Agustus'
+    bulan['9'] = 'September'
+    bulan['10'] = 'Oktober'
+    bulan['11'] = 'November'
+    bulan['12'] = 'Desember'
+    return `${bulan[month]} ${year}`
 }
 
 $('#logout').click(function() {
