@@ -36,7 +36,7 @@ function get_data(page, day, month, year, approved) {
             $.each(value.data, function(index, value) {
                 value.approved_date == null ? approved_date = '' : approved_date = tanggal(value.approved_date)
                 if (value.bukti_pembayaran == null) {
-                    bukti_pembayaran = `<a href="${root}confirm/simpanan/${value.user_id}/${value.id}" class="btn btn-sm btn-primary px-4">Konfirmasi</a>`
+                    bukti_pembayaran = `<a href="${root}confirm/simpanan/${value.user_id}/${value.id}" class="btn btn-sm btn-primary px-4">Upload</a>`
                 } else {
                     bukti_pembayaran = `<a href="${value.bukti_pembayaran}" class="btn btn-sm btn-outline-primary" target="_blank">Bukti pembayaran</a>`
                 }
