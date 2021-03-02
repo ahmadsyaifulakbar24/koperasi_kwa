@@ -76,7 +76,7 @@ $('#download_debit').click(function() {
             }
         }).then((response) => {
             let value = response.data
-            // console.log(value)
+            console.log(value)
             let append = `<tr>
 	        	<td colspan="2">TOTAL KAS SAAT INI</td>
 	        	<td>${rupiah(balance)}</td>
@@ -113,12 +113,12 @@ $('#download_debit').click(function() {
                 append += `<tr>
 	        		<td>${tanggal(value.date)}</td>
 	        		<td>${value.name}</td>
-	        		<td>${value.nik}</td>
+	        		<td>'${value.nik}</td>
 	        		<td>${value.sub_transaction.simpanan_wajib != null ? rupiah(value.sub_transaction.simpanan_wajib) : ''}</td>
 	        		<td>${value.sub_transaction.simpanan_sukarela != null ? rupiah(value.sub_transaction.simpanan_sukarela) : ''}</td>
 	        		<td>${value.sub_transaction.cicilan != null ? rupiah(value.sub_transaction.cicilan) : ''}</td>
 	        		<td>${value.sub_transaction.simpanan_pokok != null ? rupiah(value.sub_transaction.simpanan_pokok) : ''}</td>
-	        		<td></td>
+	        		<td>${value.sub_transaction.saldo_koperasi != null ? rupiah(value.sub_transaction.saldo_koperasi) : ''}</td>
 	        		<td>${value.sub_transaction.total != null ? rupiah(value.sub_transaction.total) : ''}</td>
 	        	</tr>`
             })
