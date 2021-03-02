@@ -128,7 +128,7 @@ $('#approve').click(function() {
         // console.log(response.data.data)
         let value = response.data.data
         $.each(value.sub_transaction, function(index, value) {
-            if (value.type == 'simpanan_wajib' || value.type == 'simpanan_sukarela') balance += value.besaran
+        	balance += parseInt(value.besaran)
         })
         let date = value.approved_date
         let tgl = tanggal(date.substr(0, 10))
