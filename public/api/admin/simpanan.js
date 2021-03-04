@@ -95,6 +95,8 @@ function get_data(page, day, month, year, approved) {
     })
 }
 
+currentDate()
+
 $('#filter_by').change(function() {
     let value = $(this).val()
     $('#date').parents('.form-group').addClass('none')

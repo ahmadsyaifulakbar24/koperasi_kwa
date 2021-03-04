@@ -5,8 +5,9 @@ let filter_by = '',
     year = ''
 
 axios.get('api/user/' + session.user_id).then((response) => {
-    // console.log(response)
-    let simpanan = response.data.data.user_koperasi_detail.saldo_simpanan
+	let value = response.data.data
+    // console.log(value)
+    let simpanan = value.user_koperasi_detail.saldo_simpanan
     $('.simpanan').html(rupiah(simpanan))
 }).catch((err) => {
     // console.log(err)
@@ -76,6 +77,8 @@ function get_data(page, day, month, year, approved) {
         customAlert('warning', err)
     })
 }
+
+currentDate()
 
 $('#filter_by').change(function() {
     let value = $(this).val()
