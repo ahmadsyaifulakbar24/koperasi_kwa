@@ -18,6 +18,7 @@ class Pinjaman extends Model
         'total_bayar',
         'sisa_bayar',
         'status',
+        'contract',
         'approved_date',
         'paid_off_date',
     ];

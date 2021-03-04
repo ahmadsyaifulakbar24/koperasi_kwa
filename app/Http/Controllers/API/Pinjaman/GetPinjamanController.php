@@ -38,4 +38,21 @@ class GetPinjamanController extends Controller
             ], 404);
         }
     }
+
+    public function cek_pinjaman()
+    {
+        $user_id = auth()->user()->id;
+        $cek_pinjaman = Pinjaman::where([['user_id', $user_id], ['paid_off_date']])->count();
+        if($cek_pinjaman > 0) {
+            $cek = 'false';
+        } else {
+            $cek = 'true';
+        }
+
+        return response()->json([
+            'data' => [
+                'output' => $cek
+            ]
+        ]);
+    }
 }

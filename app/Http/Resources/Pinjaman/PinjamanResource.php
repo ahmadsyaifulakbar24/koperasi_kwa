@@ -28,6 +28,7 @@ class PinjamanResource extends JsonResource
             'paid_off_date' => !empty($this->paid_off_date) ? \Carbon\Carbon::parse($this->paid_off_date)->timezone('Asia/Jakarta')->format('Y-m-d H:i:s') : NULL,
             'created_at' => !empty($this->created_at) ? \Carbon\Carbon::parse($this->created_at)->timezone('Asia/Jakarta')->format('Y-m-d H:i:s') : NULL,
             'transaction' => TransactionResource::collection($this->transaction),
+            'contract' => !empty($this->contract) ? asset('images/contract_pinjaman/'.$this->contract) : NULL,
         ];
     }
 }

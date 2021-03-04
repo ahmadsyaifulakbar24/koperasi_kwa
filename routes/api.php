@@ -6,6 +6,7 @@ use App\Http\Controllers\API\Auth\RegisterController;
 use App\Http\Controllers\API\MainSetting\MainSettingController;
 use App\Http\Controllers\API\MainSetting\SaldoKoperasiController;
 use App\Http\Controllers\API\Param\GetParamController;
+use App\Http\Controllers\API\Pinjaman\ContractController;
 use App\Http\Controllers\API\Pinjaman\CreatePinjamanController;
 use App\Http\Controllers\API\Pinjaman\GetPinjamanController;
 use App\Http\Controllers\API\Pinjaman\LunasPinjamanController;
@@ -65,12 +66,14 @@ Route::group(['middleware'  => 'auth:sanctum'], function () {
         Route::post('/detail', [CreatePinjamanController::class, 'detail']);
         Route::post('/create_pinjaman/detail', [CreatePinjamanController::class, 'detail']);
         Route::post('/create_pinjaman', [CreatePinjamanController::class, 'create_pinjaman']);
+        Route::post('/upload_contract/{pinjaman_id}', ContractController::class);
         Route::patch('/accept_pinjaman/{pinjaman_id}', [StatusPinjamanController::class, 'accept']);
         Route::patch('/reject_pinjaman/{pinjaman_id}', [StatusPinjamanController::class, 'reject']);
         Route::patch('/paid_off_pinjaman/{pinjaman_id}', [StatusPinjamanController::class, 'paid_off']);
         Route::get('/lunas_pinjaman/{pinjaman_id}', [LunasPinjamanController::class, 'info_lunas']);
         Route::post('/create_lunas_pinjaman/{pinjaman_id}', [LunasPinjamanController::class, 'create_pinjaman_lunas']);
         Route::get('/report', ReportPinjamanController::class);
+        Route::get('/cek_pinjaman', [GetPinjamanController::class, 'cek_pinjaman']);
     });
 
     Route::group(['prefix' => 'main_setting'], function () {
