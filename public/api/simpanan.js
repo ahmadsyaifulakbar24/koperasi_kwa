@@ -5,8 +5,9 @@ let filter_by = '',
     year = ''
 
 axios.get('api/user/' + session.user_id).then((response) => {
-    // console.log(response)
-    let simpanan = response.data.data.user_koperasi_detail.saldo_simpanan
+	let value = response.data.data
+    // console.log(value)
+    let simpanan = value.user_koperasi_detail.saldo_simpanan
     $('.simpanan').html(rupiah(simpanan))
 }).catch((err) => {
     // console.log(err)
@@ -36,7 +37,7 @@ function get_data(page, day, month, year, approved) {
             $.each(value.data, function(index, value) {
                 value.approved_date == null ? approved_date = '' : approved_date = tanggal(value.approved_date)
                 if (value.bukti_pembayaran == null) {
-                    bukti_pembayaran = `<a href="${root}confirm/simpanan/${value.user_id}/${value.id}" class="btn btn-sm btn-primary px-4">Konfirmasi</a>`
+                    bukti_pembayaran = `<a href="${root}confirm/simpanan/${value.user_id}/${value.id}" class="btn btn-sm btn-primary px-4">Upload</a>`
                 } else {
                     bukti_pembayaran = `<a href="${value.bukti_pembayaran}" class="btn btn-sm btn-outline-primary" target="_blank">Bukti pembayaran</a>`
                 }
@@ -66,7 +67,7 @@ function get_data(page, day, month, year, approved) {
             $('#table').html(`<tr>
             	<td colspan="10" class="text-center pb-4">
             		<i class="mdi mdi-36px mdi-close-circle-outline d-block pr-0"></i>
-            		<span class="text-secondary">Belum ada data</span>
+            		<span class="text-secondary">Belum ada tagihan</span>
             	</td>
             </tr>`)
         }
@@ -76,6 +77,8 @@ function get_data(page, day, month, year, approved) {
         customAlert('warning', err)
     })
 }
+
+currentDate()
 
 $('#filter_by').change(function() {
     let value = $(this).val()

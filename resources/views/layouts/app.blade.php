@@ -16,7 +16,7 @@
         <div class="form-inline">
             <i class="mdi mdi-menu mdi-24px d-block d-lg-none pointer text-dark mr-2" id="menu"></i>
             <a class="navbar-brand d-none d-lg-block" href="{{url('dashboard')}}">
-				<!-- <img src="{{asset('assets/images/eoffice.png')}}" width="30" class="d-inline-block align-top mr-2" alt="" loading="lazy"> -->
+				<img src="{{asset('assets/images/logo.png')}}" width="30" class="d-inline-block align-top mr-2" alt="Logo" loading="lazy">
             	Koperasi KWA
             </a>
         </div>
@@ -46,6 +46,7 @@
     </nav>
 	<div class="sidebar">
 		<div class="py-2 pl-3 border-bottom">
+			<img src="{{asset('assets/images/logo.png')}}" width="30" class="d-inline-block align-top mr-2 mt-1" alt="Logo" loading="lazy">
 			<span class="navbar-brand mb-0">Koperasi KWA</span>
 		</div>
 		<small class="text-secondary text-uppercase font-weight-bold">Menu</small>

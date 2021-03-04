@@ -25,20 +25,27 @@
 					</div>
 				</div>
 			</div>
+			<div class="col-md-6 col-lg-7 col-xl-8 mb-4">
+				<div class="card card-custom card-height">
+					<div class="card-body d-flex align-items-center">
+						<div class="font-italic text-uppercase text-secondary">
+							<div class="font-weight-bold">Untuk pembayaran ke rekening bendahara</div>
+							<div>Mandiri: 1330015140981</div>
+							<div>Atas nama Robertus Sulistyo Ardi</div>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
 		<div class="card card-custom">
 			<div class="card-header border-bottom-0">
 				<div class="d-flex  align-items-center">
-					<b>Invoice</b>
+					<b>Tagihan</b>
 					<div class="ml-auto">
 						<div class="form-control form-control-sm" role="button" data-toggle="modal" data-target="#modal-filter">
 							Filter <i class="mdi mdi-chevron-down pr-0 pl-1"></i>
 						</div>
 					</div>
-					<!-- <div class="position-relative">
-						<i class="mdi mdi-close-circle position-absolute hide px-2" id="search-close" role="button" style="right: 0;padding: 5px 0"></i>
-						<input class="form-control form-control-sm pr-4" placeholder="Cari..." id="search" autocomplete="off">
-					</div> -->
 				</div>
 			</div>
 			<div class="table-custom">

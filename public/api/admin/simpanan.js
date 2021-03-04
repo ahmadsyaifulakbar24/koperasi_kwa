@@ -1,5 +1,4 @@
-let balance = 0,
-    filter_by = '',
+let filter_by = '',
     approved = '',
     day = '',
     month = '',
@@ -12,10 +11,19 @@ axios.get('api/user/' + id).then((response) => {
     $('#name').html(value.name)
     $('#approve-name').prepend(value.name)
     $('#balance').html(rupiah(value.user_koperasi_detail.saldo_simpanan))
-    balance = value.user_koperasi_detail.saldo_simpanan
 }).catch((err) => {
-    // console.log(err.response)
+    // console.log(err)
 })
+
+function get_simpanan() {
+    axios.get('api/user/' + id).then((response) => {
+        // console.log(response)
+        let value = response.data.data
+        $('#balance').html(rupiah(value.user_koperasi_detail.saldo_simpanan))
+    }).catch((err) => {
+        // console.log(err)
+    })
+}
 
 get_data()
 
@@ -40,7 +48,7 @@ function get_data(page, day, month, year, approved) {
             $.each(value.data, function(index, value) {
                 value.approved_date == null ? approved_date = '' : approved_date = tanggal(value.approved_date)
                 if (value.bukti_pembayaran == null) {
-                    bukti_pembayaran = `<a href="${root}invoice/simpanan/${value.user_id}/${value.id}" class="btn btn-sm btn-primary px-4">Konfirmasi</a>`
+                    bukti_pembayaran = `<a href="${root}invoice/simpanan/${value.user_id}/${value.id}" class="btn btn-sm btn-primary px-4">Upload</a>`
                     action = ''
                 } else {
                     bukti_pembayaran = `<a href="${value.bukti_pembayaran}" class="btn btn-sm btn-outline-primary" target="_blank">Bukti pembayaran</a>`
@@ -77,7 +85,7 @@ function get_data(page, day, month, year, approved) {
             $('#table').html(`<tr>
             	<td colspan="7" class="text-center pb-4">
             		<i class="mdi mdi-36px mdi-close-circle-outline d-block pr-0"></i>
-            		<span class="text-secondary">Belum ada data</span>
+            		<span class="text-secondary">Belum ada tagihan</span>
             	</td>
             </tr>`)
         }
@@ -86,6 +94,8 @@ function get_data(page, day, month, year, approved) {
         // console.log(err)
     })
 }
+
+currentDate()
 
 $('#filter_by').change(function() {
     let value = $(this).val()
@@ -99,8 +109,8 @@ $('#filter').click(function() {
     filter_by = $('#filter_by').val()
     approved = $('input[type=radio][name=approved]:checked').val()
     day = '',
-    month = '',
-    year = ''
+        month = '',
+        year = ''
     if (filter_by == 'date') {
         day = $('#date').val().substr(8, 2)
         month = $('#date').val().substr(5, 2)
@@ -127,17 +137,14 @@ $('#approve').click(function() {
     axios.patch('api/transaction/accept_transaction/' + id).then((response) => {
         // console.log(response.data.data)
         let value = response.data.data
-        $.each(value.sub_transaction, function(index, value) {
-            if (value.type == 'simpanan_wajib' || value.type == 'simpanan_sukarela') balance += value.besaran
-        })
         let date = value.approved_date
         let tgl = tanggal(date.substr(0, 10))
-        $('#balance').html(rupiah(balance))
         $('#approved_date' + id).html(tgl)
         $('#approve' + id).empty()
         $('#modal-approve').modal('hide')
         $(this).attr('disabled', false)
         customAlert('success', 'Simpanan berhasil disetujui')
+        get_simpanan()
     }).catch((err) => {
         // console.log(err.response)
         $('#modal-approve').modal('hide')

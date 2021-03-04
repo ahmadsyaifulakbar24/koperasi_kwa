@@ -297,15 +297,19 @@ function get_status(param) {
 }
 
 function currentDate() {
-    let date = new Date()
-    let d = date.getDate()
-    let m = date.getMonth() + 1
-    let y = date.getFullYear()
-    if (d.toString().length < 2) d = '0' + d
-    if (m.toString().length < 2) m = '0' + m
-    return (y + '-' + m + '-' + d)
+	let d = new Date()
+    let date = d.getDate()
+	let month = d.getMonth() + 1
+	let year = d.getFullYear()
+	if (date < 10) date = '0' + date
+	if (month < 10) month = '0' + month
+	let maxDate = year + '-' + month + '-' + date
+	let maxMonth = year + '-' + month
+	$('input[type="date"]').attr('max', maxDate)
+	$('input[type="month"]').attr('max', maxMonth)
+	$('#date').val(maxDate)
+	$('#month').val(maxMonth)
 }
-$('#date').val(currentDate())
 
 function bulan_tahun(month, year) {
     let bulan = []

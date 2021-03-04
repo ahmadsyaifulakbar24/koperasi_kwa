@@ -10,7 +10,7 @@
 		<div class="card card-custom">
 			<div class="card-header border-bottom-0">
 				<div class="d-flex align-items-center">
-					<b>Anggota Koperasi <span id="bulan" class="text-secondary"></span></b>
+					<b>Anggota Koperasi <span id="bulan" class="d-block d-sm-inline-block text-secondary"></span></b>
 					<div class="ml-auto">
 						<div class="form-control form-control-sm" role="button" data-toggle="modal" data-target="#modal-filter">
 							Filter <i class="mdi mdi-chevron-down pr-0 pl-1"></i>
@@ -25,7 +25,7 @@
 							<tr>
 								<th class="text-truncate pl-4">No.</th>
 								<th class="text-truncate">Nama</th>
-								<th class="text-truncate">Total Simpanan Wajib</th>
+								<th class="text-truncate">Simpanan Wajib</th>
 								<th class="text-truncate pr-4">Total Simpanan Sukarela</th>
 							</tr>
 						</thead>

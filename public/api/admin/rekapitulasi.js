@@ -60,10 +60,7 @@ function get_data(page, month, year) {
     })
 }
 
-if (month < 10) month = '0' + month
-let value = date.getFullYear() + '-' + month
-$('#month').val(value)
-$('#month').attr('max', value)
+currentDate()
 
 $('.page').click(function() {
     if (!$(this).is('.active, .disabled')) {

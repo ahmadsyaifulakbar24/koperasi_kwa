@@ -8,6 +8,8 @@ if (session) {
 
 get_pendidikan()
 
+$('#name').focus()
+
 $('#simpanan_sukarela').keyup(function() {
 	let value = $(this).val()
 	$(this).val(convert(value))
@@ -59,7 +61,7 @@ $('#form').submit(function(e) {
 
     axios.post('api/auth/register', formData).then((response) => {
     	// console.log(response)
-        location.href = root
+        location.href = root + '?success'
     }).catch((xhr) => {
         let err = xhr.response.data.errors
         // console.clear()

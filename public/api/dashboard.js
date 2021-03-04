@@ -6,6 +6,7 @@ function get_user() {
         // console.log(value)
         $('#name').val(value.name)
         $('#no_id').val(value.no_id)
+        $('#code').val(value.code)
         $('input[name=jenis_kelamin]').filter(`[value=${value.jenis_kelamin}]`).prop('checked', true)
         $('#tempat_lahir').val(value.tempat_lahir)
         $('#tanggal_lahir').val(value.tanggal_lahir)
@@ -113,12 +114,12 @@ $('#download_debit').click(function() {
                 append += `<tr>
 	        		<td>${tanggal(value.date)}</td>
 	        		<td>${value.name}</td>
-	        		<td>${value.nik}</td>
+	        		<td>'${value.nik}</td>
 	        		<td>${value.sub_transaction.simpanan_wajib != null ? rupiah(value.sub_transaction.simpanan_wajib) : ''}</td>
 	        		<td>${value.sub_transaction.simpanan_sukarela != null ? rupiah(value.sub_transaction.simpanan_sukarela) : ''}</td>
 	        		<td>${value.sub_transaction.cicilan != null ? rupiah(value.sub_transaction.cicilan) : ''}</td>
 	        		<td>${value.sub_transaction.simpanan_pokok != null ? rupiah(value.sub_transaction.simpanan_pokok) : ''}</td>
-	        		<td></td>
+	        		<td>${value.sub_transaction.saldo_koperasi != null ? rupiah(value.sub_transaction.saldo_koperasi) : ''}</td>
 	        		<td>${value.sub_transaction.total != null ? rupiah(value.sub_transaction.total) : ''}</td>
 	        	</tr>`
             })
@@ -174,14 +175,14 @@ $('#download_kredit').click(function() {
                 append += `<tr>
         		<td>${tanggal(value.date)}</td>
         		<td>${value.name}</td>
-        		<td>${value.nik}</td>
+        		<td>'${value.nik}</td>
         		<td>Pinjaman</td>
         		<td>${value.tenor}</td>
         		<td>Approve</td>
         		<td>${rupiah(value.jumlah)}</td>
         		<td>${rupiah(value.bunga)}</td>
         		<td>${rupiah(value.setoran_per_bulan)}</td>
-        		<td>${value.keterangan}</td>
+        		<td>'${value.keterangan}</td>
         	</tr>`
             })
 	        $(this).removeClass('active')
