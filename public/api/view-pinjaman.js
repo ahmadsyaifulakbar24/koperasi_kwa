@@ -6,6 +6,8 @@ axios.get('api/pinjaman/get/' + id).then((response) => {
     let sisa_angsuran = value.sisa_bayar
     if (value.sisa_bayar == null || value.sisa_bayar <= 0) {
     	sisa_angsuran = 'Lunas'
+    	$('.paid-off').remove()
+    	$('#modal-paid-off').remove()
 	} else {
     	sisa_angsuran = rupiah(value.sisa_bayar)
     	$('.paid-off').removeClass('hide')
@@ -30,20 +32,11 @@ axios.get('api/pinjaman/lunas_pinjaman/' + id).then((response) => {
 
 get_data()
 
-function get_data(page, day, month, year, approved) {
+function get_data() {
     $('#table').empty()
     $('#pagination').addClass('hide')
     $('#loading_table').show()
-    axios.get('api/pinjaman/get/' + id, {
-        params: {
-        	page: page,
-            day: day,
-            month: month,
-            year: year,
-            approved: approved,
-            type: 'pinjaman'
-        }
-    }).then((response) => {
+    axios.get('api/pinjaman/get/' + id).then((response) => {
         // console.log(response.data.data)
         let value = response.data
         if (value.data.transaction != '') {
@@ -68,7 +61,6 @@ function get_data(page, day, month, year, approved) {
 	        	</tr>`
                 $('#table').append(append)
             })
-            // pagination(value.links, value.meta, value.meta.path)
         } else {
             $('#table').html(`<tr>
             	<td colspan="10" class="text-center pb-4">
@@ -85,34 +77,6 @@ function get_data(page, day, month, year, approved) {
 
 currentDate()
 
-$('#filter_by').change(function() {
-    let value = $(this).val()
-    $('#date').parents('.form-group').addClass('none')
-    $('#month').parents('.form-group').addClass('none')
-    $('#year').parents('.form-group').addClass('none')
-    if (value != '') $('#' + value).parents('.form-group').removeClass('none')
-})
-
-$('#filter').click(function() {
-	filter_by = $('#filter_by').val()
-	approved = $('input[type=radio][name=approved]:checked').val()
-	day = '',
-	month = '',
-	year = ''
-    if (filter_by == 'date') {
-        day = $('#date').val().substr(8, 2)
-        month = $('#date').val().substr(5, 2)
-        year = $('#date').val().substr(0, 4)
-    } else if (filter_by == 'month') {
-        month = $('#month').val().substr(5, 2)
-        year = $('#month').val().substr(0, 4)
-    } else if (filter_by == 'year') {
-        year = $('#year').val()
-    }
-    get_data(1, day, month, year, approved)
-    $('#modal-filter').modal('hide')
-})
-
 $('#form').submit(function(e) {
     e.preventDefault()
     $('#submit').attr('disabled', true)
@@ -120,10 +84,9 @@ $('#form').submit(function(e) {
     formData.append('bukti_pembayaran', picture)
     formData.append('total_bayar', total_bayar)
     axios.post('api/pinjaman/create_lunas_pinjaman/' + id, formData).then((response) => {
-        console.log(response)
+        // console.log(response)
         $('#submit').attr('disabled', false)
         $('#modal-paid-off').modal('hide')
-        // $('.paid-off').remove()
         get_data()
     }).catch((xhr) => {
         let err = xhr.response.data.errors
