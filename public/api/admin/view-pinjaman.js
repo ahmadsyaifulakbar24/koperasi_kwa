@@ -14,14 +14,19 @@ function get_pinjaman() {
     axios.get('api/pinjaman/get/' + id).then((response) => {
         let value = response.data.data
         // console.log(value)
-        $('#besar_pinjaman').html(rupiah(value.besar_pinjaman))
-        $('#tenor').html(value.tenor + ' Bulan')
-        let sisa_angsuran = value.sisa_bayar
-        value.sisa_bayar == null || value.sisa_bayar <= 0 ? sisa_angsuran = 'Lunas' : sisa_angsuran = rupiah(value.sisa_bayar)
-        $('#sisa_angsuran').html(sisa_angsuran)
-        if (value.status == 'approved') {
-        	if (value.sisa_bayar == null || value.sisa_bayar <= 0) get_lunas()
-        }
+        if (value.user_id == user) {
+            $('#besar_pinjaman').html(rupiah(value.besar_pinjaman))
+            $('#tenor').html(value.tenor + ' Bulan')
+            let sisa_angsuran = value.sisa_bayar
+            value.sisa_bayar == null || value.sisa_bayar <= 0 ? sisa_angsuran = 'Lunas' : sisa_angsuran = rupiah(value.sisa_bayar)
+            $('#sisa_angsuran').html(sisa_angsuran)
+            if (value.status == 'approved') {
+                if (value.sisa_bayar == null || value.sisa_bayar <= 0) get_lunas()
+            }
+	        get_data()
+		} else {
+			window.history.back()
+		}
     }).catch((err) => {
         // console.log(err.response)
     })
@@ -35,8 +40,6 @@ function get_lunas() {
         // console.log(err.response)
     })
 }
-
-get_data()
 
 function get_data() {
     $('#table').empty()

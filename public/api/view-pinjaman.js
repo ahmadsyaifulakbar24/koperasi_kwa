@@ -1,18 +1,23 @@
 axios.get('api/pinjaman/get/' + id).then((response) => {
-    // console.log(response)
     let value = response.data.data
-    $('#besar_pinjaman').html(rupiah(value.besar_pinjaman))
-    $('#tenor').html(value.tenor + ' Bulan')
-    let sisa_angsuran = value.sisa_bayar
-    if (value.sisa_bayar == null || value.sisa_bayar <= 0) {
-    	sisa_angsuran = 'Lunas'
-    	$('.paid-off').remove()
-    	$('#modal-paid-off').remove()
+    // console.log(value)
+    if (value.user_id == session.user_id) {
+	    $('#besar_pinjaman').html(rupiah(value.besar_pinjaman))
+	    $('#tenor').html(value.tenor + ' Bulan')
+	    let sisa_angsuran = value.sisa_bayar
+	    if (value.sisa_bayar == null || value.sisa_bayar <= 0) {
+	    	sisa_angsuran = 'Lunas'
+	    	$('.paid-off').remove()
+	    	$('#modal-paid-off').remove()
+		} else {
+	    	sisa_angsuran = rupiah(value.sisa_bayar)
+	    	$('.paid-off').removeClass('hide')
+		}
+	    $('#sisa_angsuran').html(sisa_angsuran)
+	    get_data()
 	} else {
-    	sisa_angsuran = rupiah(value.sisa_bayar)
-    	$('.paid-off').removeClass('hide')
+		window.history.back()
 	}
-    $('#sisa_angsuran').html(sisa_angsuran)
 }).catch((err) => {
     // console.log(err.response)
 })
@@ -29,8 +34,6 @@ axios.get('api/pinjaman/lunas_pinjaman/' + id).then((response) => {
 }).catch((err) => {
     // console.log(err.response)
 })
-
-get_data()
 
 function get_data() {
     $('#table').empty()
