@@ -15,6 +15,7 @@
 	<div class="auth">
 		<div class="card shadow hide" id="data">
 			<div class="card-body pb-0">
+				<img src="{{asset('assets/images/logo.png')}}" class="pb-2" width="50">
 				<h3>Pendaftaran Koperasi KWA</h3>
 				<div class="text-secondary">
 					<p>Koperasi Karyawan PT. Karl Wig Abadi.<br>

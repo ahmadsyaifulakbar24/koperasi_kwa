@@ -15,14 +15,14 @@
 	<div class="auth mb-0">
 		<div class="card shadow">
 			<div class="card-head text-center px-4 pt-4">
-				<!-- <img src="{{asset('assets/images/eoffice.png')}}" width="120"> -->
-				<h2 class="pt-4">Koperasi KWA</h2>
+				<img src="{{asset('assets/images/logo.png')}}" width="70">
+				<h2 class="pt-3">Koperasi KWA</h2>
 				<p class="text-secondary">PT. Karl Wig Abadi</p>
 			</div>
 			<div class="card-body">
 				<form id="form">
 					<div class="alert alert-danger none" role="alert">
-						<i class="mdi mdi-close-circle"></i>Email atau Password salah.
+						<i class="mdi mdi-close-circle"></i>Email atau Password salah
 					</div>
 					<div class="form-group">
 						<label for="email">Email</label>
