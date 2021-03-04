@@ -248,7 +248,13 @@
 						<div class="form-group row">
 							<label for="no_id" class="col-lg-4 col-sm-5 col-form-label">Nomor Identitas</label>
 							<div class="col-lg-8 col-sm-7">
-								<input type="tel" id="no_id" class="form-control" minlength="16" maxlength="16" disabled>
+								<input type="tel" id="no_id" class="form-control" disabled>
+							</div>
+						</div>
+						<div class="form-group row">
+							<label for="code" class="col-lg-4 col-sm-5 col-form-label">NIK</label>
+							<div class="col-lg-8 col-sm-7">
+								<input type="tel" id="code" class="form-control" disabled>
 							</div>
 						</div>
 						<div class="form-group row">

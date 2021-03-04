@@ -6,6 +6,7 @@ function get_user() {
         // console.log(value)
         $('#name').val(value.name)
         $('#no_id').val(value.no_id)
+        $('#code').val(value.code)
         $('input[name=jenis_kelamin]').filter(`[value=${value.jenis_kelamin}]`).prop('checked', true)
         $('#tempat_lahir').val(value.tempat_lahir)
         $('#tanggal_lahir').val(value.tanggal_lahir)
