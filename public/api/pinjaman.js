@@ -1,3 +1,11 @@
+axios.get('api/pinjaman/cek_pinjaman').then((response) => {
+	let value = response.data.data
+	// console.log(value)
+	value.output == 'true' ? $('#pinjaman').removeClass('hide') : $('#pinjaman').remove()
+}).catch((err) => {
+	// console.log(err.response)
+})
+
 get_data()
 
 function get_data(page, status) {
@@ -6,7 +14,7 @@ function get_data(page, status) {
     $('#loading_table').show()
     axios.get('api/pinjaman/filter/' + session.user_id, {
         params: {
-        	page: page,
+            page: page,
             status: status
         }
     }).then((response) => {
@@ -15,14 +23,14 @@ function get_data(page, status) {
         if (value.data != '') {
             let append, title, approved_date, paid_off_date
             $.each(value.data, function(index, value) {
-            	if (value.approved_date == null) {
+                if (value.approved_date == null) {
                     title = `Rp${convert(value.besar_pinjaman)}`
                     approved_date = ''
                 } else {
                     title = `<a href="${root}pinjaman/${value.id}">Rp${convert(value.besar_pinjaman)}</a>`
                     approved_date = tanggal(value.approved_date)
                 }
-            	value.paid_off_date == null ? paid_off_date = '' : paid_off_date = tanggal(value.paid_off_date)
+                value.paid_off_date == null ? paid_off_date = '' : paid_off_date = tanggal(value.paid_off_date)
                 append = `<tr>
 	        		<td class="text-center pl-4">${index + 1}.</td>
 	        		<td class="text-truncate font-weight-bold" id="title${value.id}">${title}</td>
