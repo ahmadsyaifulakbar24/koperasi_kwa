@@ -27,7 +27,7 @@
 				<div class="card-body">
 					<div class="form-group">
 						<label class="font-weight-bold" for="name">Nama Lengkap</label>
-						<input type="text" id="name" class="form-control" autofocus="autofocus">
+						<input type="text" id="name" class="form-control">
 						<div class="invalid-feedback" id="name-feedback"></div>
 					</div>
 					<div class="form-group">

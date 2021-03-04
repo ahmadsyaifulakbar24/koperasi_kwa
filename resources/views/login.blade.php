@@ -24,6 +24,11 @@
 					<div class="alert alert-danger none" role="alert">
 						<i class="mdi mdi-close-circle"></i>Email atau Password salah
 					</div>
+					@if(isset($_GET['success']))
+					<div class="alert alert-success" role="alert">
+						<i class="mdi mdi-check-circle-outline"></i>Pendaftaran berhasil
+					</div>
+					@endif
 					<div class="form-group">
 						<label for="email">Email</label>
 						<input type="email" id="email" class="form-control" autofocus="autofocus">

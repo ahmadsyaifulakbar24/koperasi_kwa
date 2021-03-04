@@ -10,6 +10,7 @@ $('#form').submit(function(e) {
     e.preventDefault()
     addLoading()
     $('.alert').hide()
+    $('.alert-success').remove()
     axios.get('sanctum/csrf-cookie').then((response) => {
         let formData = new FormData
         formData.append('email', document.getElementById('email').value)
