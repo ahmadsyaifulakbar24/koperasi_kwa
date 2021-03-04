@@ -44,16 +44,12 @@
 		<div class="card card-custom">
 			<div class="card-header border-bottom-0">
 				<div class="d-flex  align-items-center">
-					<b>Invoice</b>
+					<b>Tagihan</b>
 					<div class="ml-auto">
 						<div class="form-control form-control-sm" role="button" data-toggle="modal" data-target="#modal-filter">
 							Filter <i class="mdi mdi-chevron-down pr-0 pl-1"></i>
 						</div>
 					</div>
-					<!-- <div class="position-relative">
-						<i class="mdi mdi-close-circle position-absolute hide px-2" id="search-close" role="button" style="right: 0;padding: 5px 0"></i>
-						<input class="form-control form-control-sm pr-4" placeholder="Cari..." id="search" autocomplete="off">
-					</div> -->
 				</div>
 			</div>
 			<div class="table-custom">
