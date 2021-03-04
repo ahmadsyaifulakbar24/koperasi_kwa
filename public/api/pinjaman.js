@@ -39,7 +39,7 @@ function get_data(page, status) {
             $('#table').html(`<tr>
             	<td colspan="10" class="text-center pb-4">
             		<i class="mdi mdi-36px mdi-close-circle-outline d-block pr-0"></i>
-            		<span class="text-secondary">Belum ada data</span>
+            		<span class="text-secondary">Belum ada pinjaman</span>
             	</td>
             </tr>`)
         }
