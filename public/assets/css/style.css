@@ -203,6 +203,10 @@ a:hover {
     /*background-color: rgba(52, 58, 64, .01);*/
 }
 
+.card-height {
+	height: 100%;
+}
+
 .card-header {
 	background-color: #fff !important;
 	border-top-left-radius: 6px !important;
