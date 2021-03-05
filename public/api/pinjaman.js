@@ -23,7 +23,7 @@ function get_data(page, status) {
         if (value.data != '') {
             let append, title, approved_date, contract, paid_off_date
             $.each(value.data, function(index, value) {
-                value.contract == null ? contract = '' : contract = `<a href="${value.contract}" target="_blank"><u>Lihat kontrak</u></a>`
+                value.contract == null ? contract = '' : contract = `<a href="${value.contract}" class="btn btn-sm btn-outline-primary px-5" target="_blank">Lihat</a>`
                 if (value.approved_date == null) {
                     title = `Rp${convert(value.besar_pinjaman)}`
                     approved_date = ''

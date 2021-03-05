@@ -49,7 +49,7 @@ function get_data() {
                 if (value.bukti_pembayaran == null) {
                     bukti_pembayaran = `<a href="${root}confirm/pinjaman/${value.user_id}/${id}/${value.id}" class="btn btn-sm btn-primary px-4">Upload</a>`
                 } else {
-                    bukti_pembayaran = `<a href="${value.bukti_pembayaran}" class="btn btn-sm btn-outline-primary" target="_blank">Bukti pembayaran</a>`
+                    bukti_pembayaran = `<a href="${value.bukti_pembayaran}" class="btn btn-sm btn-outline-primary px-5" target="_blank">Lihat</a>`
                 }
                 month = value.created_at.substr(5, 2)
 			    month.length == 2 ? month = month.substr(1, 1) : ''
