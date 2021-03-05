@@ -16,15 +16,24 @@ class ReportPinjamanKreditResource extends JsonResource
     public function toArray($request)
     {
         $bunga = MainSetting::where('name_setting', 'bunga')->first();
+        $transaction_type = $this->transaction_type;
+        if($transaction_type != 'pinjaman') {
+            $description = $this->description;
+            $bunga = NULL;
+        } else {
+            $description = $this->transaction->count().'/'.$this->tenor;
+            $bunga = $this->besar_pinjaman * $bunga->value / 100;
+        }
         return [
             'date' => $this->approved_date,
             'name' => $this->user->name,
             'nik' => $this->user->no_id,
-            'tenor' => $this->tenor,
+            'jenis_transaksi' => $this->transaction_type,
+            'tenor' => !empty($this->tenor) ? $this->tenor : NULL,
             'jumlah' => $this->besar_pinjaman,
-            'bunga' => $this->besar_pinjaman * $bunga->value / 100,
-            'setoran_per_bulan' => $this->angsuran,
-            'keterangan' => $this->transaction->count().'/'.$this->tenor
+            'bunga' => $bunga,
+            'setoran_per_bulan' => !empty($this->angsuran) ? $this->angsuran : NULL,
+            'keterangan' => $description,
         ];
     }
 }

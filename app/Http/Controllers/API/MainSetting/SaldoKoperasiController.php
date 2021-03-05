@@ -4,7 +4,9 @@ namespace App\Http\Controllers\API\MainSetting;
 
 use App\Http\Controllers\API\Transaction\TraitTransaction;
 use App\Http\Controllers\Controller;
+use App\Http\Resources\Pinjaman\PinjamanResource;
 use App\Models\MainSetting;
+use App\Models\Pinjaman;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -54,6 +56,25 @@ class SaldoKoperasiController extends Controller
 
     public function min_saldo(Request $request)
     {
-        return "berhasil";
+        $this->validate($request, [
+            'transaction_type' => ['required', 'string'],
+            'description' => ['required', 'string'],
+            'total' => ['required', 'numeric'],
+        ]);
+
+        $user_id = auth()->user()->id;
+        $pinjaman = Pinjaman::create([
+            'user_id' => $user_id,
+            'transaction_type' => $request->transaction_type,
+            'description' => $request->description,
+            'besar_pinjaman' => $request->total,
+            'approved_date' => \Carbon\Carbon::now(),
+        ]);
+        
+        $saldo_koperasi = MainSetting::where('name_setting', 'saldo')->first();
+        $saldo_koperasi->update([
+            'value' => $saldo_koperasi->value - $request->total
+        ]);
+        return new PinjamanResource($pinjaman);
     }
 }

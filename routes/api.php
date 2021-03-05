@@ -80,6 +80,7 @@ Route::group(['middleware'  => 'auth:sanctum'], function () {
         Route::post('/update', [MainSettingController::class, 'update']);
         Route::get('/', [MainSettingController::class, 'getData']);
         Route::post('/add_saldo_koperasi', [SaldoKoperasiController::class, 'add_saldo']);
+        Route::post('/min_saldo_koperasi', [SaldoKoperasiController::class, 'min_saldo']);
     });
 });
 

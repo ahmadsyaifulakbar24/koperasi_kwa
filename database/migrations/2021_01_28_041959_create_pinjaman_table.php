@@ -24,6 +24,7 @@ class CreatePinjamanTable extends Migration
             $table->enum('status', ['approved', 'rejected', 'pending', 'paid_off']);
             $table->timestamp('approved_date')->nullable();
             $table->string('transaction_type');
+            $table->string('description')->nullable();
             $table->timestamp('paid_off_date')->nullable();
             $table->string('contract')->nullable();
             $table->timestamps();
