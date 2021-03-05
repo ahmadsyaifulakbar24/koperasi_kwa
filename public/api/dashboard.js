@@ -73,7 +73,7 @@ $('#download_debit').click(function() {
         axios.get('api/transaction/report', {
             params: {
                 from: '2021-01-01',
-                to: currentDate()
+                to: returnDate()
             }
         }).then((response) => {
             let value = response.data
@@ -142,7 +142,7 @@ $('#download_kredit').click(function() {
         axios.get('api/pinjaman/report', {
             params: {
                 from: '2021-01-01',
-                to: currentDate()
+                to: returnDate()
             }
         }).then((response) => {
             let value = response.data
