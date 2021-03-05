@@ -60,7 +60,7 @@ $('#form').submit(function(e) {
     formData.append('nama_ahliwaris', nama_ahliwaris)
     formData.append('besar_simpanan_wajib', besar_simpanan_wajib)
 
-    axios.post('api/user/update/' + session.user_id, formData).then((response) => {
+    axios.post('api/user/update/' + id, formData).then((response) => {
         // console.log(response)
         customAlert('success', 'Profil berhasil disimpan')
         removeLoading('Simpan')
