@@ -1,0 +1,39 @@
+get_data()
+
+function get_data(page) {
+    $('#table').empty()
+    $('#pagination').addClass('hide')
+    $('#loading_table').show()
+    axios.get('api/user', {
+    	params: {
+    		page: page
+    	}
+    }).then((response) => {
+        // console.log(response)
+        let value = response.data
+        if (value.data != '') {
+            let append
+            $.each(value.data, function(index, value) {
+                append = `<tr>
+	        		<td class="text-center pl-4">${index + 1}.</td>
+	        		<td class="text-truncate font-weight-bold">
+	        			<a href="${root}admin/anggota/${value.id}">${value.name}
+	        		</td>
+	        		<td class="text-truncate pr-4"></td>
+	        	</tr>`
+                $('#table').append(append)
+            })
+            pagination(value.links, value.meta, value.meta.path)
+        } else {
+            $('#table').html(`<tr>
+            	<td colspan="10" class="text-center pb-4">
+            		<i class="mdi mdi-36px mdi-close-circle-outline d-block pr-0"></i>
+            		<span class="text-secondary">Belum ada data</span>
+            	</td>
+            </tr>`)
+        }
+        $('#loading_table').hide()
+    }).catch((err) => {
+        // console.log(err)
+    })
+}
