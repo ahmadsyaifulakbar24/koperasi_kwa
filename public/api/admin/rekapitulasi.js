@@ -16,7 +16,7 @@ function get_data(page, month, year) {
     		year: year
     	}
     }).then((response) => {
-        // console.log(response)
+        console.log(response)
         let value = response.data
         let path = 'http://koperasi.lekarlwig.com/api/transaction/get_simpanan_perbulan'
         const links = {
@@ -34,7 +34,7 @@ function get_data(page, month, year) {
         	to: value.to,
         	total: value.total
         }
-        if (value.data != '') {
+        if (value.data != null) {
             let append
             $.each(value.data, function(index, value) {
                 append = `<tr>
