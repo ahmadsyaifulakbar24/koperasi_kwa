@@ -53,6 +53,7 @@ class CreatePinjamanController extends Controller
             $data['sisa_bayar'] = $request->besar_pinjaman;
             $data['total_payment'] = 0;
             $data['status'] = 'pending';
+            $data['transaction_type'] = 'pinjaman';
     
             $pinjaman = Pinjaman::create($data);
             return new PinjamanResource($pinjaman);

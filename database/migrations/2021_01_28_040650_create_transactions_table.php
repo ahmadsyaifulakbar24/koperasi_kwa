@@ -19,7 +19,7 @@ class CreateTransactionsTable extends Migration
             $table->bigInteger('pinjaman_id')->unsigned()->nullable();
             $table->string('title');
             $table->string('message')->nullable();
-            $table->enum('type', ['simpanan','pinjaman', 'saldo_koperasi'])->default('simpanan');
+            $table->enum('type', ['simpanan','pinjaman', 'saldo_koperasi', 'min_saldo_koperasi'])->default('simpanan');
             $table->string('bukti_pembayaran')->nullable();
             $table->timestamp('approved_date')->nullable();
             $table->timestamps();

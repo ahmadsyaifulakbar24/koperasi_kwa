@@ -15,7 +15,7 @@ class UserKoperasiDetailSeeder extends Seeder
     public function run()
     {
         DB::table('user_koperasi_details')->insert([
-            'user_id' => 2,
+            'user_id' => 1,
             'status_keluarga_id' => 12,
             'nama_ahliwaris' => 'juminto',
             'besar_simpanan_wajib' => 20000,

@@ -16,13 +16,14 @@ class CreatePinjamanTable extends Migration
         Schema::create('pinjaman', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade')->onUpdate('cascade');
-            $table->bigInteger('angsuran');
+            $table->bigInteger('angsuran')->nullable();
             $table->bigInteger('besar_pinjaman');
-            $table->integer('tenor');
-            $table->bigInteger('total_bayar');
-            $table->bigInteger('sisa_bayar');
+            $table->integer('tenor')->nullable();
+            $table->bigInteger('total_bayar')->nullable();
+            $table->bigInteger('sisa_bayar')->nullable();
             $table->enum('status', ['approved', 'rejected', 'pending', 'paid_off']);
             $table->timestamp('approved_date')->nullable();
+            $table->string('transaction_type');
             $table->timestamp('paid_off_date')->nullable();
             $table->string('contract')->nullable();
             $table->timestamps();

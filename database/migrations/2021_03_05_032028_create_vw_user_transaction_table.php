@@ -29,9 +29,9 @@ class CreateVwUserTransactionTable extends Migration
             c.type AS type_sub_transaction, 
             c.besaran AS besaran 
             from 
-            (koperasi_kwa.sub_transactions c 
-            left join (koperasi_kwa.transactions b 
-            left join koperasi_kwa.users a on((a.id = b.user_id))) on((b.id = c.transaction_id)))
+            (sub_transactions c 
+            left join (transactions b 
+            left join users a on((a.id = b.user_id))) on((b.id = c.transaction_id)))
         ");
     }
 

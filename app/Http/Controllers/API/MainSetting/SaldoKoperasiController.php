@@ -51,4 +51,9 @@ class SaldoKoperasiController extends Controller
             ], 404);
         }
     }
+
+    public function min_saldo(Request $request)
+    {
+        return "berhasil";
+    }
 }
