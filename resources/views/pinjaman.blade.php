@@ -32,6 +32,7 @@
 								<th class="text-truncate">Angsuran</th>
 								<th class="text-truncate">Status</th>
 								<th class="text-truncate">Tanggal Disetujui</th>
+								<th class="text-truncate">Kontrak Pinjaman</th>
 								<th class="text-truncate pr-4">Tanggal Lunas</th>
 							</tr>
 						</thead>

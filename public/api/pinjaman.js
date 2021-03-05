@@ -21,8 +21,9 @@ function get_data(page, status) {
         // console.log(response.data)
         let value = response.data
         if (value.data != '') {
-            let append, title, approved_date, paid_off_date
+            let append, title, approved_date, contract, paid_off_date
             $.each(value.data, function(index, value) {
+                value.contract == null ? contract = '' : contract = `<a href="${value.contract}" target="_blank"><u>Lihat kontrak</u></a>`
                 if (value.approved_date == null) {
                     title = `Rp${convert(value.besar_pinjaman)}`
                     approved_date = ''
@@ -38,6 +39,7 @@ function get_data(page, status) {
 	        		<td class="text-truncate">Rp${convert(value.angsuran)}<small class="text-secondary">/bulan</small></td>
 	        		<td class="text-truncate" id="status${value.id}">${get_status(value.status)}</td>
 	        		<td class="text-truncate" id="approved_date${value.id}">${approved_date}</td>
+	        		<td class="text-truncate" id="contract${value.id}">${contract}</td>
 	        		<td class="text-truncate pr-4" id="paid_off_date${value.id}">${paid_off_date}</td>
 	        	</tr>`
                 $('#table').append(append)

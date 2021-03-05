@@ -28,6 +28,7 @@
 								<th class="text-truncate">Angsuran</th>
 								<th class="text-truncate">Status</th>
 								<th class="text-truncate">Tanggal Disetujui</th>
+								<th class="text-truncate">Kontrak Pinjaman</th>
 								<th class="text-truncate">Tanggal Lunas</th>
 								<th class="text-truncate pr-4"></th>
 							</tr>
@@ -128,8 +129,9 @@
 					</div>
 				</div>
 				<div class="modal-body py-0">
+					Anda yakin setujui pinjaman
+					<span class="user"></span>
 					<span id="approve-body"></span>
-					<span class="user">?</span>
 				</div>
 				<div class="modal-footer border-top-0">
 					<div class="btn btn-sm btn-link" data-dismiss="modal">Batal</div>
@@ -148,8 +150,9 @@
 					</div>
 				</div>
 				<div class="modal-body py-0">
+					Anda yakin tolak pinjaman
+					<span class="user"></span>
 					<span id="reject-body"></span>
-					<span class="user">?</span>
 				</div>
 				<div class="modal-footer border-top-0">
 					<div class="btn btn-sm btn-link" data-dismiss="modal">Batal</div>
@@ -158,10 +161,50 @@
 			</div>
 		</div>
 	</div>
+	<div class="modal fade" id="modal-contract" tabindex="-1" aria-hidden="true">
+		<div class="modal-sm modal-dialog modal-dialog-centered" role="document">
+			<div class="modal-content">
+				<div class="modal-header border-bottom-0">
+					<h5 class="modal-title">Upload Kontrak</h5>
+					<div role="button" class="close" data-dismiss="modal" aria-label="Close">
+						<i class="mdi mdi-close mdi-18px pr-0"></i>
+					</div>
+				</div>
+				<form id="form">
+					<div class="modal-body py-0" id="paid-off-body">
+						<div class="form-group">
+							<div id="form-picture">
+								<div class="file-group">
+									<div class="custom-file">
+										<input type="file" class="custom-file-input pdf" id="picture" role="button" accept="application/pdf">
+										<label class="custom-file-label">Pilih File</label>
+										<div id="picture-feedback" class="invalid-feedback"></div>
+									</div>
+								</div>
+								<div id="loading-picture" class="text-center none">
+									<div class="loader loader-sm btn-loading">
+										<svg class="circular" viewBox="25 25 50 50">
+											<circle class="path-primary" cx="50" cy="50" r="20" fill="none" stroke-width="6" stroke-miterlimit="1"/>
+										</svg>
+									</div>
+								</div>
+							</div>
+							<div id="contract-feedback" class="invalid-feedback">Format file wajib berupa PDF</div>
+						</div>
+					</div>
+					<div class="modal-footer border-top-0">
+						<div class="btn btn-sm btn-link" data-dismiss="modal">Batal</div>
+						<button class="btn btn-sm btn-primary" id="submit">Upload</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
 @endsection
 
 @section('script')
 	<script>const id = '{{Request::route("id")}}'</script>
+	<script src="{{asset('assets/js/file.js')}}"></script>
 	<script src="{{asset('assets/js/number.js')}}"></script>
 	<script src="{{asset('api/admin/pinjaman.js')}}"></script>
 @endsection
