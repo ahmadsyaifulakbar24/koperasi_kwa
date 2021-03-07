@@ -78,9 +78,14 @@ $('#download_debit').click(function() {
         }).then((response) => {
             let value = response.data
             // console.log(value)
+		    let kas = rupiah(value.saldo_koperasi)
+		    let stripe_saldo = value.saldo_koperasi.substr(0, 1)
+		    if (stripe_saldo == '-') {
+		        kas = stripe_saldo + rupiah(value.saldo_koperasi.substr(1))
+		    }
             let append = `<tr>
 	        	<td colspan="2">TOTAL KAS SAAT INI</td>
-	        	<td>${rupiah(balance)}</td>
+	        	<td>${kas}</td>
 	        	<td></td>
 	        	<td></td>
 	        	<td></td>
