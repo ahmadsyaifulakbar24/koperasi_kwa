@@ -24,8 +24,11 @@ Route::group(['middleware'=>['beforeMiddleware']], function () {
 	});
 
 	Route::group(['middleware'=>['adminMiddleware']], function () {
-		Route::get('admin/rekapitulasi', function () {
-			return view('admin/rekapitulasi');
+		Route::get('admin/anggota', function () {
+			return view('admin/user-anggota');
+		});
+		Route::get('admin/anggota/{id}', function () {
+			return view('admin/anggota');
 		});
 
 		Route::get('admin/simpanan', function () {
@@ -43,6 +46,10 @@ Route::group(['middleware'=>['beforeMiddleware']], function () {
 		});
 		Route::get('admin/pinjaman/{user}/{id}', function () {
 			return view('admin/view-pinjaman');
+		});
+
+		Route::get('admin/rekapitulasi', function () {
+			return view('admin/rekapitulasi');
 		});
 	});
 	

@@ -22,8 +22,7 @@ $('#form').submit(function(e) {
             const session = {
                 token: value.token,
                 name: value.user.name,
-                user_id: value.user.id,
-                level: value.user.user_level_id
+                user_id: value.user.id
             }
             $.ajax({
                 url: root + 'session/login',

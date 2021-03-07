@@ -56,7 +56,7 @@ function get_data() {
                     bukti_pembayaran = `<a href="${root}invoice/pinjaman/${user}/${id}/${value.id}" class="btn btn-sm btn-primary px-4">Upload</a>`
                     action = ''
                 } else {
-                    bukti_pembayaran = `<a href="${value.bukti_pembayaran}" class="btn btn-sm btn-outline-primary" target="_blank">Bukti pembayaran</a>`
+                    bukti_pembayaran = `<a href="${value.bukti_pembayaran}" class="btn btn-sm btn-outline-primary px-5" target="_blank">Lihat</a>`
                     if (value.approved_date == null) {
                         action = `<div class="btn btn-sm btn-primary approve" data-id="${value.id}" data-title="${value.title}">Setujui</div>`
                     } else {

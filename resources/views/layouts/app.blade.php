@@ -22,7 +22,7 @@
         </div>
         <div class="dropdown ml-auto">
             <a id="dropdownMenu" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            	<img src="{{asset('assets/images/user.png')}}" class="avatar rounded-circle" width="25">
+            	<img src="{{asset('assets/images/user.jpg')}}" class="avatar rounded-circle" width="25">
             </a>
             <div class="dropdown-menu dropdown-menu-right rounded border-0" aria-labelledby="dropdownMenu">
             	<!-- <div class="text-center my-3 px-3 text-break">
@@ -31,7 +31,7 @@
 	            	<small class="level text-secondary"></small>
 	            </div> -->
             	<div class="dropdown-item d-flex align-items-center">
-	            	<img src="{{asset('assets/images/user.png')}}" class="avatar rounded-circle align-self-center" width="50">
+	            	<img src="{{asset('assets/images/user.jpg')}}" class="avatar rounded-circle align-self-center" width="50">
 	            	<div class="ml-3 text-truncate">
 		            	<div class="name text-truncate"></div>
 		            	<!-- <div class="small text-secondary">Ubah profil</div> -->
@@ -55,14 +55,17 @@
 		</a>
 		<!-- <small class="text-secondary text-uppercase font-weight-bold">Simpanan</small> -->
 		@if(session("level") == 1 || session("level") == 100)
-		<a href="{{url('admin/rekapitulasi')}}" class="{{Request::is('admin/rekapitulasi')?'active':''}}">
-			<i class="mdi mdi-file-table-box-outline mdi-18px"></i><span>Rekapitulasi</span>
+		<a href="{{url('admin/anggota')}}" class="{{Request::is('admin/anggota')?'active':''}}">
+			<i class="mdi mdi-account-circle-outline mdi-18px"></i><span>Anggota</span>
 		</a>
 		<a href="{{url('admin/simpanan')}}" class="{{Request::is('admin/simpanan')?'active':''}}">
 			<i class="mdi mdi-wallet-outline mdi-18px"></i><span>Simpanan</span>
 		</a>
 		<a href="{{url('admin/pinjaman')}}" class="{{Request::is('admin/pinjaman')?'active':''}}">
 			<i class="mdi mdi-notebook-outline mdi-18px"></i><span>Pinjaman</span>
+		</a>
+		<a href="{{url('admin/rekapitulasi')}}" class="{{Request::is('admin/rekapitulasi')?'active':''}}">
+			<i class="mdi mdi-file-table-box-outline mdi-18px"></i><span>Rekapitulasi</span>
 		</a>
 		@elseif(session("level") == 101)
 		<a href="{{url('simpanan')}}" class="{{Request::is('simpanan')?'active':''}}">

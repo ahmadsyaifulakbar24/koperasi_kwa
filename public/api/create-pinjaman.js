@@ -1,5 +1,18 @@
 let pinjaman = []
 
+axios.get('api/pinjaman/cek_pinjaman').then((response) => {
+	let value = response.data.data
+	// console.log(value)
+	if (value.output == 'true') {
+		$('#data').removeClass('hide')
+		$('#loading').remove()
+	} else {
+		window.history.back()
+	}
+}).catch((err) => {
+	// console.log(err.response)
+})
+
 $(document).on('keyup', '#besar_pinjaman', function() {
     let value = $(this).val()
     $(this).val(convert(value))

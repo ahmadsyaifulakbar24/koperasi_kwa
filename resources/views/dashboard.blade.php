@@ -6,11 +6,6 @@
 	<div class="container">
 		<div class="d-flex justify-content-between align-items-center mb-2">
 			<h4>Dashboard</h4>
-			@if(session("level") == 1 || session("level") == 100)
-			<!-- <a href="{{url('create/simpanan')}}" class="btn btn-sm btn-primary">
-				<i class="mdi mdi-download"></i>Unduh Debit
-			</a> -->
-			@endif
 		</div>
 		@if(session("level") == 1 || session("level") == 100)
 		<div class="row">
@@ -95,12 +90,12 @@
 		<h6 class="text-secondary">Menu</h6>
 		<div class="row">
 			<div class="col-6 col-md-4 col-xl-3 mb-4">
-				<a href="{{url('admin/rekapitulasi')}}">
+				<a href="{{url('admin/anggota')}}">
 					<div class="card card-custom">
 						<div class="card-body">
-							<h6>Rekapitulasi</h6>
+							<h6>Anggota</h6>
 							<div class="d-flex justify-content-between align-items-center position-relative">
-								<i class="mdi mdi-file-table-box-outline mdi-36px"></i>
+								<i class="mdi mdi-account-circle-outline mdi-36px"></i>
 								<h4 class="mb-0" id="">
 									<!-- <div class="loader loader-sm btn-loading">
 										<svg class="circular" viewBox="25 25 50 50">
@@ -141,6 +136,26 @@
 							<h6>Pinjaman</h6>
 							<div class="d-flex justify-content-between align-items-center position-relative">
 								<i class="mdi mdi-notebook-outline mdi-36px"></i>
+								<h4 class="mb-0" id="">
+									<!-- <div class="loader loader-sm btn-loading">
+										<svg class="circular" viewBox="25 25 50 50">
+											<circle class="path-dark" cx="50" cy="50" r="20" fill="none" stroke-width="6" stroke-miterlimit="1"/>
+										</svg>
+									</div> -->
+								</h4>
+								<div class="notification none"></div>
+							</div>
+						</div>
+					</div>
+				</a>
+			</div>
+			<div class="col-6 col-md-4 col-xl-3 mb-4">
+				<a href="{{url('admin/rekapitulasi')}}">
+					<div class="card card-custom">
+						<div class="card-body">
+							<h6>Rekapitulasi</h6>
+							<div class="d-flex justify-content-between align-items-center position-relative">
+								<i class="mdi mdi-file-table-box-outline mdi-36px"></i>
 								<h4 class="mb-0" id="">
 									<!-- <div class="loader loader-sm btn-loading">
 										<svg class="circular" viewBox="25 25 50 50">
@@ -198,14 +213,6 @@
 							<h6>Simpanan</h6>
 							<div class="d-flex justify-content-between align-items-center position-relative">
 								<i class="mdi mdi-wallet-outline mdi-36px"></i>
-								<h4 class="mb-0" id="">
-									<!-- <div class="loader loader-sm btn-loading">
-										<svg class="circular" viewBox="25 25 50 50">
-											<circle class="path-dark" cx="50" cy="50" r="20" fill="none" stroke-width="6" stroke-miterlimit="1"/>
-										</svg>
-									</div> -->
-								</h4>
-								<div class="notification none"></div>
 							</div>
 						</div>
 					</div>
@@ -218,14 +225,6 @@
 							<h6>Pinjaman</h6>
 							<div class="d-flex justify-content-between align-items-center position-relative">
 								<i class="mdi mdi-notebook-outline mdi-36px"></i>
-								<h4 class="mb-0" id="">
-									<!-- <div class="loader loader-sm btn-loading">
-										<svg class="circular" viewBox="25 25 50 50">
-											<circle class="path-dark" cx="50" cy="50" r="20" fill="none" stroke-width="6" stroke-miterlimit="1"/>
-										</svg>
-									</div> -->
-								</h4>
-								<div class="notification none"></div>
 							</div>
 						</div>
 					</div>
@@ -234,9 +233,7 @@
 		</div>
 		<div class="row hide" id="biodata">
 			<div class="col-xl-8 col-lg-10 order-1">
-				<!-- <h4 class="pb-2">Profil</h4> -->
 				<div class="card card-custom">
-					<!-- <div class="card-header">Detail</div> -->
 					<form id="form" class="card-body">
 						<div class="form-group row">
 							<label for="name" class="col-lg-4 col-sm-5 col-form-label">Nama Lengkap</label>
@@ -378,16 +375,15 @@
 					</form>
 				</div>
 			</div>
-			<div class="col-lg-4 order-lg-1 mb-4 mb-lg-0">
+			<!-- <div class="col-lg-4 order-lg-1 mb-4 mb-lg-0">
 				<div class="card card-custom">
 					<div class="card-body text-center">
 						<div class="d-inline-block py-4" data-toggle="modal" data-target="#modalAvatar" role="button">
 							<img src="{{asset('assets/images/user.png')}}" class="avatar rounded-circle" width="100"><br>
-							<!-- <div class="btn btn-sm btn-link text-dark">Edit</div> -->
 						</div>
 					</div>
 				</div>
-			</div>
+			</div> -->
 	    </div>
 		<div class="d-flex flex-column justify-content-center align-items-center state" id="loading-biodata">
 			<div class="loader">

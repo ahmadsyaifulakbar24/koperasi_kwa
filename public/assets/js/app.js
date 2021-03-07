@@ -311,6 +311,15 @@ function currentDate() {
 	$('#month').val(maxMonth)
 }
 
+function returnDate() {
+	let d = new Date()
+    let date = d.getDate()
+	let month = d.getMonth() + 1
+	let year = d.getFullYear()
+	if (date < 10) date = '0' + date
+	return year + '-' + month + '-' + date
+}
+
 function bulan_tahun(month, year) {
     let bulan = []
     bulan['1'] = 'Januari'

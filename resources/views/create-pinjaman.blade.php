@@ -4,7 +4,7 @@
 
 @section('content')
 	<div class="container">
-		<div class="row">
+		<div class="row hide" id="data">
 			<div class="col-xl-8 col-lg-10 offset-xl-2 offset-lg-1">
 				<h4 class="pb-2">Buat Pinjaman</h4>
 				<div class="card card-custom mb-3">
@@ -66,6 +66,13 @@
 				</div>
 			</div>
 	    </div>
+		<div class="d-flex flex-column justify-content-center align-items-center state" id="loading">
+			<div class="loader">
+				<svg class="circular" viewBox="25 25 50 50">
+					<circle class="path-primary" cx="50" cy="50" r="20" fill="none" stroke-width="5" stroke-miterlimit="10"/>
+				</svg>
+			</div>
+		</div>
 	</div>
 @endsection
 

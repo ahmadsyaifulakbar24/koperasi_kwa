@@ -6,7 +6,7 @@
 	<div class="container">
 		<div class="d-flex justify-content-between align-items-center mb-2">
 			<h4>Pinjaman</h4>
-			<a href="{{url('create/pinjaman')}}" class="btn btn-sm btn-primary">
+			<a href="{{url('create/pinjaman')}}" class="btn btn-sm btn-primary hide" id="pinjaman">
 				<i class="mdi mdi-plus"></i>Pinjaman Baru</i>
 			</a>
 		</div>
@@ -32,6 +32,7 @@
 								<th class="text-truncate">Angsuran</th>
 								<th class="text-truncate">Status</th>
 								<th class="text-truncate">Tanggal Disetujui</th>
+								<th class="text-truncate">Kontrak Pinjaman</th>
 								<th class="text-truncate pr-4">Tanggal Lunas</th>
 							</tr>
 						</thead>

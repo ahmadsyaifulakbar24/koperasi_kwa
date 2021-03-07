@@ -39,7 +39,7 @@ function get_data(page, day, month, year, approved) {
                 if (value.bukti_pembayaran == null) {
                     bukti_pembayaran = `<a href="${root}confirm/simpanan/${value.user_id}/${value.id}" class="btn btn-sm btn-primary px-4">Upload</a>`
                 } else {
-                    bukti_pembayaran = `<a href="${value.bukti_pembayaran}" class="btn btn-sm btn-outline-primary" target="_blank">Bukti pembayaran</a>`
+                    bukti_pembayaran = `<a href="${value.bukti_pembayaran}" class="btn btn-sm btn-outline-primary px-5" target="_blank">Lihat</a>`
                 }
                 sub_append = ''
                 $.each(value.sub_transaction, function(index, value) {
