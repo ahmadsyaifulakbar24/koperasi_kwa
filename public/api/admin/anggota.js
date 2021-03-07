@@ -19,7 +19,15 @@ function get_user() {
             $('input[name=status_keluarga_id]').filter(`[value=${value.user_koperasi_detail.status_keluarga.id}]`).prop('checked', true)
             $('#nama_ahliwaris').val(value.user_koperasi_detail.nama_ahliwaris)
             $('input[name=besar_simpanan_wajib]').filter(`[value=${value.user_koperasi_detail.bersar_simpanan_wajib}]`).prop('checked', true)
-            $('#ktp').attr('src', value.user_koperasi_detail.upload_ktp)
+	        let ktp = value.user_koperasi_detail.upload_ktp
+	        let replace = 'http://koperasi.lekarlwig.com/images/ktp/'
+	        if (ktp == null || ktp == 'http://koperasi.lekarlwig.com/images/ktp') {
+	        	$('#existfile').remove()
+	        } else {
+	        	$('#nullfile').hide()
+	            $('#ktp').attr('src', ktp)
+		        $('#filename').html(ktp.replace(replace, ''))
+	        }
         }
         $('#username').val(value.username)
         $('#email').val(value.email)
@@ -59,6 +67,7 @@ $('#form').submit(function(e) {
     formData.append('status_keluarga_id', status_keluarga_id)
     formData.append('nama_ahliwaris', nama_ahliwaris)
     formData.append('besar_simpanan_wajib', besar_simpanan_wajib)
+	if (picture != null) formData.append('upload_ktp', picture)
 
     axios.post('api/user/update/' + id, formData).then((response) => {
         // console.log(response)
@@ -67,7 +76,7 @@ $('#form').submit(function(e) {
     }).catch((xhr) => {
         let err = xhr.response.data.errors
         // console.clear()
-        console.log(xhr)
+        // console.log(xhr.response)
         if (err.name) {
             $('#name').addClass('is-invalid')
             $('#name-feedback').html('Masukkan nama lengkap')

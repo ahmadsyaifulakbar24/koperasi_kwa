@@ -124,7 +124,32 @@
 						<div class="form-group row">
 							<label for="ktp" class="col-lg-4 col-sm-5 col-form-label">Foto KTP</label>
 							<div class="col-lg-8 col-sm-7">
-								<img id="ktp" class="rounded img-fluid">
+								<div id="form-picture">
+									<div class="file-group" id="nullfile">
+										<div class="custom-file">
+											<input type="file" class="custom-file-input" id="picture" role="button" accept="image/jpeg, image/png">
+											<label class="custom-file-label">Pilih Foto</label>
+											<div id="picture-feedback" class="invalid-feedback"></div>
+										</div>
+									</div>
+									<div class="file-group mt-2" id="existfile">
+										<div class="staging-file d-flex align-items-center border rounded-top pr-0">
+											<div class="d-flex align-items-center text-truncate w-100">
+												<i class="mdi mdi-18px mdi-image-outline px-2"></i>
+												<small class="text-truncate" id="filename"></small>
+											</div>
+											<i class="mdi mdi-close mdi-staging ml-auto pl-2 py-2" role="button"></i>
+										</div>
+										<img id="ktp" class="border-right border-bottom border-left rounded-bottom w-100">
+									</div>
+									<div id="loading-picture" class="text-center none">
+										<div class="loader loader-sm btn-loading">
+											<svg class="circular" viewBox="25 25 50 50">
+												<circle class="path-primary" cx="50" cy="50" r="20" fill="none" stroke-width="6" stroke-miterlimit="1"/>
+											</svg>
+										</div>
+									</div>
+								</div>
 							</div>
 						</div>
 						<div class="form-group row">
@@ -169,5 +194,6 @@
 
 @section('script')
 	<script>const id = '{{Request::route("id")}}'</script>
+	<script src="{{asset('assets/js/file.js')}}"></script>
 	<script src="{{asset('api/admin/anggota.js')}}"></script>
 @endsection

@@ -10,10 +10,10 @@ $(document).on('change', 'input[type="file"]', function(e) {
     if (format.includes(val.type) == true) {
         if (val.size <= 5000000) {
             picture = val
+		    $('#loading-picture').show()
         	if (val.type == 'application/pdf') {
                 addStagingFile(val.name, 'pdf')
 	        } else {
-			    $('#loading-picture').show()
 	            let input = e.currentTarget
 	            let reader = new FileReader()
 	            reader.onload = function() {
