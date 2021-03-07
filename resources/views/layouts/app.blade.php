@@ -22,7 +22,7 @@
         </div>
         <div class="dropdown ml-auto">
             <a id="dropdownMenu" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            	<img src="{{asset('assets/images/user.png')}}" class="avatar rounded-circle" width="25">
+            	<img src="{{asset('assets/images/user.jpg')}}" class="avatar rounded-circle" width="25">
             </a>
             <div class="dropdown-menu dropdown-menu-right rounded border-0" aria-labelledby="dropdownMenu">
             	<!-- <div class="text-center my-3 px-3 text-break">
@@ -31,7 +31,7 @@
 	            	<small class="level text-secondary"></small>
 	            </div> -->
             	<div class="dropdown-item d-flex align-items-center">
-	            	<img src="{{asset('assets/images/user.png')}}" class="avatar rounded-circle align-self-center" width="50">
+	            	<img src="{{asset('assets/images/user.jpg')}}" class="avatar rounded-circle align-self-center" width="50">
 	            	<div class="ml-3 text-truncate">
 		            	<div class="name text-truncate"></div>
 		            	<!-- <div class="small text-secondary">Ubah profil</div> -->
