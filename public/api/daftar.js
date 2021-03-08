@@ -6,6 +6,8 @@ if (session) {
     })
 }
 
+currentDate()
+
 get_pendidikan()
 
 $('#name').focus()
@@ -65,15 +67,21 @@ $('#form').submit(function(e) {
     }).catch((xhr) => {
         let err = xhr.response.data.errors
         // console.clear()
-        // console.log(err)
+        console.log(err)
         if (err.name) {
         	$('#name').addClass('is-invalid')
         	$('#name-feedback').html('Masukkan nama lengkap')
         }
         if (err.no_id) {
-        	$('#no_id').addClass('is-invalid')
-        	$('#no_id-feedback').html('Masukkan nomor identitas')
-        }
+	        if (err.no_id == "The no id field is required.") {
+	        	$('#no_id').addClass('is-invalid')
+	        	$('#no_id-feedback').html('Masukkan nomor identitas')
+	        }
+	        else if (err.no_id == "The no id has already been taken.") {
+	        	$('#no_id').addClass('is-invalid')
+	        	$('#no_id-feedback').html('Nomor identitas telah digunakan')
+	        }
+	    }
         if (err.jenis_kelamin) {
         	$('#jenis_kelamin').addClass('is-invalid')
         	$('#jenis_kelamin-feedback').html('Pilih jenis kelamin')
@@ -126,7 +134,7 @@ $('#form').submit(function(e) {
         }
         if (err.upload_ktp) {
         	$('#picture').addClass('is-invalid')
-        	$('#picture-feedback').html('Pilih foto ktp')
+        	$('#picture-feedback').html('Masukkan foto ktp')
         }
         if (err.username) {
 	        if (err.username == "The username field is required.") {
