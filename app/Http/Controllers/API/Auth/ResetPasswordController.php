@@ -27,7 +27,6 @@ class ResetPasswordController extends Controller
             $user->update([
                 'password' => Hash::make($request->password)
             ]);
-            $request->user()->currentAccessToken()->delete();
             return response()->json([
                 'message' => 'reset password success'
             ]);
