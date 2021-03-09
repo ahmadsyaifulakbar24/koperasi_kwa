@@ -3,6 +3,7 @@
 use App\Http\Controllers\API\Auth\LoginController;
 use App\Http\Controllers\API\Auth\LogoutController;
 use App\Http\Controllers\API\Auth\RegisterController;
+use App\Http\Controllers\API\Auth\ResetPasswordController;
 use App\Http\Controllers\API\MainSetting\MainSettingController;
 use App\Http\Controllers\API\MainSetting\SaldoKoperasiController;
 use App\Http\Controllers\API\Param\GetParamController;
@@ -41,6 +42,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::group(['middleware'  => 'auth:sanctum'], function () {
     Route::group(['prefix' => 'auth'], function () {
         Route::post('/logout', LogoutController::class);
+        Route::post('/reset_password', ResetPasswordController::class);
     });
 
     Route::group(['prefix' => 'user'], function () {
