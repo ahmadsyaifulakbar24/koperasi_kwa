@@ -76,7 +76,7 @@ $('#form').submit(function(e) {
     }).catch((xhr) => {
         let err = xhr.response.data.errors
         // console.clear()
-        // console.log(xhr.response)
+        // console.log(err)
         if (err.name) {
             $('#name').addClass('is-invalid')
             $('#name-feedback').html('Masukkan nama lengkap')
