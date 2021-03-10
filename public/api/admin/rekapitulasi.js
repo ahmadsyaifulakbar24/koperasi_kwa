@@ -16,8 +16,9 @@ function get_data(page, month, year) {
     		year: year
     	}
     }).then((response) => {
-        console.log(response)
+        // console.log(response)
         let value = response.data
+        let from = value.from
         let path = 'http://koperasi.lekarlwig.com/api/transaction/get_simpanan_perbulan'
         const links = {
         	first: path + '?page=1',
@@ -38,12 +39,13 @@ function get_data(page, month, year) {
             let append
             $.each(value.data, function(index, value) {
                 append = `<tr>
-	        		<td class="text-center pl-4">${index + 1}.</td>
+	        		<td class="text-center font-weight-bold pl-4">${from}.</td>
 	        		<td class="text-truncate">${value.name}</td>
 	        		<td class="text-truncate">Rp${convert(value.simpanan_wajib)}</td>
 	        		<td class="text-truncate pr-4">Rp${convert(value.simpanan_sukarela)}</td>
 	        	</tr>`
                 $('#table').append(append)
+                from++
             })
             pagination(links, meta, path)
         } else {

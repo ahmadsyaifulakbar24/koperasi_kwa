@@ -48,6 +48,7 @@ function get_data() {
     axios.get('api/pinjaman/get/' + id).then((response) => {
         // console.log(response.data.data)
         let value = response.data
+        let from = value.meta.from
         if (value.data.transaction != '') {
             let append, bukti_pembayaran, approved_date, action, month, year
             $.each(value.data.transaction, function(index, value) {
@@ -67,7 +68,7 @@ function get_data() {
                 month.length == 2 ? month = month.substr(1, 1) : ''
                 year = value.created_at.substr(0, 4)
                 append = `<tr>
-	        		<td class="text-center pl-4">${index + 1}.</td>
+	        		<td class="text-center font-weight-bold pl-4">${from}.</td>
 	        		<td class="text-truncate">${value.title}</td>
 	        		<td class="text-truncate">${bulan_tahun(month, year)}</td>
 	        		<td class="text-truncate">${rupiah(value.sub_transaction[0].besaran)}</td>
@@ -76,6 +77,7 @@ function get_data() {
 	        		<td class="text-truncate pr-4" id="approve${value.id}">${action}</td>
 	        	</tr>`
                 $('#table').append(append)
+                from++
             })
         } else {
             $('#table').html(`<tr>

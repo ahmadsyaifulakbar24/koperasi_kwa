@@ -21,6 +21,7 @@ function get_data(page, status) {
     }).then((response) => {
         // console.log(response.data)
         let value = response.data
+        let from = value.meta.from
         if (value.data != '') {
             let append, title, approved_date, paid_off_date, contract, action
             $.each(value.data, function(index, value) {
@@ -44,7 +45,7 @@ function get_data(page, status) {
                 }
                 value.paid_off_date == null ? paid_off_date = '' : paid_off_date = tanggal(value.paid_off_date)
                 append = `<tr>
-	        		<td class="text-center pl-4">${index + 1}.</td>
+	        		<td class="text-center font-weight-bold pl-4">${from}.</td>
 	        		<td class="text-truncate font-weight-bold" id="title${value.id}">${title}</td>
 	        		<td class="text-truncate">${convert(value.tenor)} Bulan</td>
 	        		<td class="text-truncate">Rp${convert(value.angsuran)}<small class="text-secondary">/bulan</small></td>
@@ -55,6 +56,7 @@ function get_data(page, status) {
 	        		<td class="text-truncate pr-4" id="action${value.id}">${action}</td>
 	        	</tr>`
                 $('#table').append(append)
+                from++
             })
             pagination(value.links, value.meta, value.meta.path)
         } else {

@@ -43,6 +43,7 @@ function get_data(page, day, month, year, approved) {
     }).then((response) => {
         // console.log(response.data.data)
         let value = response.data
+        let from = value.meta.from
         if (value.data != '') {
             let append, sub_append, besaran, bukti_pembayaran, approved_date, action
             $.each(value.data, function(index, value) {
@@ -70,7 +71,7 @@ function get_data(page, day, month, year, approved) {
                     }
                 })
                 append = `<tr>
-	        		<td class="text-center pl-4">${index + 1}.</td>
+	        		<td class="text-center font-weight-bold pl-4">${from}.</td>
 	        		<td class="text-truncate">${value.title}</td>
 	        		<td>${value.message}</td>
 	        		<td class="text-truncate"><ul class="pl-3 mb-0">${sub_append}</ul></td>
@@ -79,6 +80,7 @@ function get_data(page, day, month, year, approved) {
 	        		<td class="text-truncate pr-4" id="approve${value.id}">${action}</td>
 	        	</tr>`
                 $('#table').append(append)
+                from++
             })
             pagination(value.links, value.meta, value.meta.path)
         } else {
