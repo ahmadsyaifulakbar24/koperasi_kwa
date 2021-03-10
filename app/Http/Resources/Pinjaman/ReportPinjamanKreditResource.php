@@ -21,7 +21,7 @@ class ReportPinjamanKreditResource extends JsonResource
             $description = $this->description;
             $bunga = NULL;
         } else {
-            $description = $this->transaction->count().'/'.$this->tenor;
+            $description = $this->transaction->count().' dari '.$this->tenor;
             $bunga = $this->besar_pinjaman * $bunga->value / 100;
         }
         return [
