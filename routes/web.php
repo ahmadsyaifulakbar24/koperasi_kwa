@@ -19,8 +19,8 @@ Route::group(['middleware'=>['beforeMiddleware']], function () {
 	Route::get('dashboard', function () {
 		return view('dashboard');
 	});
-	Route::get('profil', function () {
-		return view('profil');
+	Route::get('password', function () {
+		return view('password');
 	});
 
 	Route::group(['middleware'=>['adminMiddleware']], function () {

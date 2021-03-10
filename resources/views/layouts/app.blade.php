@@ -38,6 +38,9 @@
 		            </div>
 	            </div>
 	            <div class="dropdown-divider"></div>
+                <a href="password" class="dropdown-item" role="button">
+                    <i class="mdi mdi-18px mdi-lock-outline"></i><span>Ubah password</span>
+                </a>
                 <a class="dropdown-item" id="logout" role="button">
                     <i class="mdi mdi-18px mdi-login-variant"></i><span>Logout</span>
                 </a>
