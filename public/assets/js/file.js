@@ -8,7 +8,7 @@ $(document).on('change', 'input[type="file"]', function(e) {
 	    format = ['application/pdf']
 	}
     if (format.includes(val.type) == true) {
-        if (val.size <= 5000000) {
+        if (val.size <= 2000000) {
             picture = val
 		    $('#loading-picture').show()
         	if (val.type == 'application/pdf') {
@@ -27,7 +27,7 @@ $(document).on('change', 'input[type="file"]', function(e) {
             // console.log(val)
         } else {
             $(this).addClass('is-invalid')
-            $(this).siblings('.invalid-feedback').html('Ukuran file maksimal 5MB.')
+            $(this).siblings('.invalid-feedback').html('Ukuran file maksimal 2MB.')
         }
     } else {
         $(this).addClass('is-invalid')

@@ -67,7 +67,7 @@ function get_data() {
                 month.length == 2 ? month = month.substr(1, 1) : ''
                 year = value.created_at.substr(0, 4)
                 append = `<tr>
-	        		<td class="text-center pl-4">${index + 1}.</td>
+	        		<td class="text-center font-weight-bold pl-4">${index + 1}.</td>
 	        		<td class="text-truncate">${value.title}</td>
 	        		<td class="text-truncate">${bulan_tahun(month, year)}</td>
 	        		<td class="text-truncate">${rupiah(value.sub_transaction[0].besaran)}</td>
