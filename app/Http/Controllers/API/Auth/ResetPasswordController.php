@@ -29,11 +29,11 @@ class ResetPasswordController extends Controller
             ]);
             return response()->json([
                 'message' => 'reset password success'
-            ]);
+            ], 200);
         } else {
             return response()->json([
                 'message' => 'previous password are not the same'
-            ]);
+            ], 401);
         }
         
     }
