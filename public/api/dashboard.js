@@ -187,7 +187,7 @@ $('#download_kredit').click(function() {
         		<td>${rupiah(value.jumlah)}</td>
         		<td>${rupiah(value.bunga)}</td>
         		<td>${rupiah(value.setoran_per_bulan)}</td>
-        		<td>'${value.keterangan}</td>
+        		<td>${value.keterangan}</td>
         	</tr>`
             })
 	        $(this).removeClass('active')
