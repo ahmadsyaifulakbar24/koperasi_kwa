@@ -2,22 +2,28 @@ axios.get('api/pinjaman/get/' + id).then((response) => {
     let value = response.data.data
     // console.log(value)
     if (value.user_id == session.user_id) {
-	    $('#besar_pinjaman').html(rupiah(value.besar_pinjaman))
-	    $('#tenor').html(value.tenor + ' Bulan')
-	    let sisa_angsuran = value.sisa_bayar
-	    if (value.sisa_bayar == null || value.sisa_bayar <= 0) {
-	    	sisa_angsuran = 'Lunas'
-	    	$('.paid-off').remove()
-	    	$('#modal-paid-off').remove()
-		} else {
-	    	sisa_angsuran = rupiah(value.sisa_bayar)
-	    	$('.paid-off').removeClass('hide')
-		}
-	    $('#sisa_angsuran').html(sisa_angsuran)
-	    get_data()
-	} else {
-		window.history.back()
-	}
+        $('#besar_pinjaman').html(rupiah(value.besar_pinjaman))
+        $('#tenor').html(value.tenor + ' Bulan')
+        let sisa_angsuran = value.sisa_bayar
+        if (value.sisa_bayar == null || value.sisa_bayar <= 0) {
+            sisa_angsuran = 'Lunas'
+            $('.paid-off').remove()
+            $('#modal-paid-off').remove()
+        } else {
+            sisa_angsuran = rupiah(value.sisa_bayar)
+            $('.paid-off').removeClass('hide')
+        }
+        $('#sisa_angsuran').html(sisa_angsuran)
+        if (value.contract == null) {
+            $('#kontrak_pinjaman').parents('.hide').remove()
+        } else {
+            $('#kontrak_pinjaman').parents('.hide').removeClass('hide')
+            $('#kontrak_pinjaman').html(`<a href="${value.contract}" class="btn btn-sm btn-outline-primary px-5" target="_blank">Lihat</a>`)
+        }
+        get_data()
+    } else {
+        window.history.back()
+    }
 }).catch((err) => {
     // console.log(err.response)
 })
@@ -52,8 +58,8 @@ function get_data() {
                     bukti_pembayaran = `<a href="${value.bukti_pembayaran}" class="btn btn-sm btn-outline-primary px-5" target="_blank">Lihat</a>`
                 }
                 month = value.created_at.substr(5, 2)
-			    month.length == 2 ? month = month.substr(1, 1) : ''
-			    year = value.created_at.substr(0, 4)
+                month.length == 2 ? month = month.substr(1, 1) : ''
+                year = value.created_at.substr(0, 4)
                 append = `<tr>
 	        		<td class="text-center font-weight-bold pl-4">${index + 1}.</td>
 	        		<td class="text-truncate">${value.title}</td>

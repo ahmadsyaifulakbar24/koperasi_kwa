@@ -7,7 +7,7 @@
 			<a class="text-secondary user" id="name"></a>
 		</div>
 		<div class="row">
-			<div class="col-md-6 col-lg-5 col-xl-4 mb-4">
+			<div class="col-md-6 col-xl-4 mb-4">
 				<div class="card card-custom">
 					<div class="card-body">
 						<h6>Besar Pinjaman</h6>
@@ -25,7 +25,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="col-md-6 col-lg-5 col-xl-4 mb-4">
+			<div class="col-md-6 col-xl-4 mb-4">
 				<div class="card card-custom">
 					<div class="card-body">
 						<h6>Tenor</h6>
@@ -43,12 +43,12 @@
 					</div>
 				</div>
 			</div>
-			<div class="col-md-6 col-lg-5 col-xl-4 mb-4">
+			<div class="col-md-6 col-xl-4 mb-4">
 				<div class="card card-custom">
 					<div class="card-body">
 						<h6>Sisa Angsuran</h6>
 						<div class="d-flex justify-content-between align-items-center position-relative">
-							<i class="mdi mdi-notebook-outline mdi-36px"></i>
+							<i class="mdi mdi-timer-sand mdi-36px"></i>
 							<h4 class="mb-0" id="sisa_angsuran">
 								<div class="loader loader-sm btn-loading">
 									<svg class="circular" viewBox="25 25 50 50">
@@ -61,7 +61,25 @@
 					</div>
 				</div>
 			</div>
-			<div class="col-md-6 col-lg-7 col-xl-8 mb-4">
+			<div class="col-md-6 col-xl-4 mb-4 hide">
+				<div class="card card-custom">
+					<div class="card-body">
+						<h6>Kontrak Pinjaman</h6>
+						<div class="d-flex justify-content-between align-items-center position-relative">
+							<i class="mdi mdi-file-document-outline mdi-36px"></i>
+							<h4 class="mb-0" id="kontrak_pinjaman">
+								<div class="loader loader-sm btn-loading">
+									<svg class="circular" viewBox="25 25 50 50">
+										<circle class="path-dark" cx="50" cy="50" r="20" fill="none" stroke-width="6" stroke-miterlimit="1"/>
+									</svg>
+								</div>
+							</h4>
+							<div class="notification none"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-12 col-xl-8 mb-4">
 				<div class="card card-custom card-height">
 					<div class="card-body d-flex align-items-center">
 						<div class="font-italic text-uppercase text-secondary">

@@ -23,6 +23,12 @@ function get_pinjaman() {
             if (value.status == 'approved') {
                 if (value.sisa_bayar == null || value.sisa_bayar <= 0) get_lunas()
             }
+            if (value.contract == null) {
+            	$('#kontrak_pinjaman').parents('.hide').remove()
+            } else {
+            	$('#kontrak_pinjaman').parents('.hide').removeClass('hide')
+            	$('#kontrak_pinjaman').html(`<a href="${value.contract}" class="btn btn-sm btn-outline-primary px-5" target="_blank">Lihat</a>`)
+            }
 	        get_data()
 		} else {
 			window.history.back()
