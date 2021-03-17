@@ -1,0 +1,257 @@
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+DROP TABLE IF EXISTS `failed_jobs`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `failed_jobs` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `uuid` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `connection` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `queue` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `payload` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `exception` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `failed_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `failed_jobs_uuid_unique` (`uuid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+DROP TABLE IF EXISTS `main_settings`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `main_settings` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `name_setting` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `value` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+DROP TABLE IF EXISTS `migrations`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `migrations` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `migration` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `batch` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+DROP TABLE IF EXISTS `params`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `params` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `param_id` bigint(20) unsigned DEFAULT NULL,
+  `category_param` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `param` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `order` int(11) NOT NULL,
+  `active` tinyint(1) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+DROP TABLE IF EXISTS `password_resets`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `password_resets` (
+  `email` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `token` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  KEY `password_resets_email_index` (`email`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+DROP TABLE IF EXISTS `personal_access_tokens`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `personal_access_tokens` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `tokenable_type` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `tokenable_id` bigint(20) unsigned NOT NULL,
+  `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `token` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `abilities` text COLLATE utf8mb4_unicode_ci,
+  `last_used_at` timestamp NULL DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `personal_access_tokens_token_unique` (`token`),
+  KEY `personal_access_tokens_tokenable_type_tokenable_id_index` (`tokenable_type`,`tokenable_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+DROP TABLE IF EXISTS `pinjaman`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `pinjaman` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `user_id` bigint(20) unsigned NOT NULL,
+  `angsuran` bigint(20) DEFAULT NULL,
+  `besar_pinjaman` bigint(20) NOT NULL,
+  `tenor` int(11) DEFAULT NULL,
+  `total_bayar` bigint(20) DEFAULT NULL,
+  `sisa_bayar` bigint(20) DEFAULT NULL,
+  `status` enum('approved','rejected','pending','paid_off') COLLATE utf8mb4_unicode_ci NOT NULL,
+  `approved_date` timestamp NULL DEFAULT NULL,
+  `transaction_type` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `description` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `paid_off_date` timestamp NULL DEFAULT NULL,
+  `contract` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `pinjaman_user_id_foreign` (`user_id`),
+  CONSTRAINT `pinjaman_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+DROP TABLE IF EXISTS `sub_transactions`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `sub_transactions` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `transaction_id` bigint(20) unsigned NOT NULL,
+  `type` enum('simpanan_sukarela','simpanan_wajib','simpanan_pokok','tagihan_pinjaman','saldo_koperasi','min_saldo_koperasi') COLLATE utf8mb4_unicode_ci NOT NULL,
+  `besaran` bigint(20) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `sub_transactions_transaction_id_foreign` (`transaction_id`),
+  CONSTRAINT `sub_transactions_transaction_id_foreign` FOREIGN KEY (`transaction_id`) REFERENCES `transactions` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+DROP TABLE IF EXISTS `transactions`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `transactions` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `user_id` bigint(20) unsigned NOT NULL,
+  `pinjaman_id` bigint(20) unsigned DEFAULT NULL,
+  `title` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `message` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `type` enum('simpanan','pinjaman','saldo_koperasi','min_saldo_koperasi') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'simpanan',
+  `bukti_pembayaran` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `approved_date` timestamp NULL DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `transactions_user_id_foreign` (`user_id`),
+  KEY `transactions_pinjaman_id_foreign` (`pinjaman_id`),
+  CONSTRAINT `transactions_pinjaman_id_foreign` FOREIGN KEY (`pinjaman_id`) REFERENCES `pinjaman` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `transactions_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+DROP TABLE IF EXISTS `user_koperasi_details`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `user_koperasi_details` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `user_id` bigint(20) unsigned NOT NULL,
+  `status_keluarga_id` bigint(20) unsigned NOT NULL,
+  `nama_ahliwaris` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `besar_simpanan_wajib` bigint(20) NOT NULL,
+  `upload_ktp` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `saldo_simpanan` bigint(20) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `user_koperasi_details_user_id_foreign` (`user_id`),
+  KEY `user_koperasi_details_status_keluarga_id_foreign` (`status_keluarga_id`),
+  CONSTRAINT `user_koperasi_details_status_keluarga_id_foreign` FOREIGN KEY (`status_keluarga_id`) REFERENCES `params` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `user_koperasi_details_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+DROP TABLE IF EXISTS `user_levels`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `user_levels` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `level` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+DROP TABLE IF EXISTS `users`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `users` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `code` bigint(20) unsigned NOT NULL,
+  `username` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email_verified_at` timestamp NULL DEFAULT NULL,
+  `no_id` bigint(20) NOT NULL,
+  `jenis_kelamin` enum('laki-laki','perempuan') COLLATE utf8mb4_unicode_ci NOT NULL,
+  `tempat_lahir` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `tanggal_lahir` date NOT NULL,
+  `alamat` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `no_telp` bigint(20) NOT NULL,
+  `pendidikan_id` bigint(20) unsigned NOT NULL,
+  `jabatan_id` bigint(20) unsigned NOT NULL,
+  `user_level_id` bigint(20) unsigned NOT NULL,
+  `profile` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `active` tinyint(1) NOT NULL DEFAULT '1',
+  `password` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `users_code_unique` (`code`),
+  UNIQUE KEY `users_username_unique` (`username`),
+  UNIQUE KEY `users_email_unique` (`email`),
+  UNIQUE KEY `users_no_id_unique` (`no_id`),
+  KEY `users_user_level_id_foreign` (`user_level_id`),
+  KEY `users_pendidikan_id_foreign` (`pendidikan_id`),
+  KEY `users_jabatan_id_foreign` (`jabatan_id`),
+  CONSTRAINT `users_jabatan_id_foreign` FOREIGN KEY (`jabatan_id`) REFERENCES `params` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `users_pendidikan_id_foreign` FOREIGN KEY (`pendidikan_id`) REFERENCES `params` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `users_user_level_id_foreign` FOREIGN KEY (`user_level_id`) REFERENCES `user_levels` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+DROP TABLE IF EXISTS `vw_user_transaction`;
+/*!50001 DROP VIEW IF EXISTS `vw_user_transaction`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+/*!50001 CREATE TABLE `vw_user_transaction` (
+  `user_id` tinyint NOT NULL,
+  `code` tinyint NOT NULL,
+  `transactions_id` tinyint NOT NULL,
+  `pinjaman_id` tinyint NOT NULL,
+  `type_transaction` tinyint NOT NULL,
+  `transaction_approved_date` tinyint NOT NULL,
+  `transaction_created_at` tinyint NOT NULL,
+  `sub_transactions_id` tinyint NOT NULL,
+  `type_sub_transaction` tinyint NOT NULL,
+  `besaran` tinyint NOT NULL
+) ENGINE=MyISAM */;
+SET character_set_client = @saved_cs_client;
+/*!50001 DROP TABLE IF EXISTS `vw_user_transaction`*/;
+/*!50001 DROP VIEW IF EXISTS `vw_user_transaction`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8mb4 */;
+/*!50001 SET character_set_results     = utf8mb4 */;
+/*!50001 SET collation_connection      = utf8mb4_unicode_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `vw_user_transaction` AS select `a`.`id` AS `user_id`,`a`.`code` AS `code`,`b`.`id` AS `transactions_id`,`b`.`pinjaman_id` AS `pinjaman_id`,`b`.`type` AS `type_transaction`,`b`.`approved_date` AS `transaction_approved_date`,`b`.`created_at` AS `transaction_created_at`,`c`.`id` AS `sub_transactions_id`,`c`.`type` AS `type_sub_transaction`,`c`.`besaran` AS `besaran` from (`sub_transactions` `c` left join (`transactions` `b` left join `users` `a` on((`a`.`id` = `b`.`user_id`))) on((`b`.`id` = `c`.`transaction_id`))) */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+INSERT INTO `migrations` VALUES (1,'2014_10_12_000000_create_users_table',1);
+INSERT INTO `migrations` VALUES (2,'2014_10_12_100000_create_password_resets_table',1);
+INSERT INTO `migrations` VALUES (3,'2019_08_19_000000_create_failed_jobs_table',1);
+INSERT INTO `migrations` VALUES (4,'2019_12_14_000001_create_personal_access_tokens_table',1);
+INSERT INTO `migrations` VALUES (5,'2021_01_28_032915_create_user_levels_table',1);
+INSERT INTO `migrations` VALUES (6,'2021_01_28_034038_create_params_table',1);
+INSERT INTO `migrations` VALUES (7,'2021_01_28_034734_create_main_settings_table',1);
+INSERT INTO `migrations` VALUES (8,'2021_01_28_035655_create_user_koperasi_details_table',1);
+INSERT INTO `migrations` VALUES (9,'2021_01_28_040650_create_transactions_table',1);
+INSERT INTO `migrations` VALUES (10,'2021_01_28_041350_create_sub_transactions_table',1);
+INSERT INTO `migrations` VALUES (11,'2021_01_28_041959_create_pinjaman_table',1);
+INSERT INTO `migrations` VALUES (12,'2021_03_05_032028_create_vw_user_transaction_table',1);

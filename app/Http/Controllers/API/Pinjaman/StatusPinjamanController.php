@@ -6,6 +6,7 @@ use App\Http\Controllers\API\Transaction\TraitTransaction;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\Pinjaman\PinjamanResource;
 use App\Models\Pinjaman;
+use Illuminate\Support\Facades\DB;
 
 class StatusPinjamanController extends Controller
 {
@@ -18,9 +19,12 @@ class StatusPinjamanController extends Controller
             if($pinjaman) {
                 $data['status'] = 'approved';
                 $data['approved_date'] = now();
-                $pinjaman->update($data);
-                $this->saldo_koperasi($pinjaman->besar_pinjaman, 'pinjaman');
-                return new PinjamanResource($pinjaman);
+                $result = DB::transaction(function () use ($pinjaman, $data) {
+                    $pinjaman->update($data);
+                    $this->saldo_koperasi($pinjaman->besar_pinjaman, 'pinjaman');
+                    return new PinjamanResource($pinjaman);
+                });
+                return $result;
             } else {
                 return response()->json([
                     'message' => 'data not found'

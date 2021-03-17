@@ -9,6 +9,7 @@ use App\Http\Resources\User\UserResource;
 use App\Models\MainSetting;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rule;
 
@@ -56,36 +57,42 @@ class RegisterController extends Controller
             'password_confirmation' => ['required', 'string', 'min:8'],
         ]);
 
-        // insert user
-        $cek_user = User::orderBy('code', 'DESC')->first();
-        $input = $request->all();
-        $input['code'] = $cek_user->code+1;
-        $input['password'] = Hash::make($request->password);
-        $user = User::create($input);
-
-        // insert detail user
-        $inputDetail['status_keluarga_id'] = $request->status_keluarga_id;
-        $inputDetail['nama_ahliwaris'] = $request->nama_ahliwaris;
-        $inputDetail['besar_simpanan_wajib'] = $request->besar_simpanan_wajib;
-        $ktp = FileHelpers::uploadFile('images/ktp/', $request->upload_ktp);
-        $inputDetail['upload_ktp'] = $ktp;
-        $user_koperasi_detail = $user->user_koperasi_detail()->create($inputDetail);
-
-        // insert transaction
-        $transaction_data = [
-            'user_id' => $user->id,
-            'title' => 'Tagihan Ke-1',
-            'message' => '-',
-            'type' => 'simpanan',
-        ];
-        $simpanan_pokok = MainSetting::where('name_setting', 'simpanan_pokok')->first();
-        $sub_transaction_data = [
-            [ 'type' => 'simpanan_pokok', 'besaran' => $simpanan_pokok->value ],
-            [ 'type' => 'simpanan_wajib', 'besaran' => $user_koperasi_detail->besar_simpanan_wajib],
-            [ 'type' => 'simpanan_sukarela', 'besaran' => $request->simpanan_sukarela ],
-        ];
-        $this->transaction($transaction_data, $sub_transaction_data);
         
-        return new UserResource($user);
+        $cek_user = User::orderBy('code', 'DESC')->first();
+
+        $result = DB::transaction(function () use ($request, $cek_user) {
+            // insert user
+            $input = $request->all();
+            $input['code'] = $cek_user->code+1;
+            $input['password'] = Hash::make($request->password);
+            $user = User::create($input);
+    
+            // insert detail user
+            $inputDetail['status_keluarga_id'] = $request->status_keluarga_id;
+            $inputDetail['nama_ahliwaris'] = $request->nama_ahliwaris;
+            $inputDetail['besar_simpanan_wajib'] = $request->besar_simpanan_wajib;
+            $ktp = FileHelpers::uploadFile('images/ktp/', $request->upload_ktp);
+            $inputDetail['upload_ktp'] = $ktp;
+            $user_koperasi_detail = $user->user_koperasi_detail()->create($inputDetail);
+    
+            // insert transaction
+            $transaction_data = [
+                'user_id' => $user->id,
+                'title' => 'Tagihan Ke-1',
+                'message' => '-',
+                'type' => 'simpanan',
+            ];
+            $simpanan_pokok = MainSetting::where('name_setting', 'simpanan_pokok')->first();
+            $sub_transaction_data = [
+                [ 'type' => 'simpanan_pokok', 'besaran' => $simpanan_pokok->value ],
+                [ 'type' => 'simpanan_wajib', 'besaran' => $user_koperasi_detail->besar_simpanan_wajib],
+                [ 'type' => 'simpanan_sukarela', 'besaran' => $request->simpanan_sukarela ],
+            ];
+            $this->transaction($transaction_data, $sub_transaction_data);
+            return new UserResource($user);
+        });
+
+        return $result;
+        
     }
 }
