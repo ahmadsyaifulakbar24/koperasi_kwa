@@ -94,6 +94,7 @@
 			<i class="mdi mdi-clipboard-text-outline mdi-18px"></i><span>Daftar Project</span>
 		</a>
 		@endif -->
+		<small class="text-secondary" style="position:absolute;bottom:5px">2021 &copy; PT. Karl Wig Abadi</small>
 	</div>
 	<div class="overlay"></div>
 	<div class="main">@yield('content')</div>

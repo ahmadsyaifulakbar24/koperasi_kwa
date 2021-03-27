@@ -21,7 +21,7 @@ class RegisterController extends Controller
     {   
         // validasi form register
         $this->validate($request, [
-            'username' => ['required', 'string', 'unique:users,username'],
+            'username' => ['nullable', 'string', 'unique:users,username'],
             'name' => ['required', 'string'],
             'email' => ['required', 'email', 'unique:users,email'],
             'no_id' => ['required', 'numeric', 'unique:users,no_id'],

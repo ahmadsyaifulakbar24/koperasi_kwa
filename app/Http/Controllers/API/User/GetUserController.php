@@ -11,10 +11,20 @@ class GetUserController extends Controller
 {
     public function all(Request $request)
     {
+        $this->validate($request, [
+            'search' => 'nullable|string'
+        ]);
+
         $user_level_id = $request->user()->user_level_id;
         $user_level_id == 1 ? $user_level_in = [1] : $user_level_in = [1, 100];
-        $user = User::whereNotIn('user_level_id', $user_level_in)->paginate(15);
-        return UserResource::collection($user);
+        $user = User::whereNotIn('user_level_id', $user_level_in)->orderBy('name', 'ASC');
+        $search = $request->search;
+        if($search) 
+        {
+            $user->where('name', 'like', '%'.$search.'%');
+        }
+
+        return UserResource::collection($user->paginate(15));
     }
 
     public function by_id($user_id)

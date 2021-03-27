@@ -148,11 +148,11 @@
 						</div>
 						<div class="invalid-feedback" id="upload_ktp-feedback"></div>
 					</div>
-					<div class="form-group">
+					<!-- <div class="form-group">
 						<label class="font-weight-bold" for="username">Username</label>
 						<input type="text" id="username" class="form-control">
 						<div class="invalid-feedback" id="username-feedback"></div>
-					</div>
+					</div> -->
 					<div class="form-group">
 						<label class="font-weight-bold" for="email">Email</label>
 						<input type="email" id="email" class="form-control">

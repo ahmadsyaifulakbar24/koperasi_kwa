@@ -361,12 +361,12 @@
 								<input type="email" class="form-control" id="email" disabled>
 							</div>
 						</div>
-						<div class="form-group row">
+						<!-- <div class="form-group row">
 							<label for="username" class="col-lg-4 col-sm-5 col-form-label">Username</label>
 							<div class="col-lg-8 col-sm-7">
 								<input class="form-control" id="username" disabled>
 							</div>
-						</div>
+						</div> -->
 						<div class="form-group row">
 							<div class="offset-lg-4 offset-sm-5 col-lg-8 col-sm-7">
 								<button class="btn btn-block btn-primary px-3" id="submit">Simpan</button>
