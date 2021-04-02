@@ -337,6 +337,14 @@ function bulan_tahun(month, year) {
     return `${bulan[month]} ${year}`
 }
 
+function delay(fn, ms) {
+    let timer = 0
+    return function(...args) {
+        clearTimeout(timer)
+        timer = setTimeout(fn.bind(this, ...args), ms || 0)
+    }
+}
+
 $('#logout').click(function() {
     $.ajax({
         url: root + 'session/logout',
