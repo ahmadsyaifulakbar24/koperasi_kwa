@@ -36,7 +36,7 @@ $('#form').submit(function(e) {
 	let besar_simpanan_wajib = $('input[type=radio][name=besar_simpanan_wajib]:checked').val()
     let simpanan_sukarela = number($('#simpanan_sukarela').val())
     let email = $('#email').val()
-    let username = $('#username').val()
+    // let username = $('#username').val()
     let password = $('#password').val()
     let cpassword = $('#cpassword').val()
 
@@ -55,7 +55,7 @@ $('#form').submit(function(e) {
     formData.append('besar_simpanan_wajib', besar_simpanan_wajib)
     formData.append('simpanan_sukarela', simpanan_sukarela)
     formData.append('upload_ktp', picture)
-    formData.append('username', username)
+    // formData.append('username', username)
     formData.append('email', email)
     formData.append('password', password)
     formData.append('password_confirmation', cpassword)
