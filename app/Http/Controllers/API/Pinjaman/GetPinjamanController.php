@@ -42,7 +42,7 @@ class GetPinjamanController extends Controller
     public function cek_pinjaman()
     {
         $user_id = auth()->user()->id;
-        $cek_pinjaman = Pinjaman::where('user_id', $user_id)->orWhere('status', 'pending')->orWhere('approved')->count();
+        $cek_pinjaman = Pinjaman::where([['user_id', $user_id], ['status', 'pending']])->orWhere([['user_id', $user_id], ['status', 'approved']])->count();
         if($cek_pinjaman > 0) {
             $cek = 'false';
         } else {
