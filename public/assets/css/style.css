@@ -6,6 +6,10 @@ select,
     background: #f5f6f8;
 }
 
+h1,h2,h3,h4,h5,h6,th,button,label,.btn,.sidebar,.compose {
+    font-family: 'DM Sans', sans-serif;
+}
+
 a:hover {
     text-decoration: none !important;
 }
@@ -278,9 +282,15 @@ a:hover {
 th:first-child {
     width: 1%;
 }
+th:first-child,td:first-child {
+    padding-left: 1.5rem !important;
+}
 
 th:last-child {
     width: 1%;
+}
+th:last-child,td:last-child {
+    padding-right: 1.5rem !important;
 }
 
 .table thead th {

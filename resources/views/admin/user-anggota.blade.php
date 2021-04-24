@@ -6,21 +6,20 @@
 	<div class="container">
 		<div class="d-flex justify-content-between align-items-center mb-2">
 			<h4>Anggota</h4>
+			<div class="position-relative mb-1">
+				<i class="mdi mdi-close-circle position-absolute hide px-2" id="search-close" role="button" style="right: 0;padding: 5px 0"></i>
+				<input class="form-control form-control-sm pr-4" placeholder="Cari Anggota" id="search" autocomplete="off">
+			</div>
 		</div>
 		<div class="card card-custom">
-			<div class="card-header border-bottom-0">
-				<div class="d-flex align-items-center">
-					<b>Anggota Koperasi</b>
-				</div>
-			</div>
 			<div class="table-custom">
 				<div class="table-responsive">
 					<table class="table mb-0">
 						<thead>
 							<tr>
-								<th class="text-truncate pl-4">No.</th>
+								<th class="text-center">No.</th>
 								<th class="text-truncate">Nama</th>
-								<th class="text-truncate pr-4"></th>
+								<th class="text-truncate"></th>
 							</tr>
 						</thead>
 						<tbody id="table"></tbody>

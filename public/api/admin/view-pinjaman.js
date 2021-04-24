@@ -27,7 +27,7 @@ function get_pinjaman() {
             	$('#kontrak_pinjaman').parents('.hide').remove()
             } else {
             	$('#kontrak_pinjaman').parents('.hide').removeClass('hide')
-            	$('#kontrak_pinjaman').html(`<a href="${value.contract}" class="btn btn-sm btn-outline-primary px-5" target="_blank">Lihat</a>`)
+            	$('#kontrak_pinjaman').html(`<a href="${value.contract}" target="_blank">${value.contract.substr(55)}</a>`)
             }
 	        get_data()
 		} else {
@@ -59,10 +59,10 @@ function get_data() {
             $.each(value.data.transaction, function(index, value) {
                 value.approved_date == null ? approved_date = '' : approved_date = tanggal(value.approved_date)
                 if (value.bukti_pembayaran == null) {
-                    bukti_pembayaran = `<a href="${root}invoice/pinjaman/${user}/${id}/${value.id}" class="btn btn-sm btn-primary px-4">Upload</a>`
+                    bukti_pembayaran = `<a href="${root}invoice/pinjaman/${user}/${id}/${value.id}" class="btn btn-sm btn-primary px-3">Upload</a>`
                     action = ''
                 } else {
-                    bukti_pembayaran = `<a href="${value.bukti_pembayaran}" class="btn btn-sm btn-outline-primary px-5" target="_blank">Lihat</a>`
+                    bukti_pembayaran = `<a href="${value.bukti_pembayaran}" class="btn btn-sm btn-outline-primary px-4" target="_blank">Lunas</a>`
                     if (value.approved_date == null) {
                         action = `<div class="btn btn-sm btn-primary approve" data-id="${value.id}" data-title="${value.title}">Setujui</div>`
                     } else {
@@ -73,13 +73,13 @@ function get_data() {
                 month.length == 2 ? month = month.substr(1, 1) : ''
                 year = value.created_at.substr(0, 4)
                 append = `<tr>
-	        		<td class="text-center font-weight-bold pl-4">${index + 1}.</td>
+	        		<td class="text-center">${index + 1}.</td>
 	        		<td class="text-truncate">${value.title}</td>
 	        		<td class="text-truncate">${bulan_tahun(month, year)}</td>
 	        		<td class="text-truncate">${rupiah(value.sub_transaction[0].besaran)}</td>
 	        		<td class="text-truncate">${bukti_pembayaran}</td>
 	        		<td class="text-truncate" id="approved_date${value.id}">${approved_date}</td>
-	        		<td class="text-truncate pr-4" id="approve${value.id}">${action}</td>
+	        		<td class="text-truncate" id="approve${value.id}">${action}</td>
 	        	</tr>`
                 $('#table').append(append)
             })

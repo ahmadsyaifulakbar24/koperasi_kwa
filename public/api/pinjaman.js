@@ -3,7 +3,7 @@ axios.get('api/pinjaman/cek_pinjaman').then((response) => {
 	// console.log(value)
 	value.output == 'true' ? $('#pinjaman').removeClass('hide') : $('#pinjaman').remove()
 }).catch((err) => {
-	// console.log(err.response)
+	// console.log(err.response.data.message)
 })
 
 get_data()

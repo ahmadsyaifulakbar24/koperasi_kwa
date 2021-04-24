@@ -39,10 +39,10 @@ function get_data(page, month, year) {
             let append
             $.each(value.data, function(index, value) {
                 append = `<tr>
-	        		<td class="text-center font-weight-bold pl-4">${from}.</td>
-	        		<td class="text-truncate">${value.name}</td>
+	        		<td class="text-center">${from}.</td>
+	        		<td class="text-truncate text-capitalize">${String(value.name).toLowerCase()}</td>
 	        		<td class="text-truncate">Rp${convert(value.simpanan_wajib)}</td>
-	        		<td class="text-truncate pr-4">Rp${convert(value.simpanan_sukarela)}</td>
+	        		<td class="text-truncate">Rp${convert(value.simpanan_sukarela)}</td>
 	        	</tr>`
                 $('#table').append(append)
                 from++

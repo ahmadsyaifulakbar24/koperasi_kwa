@@ -67,13 +67,13 @@
 						<h6>Kontrak Pinjaman</h6>
 						<div class="d-flex justify-content-between align-items-center position-relative">
 							<i class="mdi mdi-file-document-outline mdi-36px"></i>
-							<h4 class="mb-0" id="kontrak_pinjaman">
+							<div class="mb-0" id="kontrak_pinjaman">
 								<div class="loader loader-sm btn-loading">
 									<svg class="circular" viewBox="25 25 50 50">
 										<circle class="path-dark" cx="50" cy="50" r="20" fill="none" stroke-width="6" stroke-miterlimit="1"/>
 									</svg>
 								</div>
-							</h4>
+							</div>
 							<div class="notification none"></div>
 						</div>
 					</div>
@@ -102,13 +102,13 @@
 					<table class="table table-middle mb-0">
 						<thead class="thead-blue">
 							<tr>
-								<th class="text-truncate pl-4">No.</th>
+								<th class="text-truncate">No.</th>
 								<th class="text-truncate">Judul</th>
 								<th class="text-truncate">Bulan</th>
 								<th class="text-truncate">Total Bayar</th>
 								<th class="text-truncate">Bukti Pembayaran</th>
 								<th class="text-truncate">Tanggal Disetujui</th>
-								<th class="text-truncate pr-4"></th>
+								<th class="text-truncate"></th>
 							</tr>
 						</thead>
 						<tbody id="table"></tbody>
