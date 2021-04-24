@@ -16,11 +16,11 @@ function get_data(page) {
             let append
             $.each(value.data, function(index, value) {
                 append = `<tr>
-	        		<td class="text-center font-weight-bold pl-4">${from}.</td>
-	        		<td class="text-truncate font-weight-bold"><a href="${root}admin/simpanan/${value.id}">${value.name}</td>
+	        		<td class="text-center">${from}.</td>
+	        		<td class="text-truncate text-capitalize"><a href="${root}admin/simpanan/${value.id}">${String(value.name).toLowerCase()}</td>
 	        		<td class="text-truncate">Rp${convert(value.user_koperasi_detail.bersar_simpanan_wajib)}<small class="text-secondary">/bulan</small></td>
 	        		<td class="text-truncate">Rp${convert(value.user_koperasi_detail.saldo_simpanan)}</td>
-	        		<td class="text-truncate pr-4" id="approve${value.id}"></td>
+	        		<td class="text-truncate" id="approve${value.id}"></td>
 	        	</tr>`
                 $('#table').append(append)
                 from++

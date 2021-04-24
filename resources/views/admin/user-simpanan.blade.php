@@ -8,21 +8,16 @@
 			<h4>Simpanan</h4>
 		</div>
 		<div class="card card-custom">
-			<div class="card-header border-bottom-0">
-				<div class="d-flex align-items-center">
-					<b>Anggota Koperasi</b>
-				</div>
-			</div>
 			<div class="table-custom">
 				<div class="table-responsive">
 					<table class="table mb-0">
 						<thead>
 							<tr>
-								<th class="text-truncate pl-4">No.</th>
+								<th class="text-center">No.</th>
 								<th class="text-truncate">Nama</th>
 								<th class="text-truncate">Simpanan Wajib</th>
 								<th class="text-truncate">Saldo Simpanan</th>
-								<th class="text-truncate pr-4"></th>
+								<th class="text-truncate"></th>
 							</tr>
 						</thead>
 						<tbody id="table"></tbody>

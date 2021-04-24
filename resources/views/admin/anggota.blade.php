@@ -2,15 +2,15 @@
 
 @section('content')
 	<div class="container">
-		<div class="row hide" id="data">
+		<div class="row">
 			<div class="offset-lg-1 offset-xl-2 col-lg-10 col-xl-8 order-1">
 				<h4>Anggota</h4>
-				<div class="card card-custom">
+				<div class="card card-custom hide" id="data">
 					<form id="form" class="card-body">
 						<div class="form-group row">
 							<label for="name" class="col-lg-4 col-sm-5 col-form-label">Nama Lengkap</label>
 							<div class="col-lg-8 col-sm-7">
-								<input class="form-control" id="name">
+								<input class="form-control text-capitalize" id="name">
 								<div class="invalid-feedback" id="name-feedback"></div>
 							</div>
 						</div>
@@ -171,22 +171,13 @@
 						</div>
 					</form>
 				</div>
-			</div>
-			<!-- <div class="col-lg-4 order-lg-1 mb-4 mb-lg-0">
-				<div class="card card-custom">
-					<div class="card-body text-center">
-						<div class="d-inline-block py-4" data-toggle="modal" data-target="#modalAvatar" role="button">
-							<img src="{{asset('assets/images/user.png')}}" class="avatar rounded-circle" width="100"><br>
-						</div>
+				<div class="d-flex flex-column justify-content-center align-items-center state" id="loading">
+					<div class="loader">
+						<svg class="circular" viewBox="25 25 50 50">
+							<circle class="path-primary" cx="50" cy="50" r="20" fill="none" stroke-width="5" stroke-miterlimit="10"/>
+						</svg>
 					</div>
 				</div>
-			</div> -->
-		</div>
-		<div class="d-flex flex-column justify-content-center align-items-center state" id="loading">
-			<div class="loader">
-				<svg class="circular" viewBox="25 25 50 50">
-					<circle class="path-primary" cx="50" cy="50" r="20" fill="none" stroke-width="5" stroke-miterlimit="10"/>
-				</svg>
 			</div>
 		</div>
 	</div>

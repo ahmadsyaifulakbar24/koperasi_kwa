@@ -4,17 +4,16 @@
 	<div class="container">
 		<div class="d-flex justify-content-between align-items-center mb-2">
 			<h4>Pinjaman</h4>
-			<div class="text-secondary user"></div>
+			<div class="ml-auto mb-1">
+				<div class="form-control form-control-sm" role="button" data-toggle="modal" data-target="#modal-filter">
+					Filter <i class="mdi mdi-chevron-down pr-0 pl-1"></i>
+				</div>
+			</div>
 		</div>
 		<div class="card card-custom">
 			<div class="card-header border-bottom-0">
 				<div class="d-flex align-items-center">
-					<b>Daftar Pinjaman</b>
-					<div class="ml-auto">
-						<div class="form-control form-control-sm" role="button" data-toggle="modal" data-target="#modal-filter">
-							Filter <i class="mdi mdi-chevron-down pr-0 pl-1"></i>
-						</div>
-					</div>
+					<div class="text-secondary user"></div>
 				</div>
 			</div>
 			<div class="table-custom">
@@ -22,7 +21,7 @@
 					<table class="table table-middle mb-0">
 						<thead class="thead-blue">
 							<tr>
-								<th class="text-truncate pl-4">No.</th>
+								<th class="text-truncate">No.</th>
 								<th class="text-truncate">Besar Pinjaman</th>
 								<th class="text-truncate">Tenor</th>
 								<th class="text-truncate">Angsuran</th>
@@ -30,7 +29,7 @@
 								<th class="text-truncate">Tanggal Disetujui</th>
 								<th class="text-truncate">Kontrak Pinjaman</th>
 								<th class="text-truncate">Tanggal Lunas</th>
-								<th class="text-truncate pr-4"></th>
+								<th class="text-truncate"></th>
 							</tr>
 						</thead>
 						<tbody id="table"></tbody>

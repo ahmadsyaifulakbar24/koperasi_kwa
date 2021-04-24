@@ -5,7 +5,7 @@ function get_user() {
         let value = response.data.data
         // console.log(value)
         $('title').prepend(value.name)
-        $('#name').val(value.name)
+        $('#name').val(String(value.name).toLowerCase())
         $('#no_id').val(value.no_id)
         $('#code').val(value.code)
         $('input[name=jenis_kelamin]').filter(`[value=${value.jenis_kelamin}]`).prop('checked', true)
