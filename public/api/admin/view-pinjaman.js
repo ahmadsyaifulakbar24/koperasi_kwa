@@ -27,7 +27,7 @@ function get_pinjaman() {
             	$('#kontrak_pinjaman').parents('.hide').remove()
             } else {
             	$('#kontrak_pinjaman').parents('.hide').removeClass('hide')
-            	$('#kontrak_pinjaman').html(`<a href="${value.contract}" target="_blank">${value.contract.substr(55)}</a>`)
+            	$('#kontrak_pinjaman').html(`<a href="${value.contract}" target="_blank">${value.contract.substr(56)}</a>`)
             }
 	        get_data()
 		} else {
