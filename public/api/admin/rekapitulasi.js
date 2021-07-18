@@ -19,7 +19,7 @@ function get_data(page, month, year) {
         // console.log(response)
         let value = response.data
         let from = value.from
-        let path = 'http://koperasi.lekarlwig.com/api/transaction/get_simpanan_perbulan'
+        let path = 'https://koperasi.lekarlwig.com/api/transaction/get_simpanan_perbulan'
         const links = {
         	first: path + '?page=1',
         	last: path + '?page=' + value.last_page,
