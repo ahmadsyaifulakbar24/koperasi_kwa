@@ -346,18 +346,17 @@ function delay(fn, ms) {
 }
 
 $('#logout').click(function() {
-    $.ajax({
-        url: root + 'session/logout',
-        type: 'GET',
-        success: function() {
-            axios.post('api/auth/logout').then((response) => {
-                localStorage.removeItem('session')
-                location.href = root
-            }).catch((err) => {
-                // console.log(err)
-                location.href = root
-            })
-        }
+    axios.post('api/auth/logout').then((response) => {
+        localStorage.removeItem('session')
+	    $.ajax({
+	        url: root + 'session/logout',
+	        type: 'GET',
+	        success: function() {
+		        location.href = root
+	        }
+	    })
+    }).catch((err) => {
+        console.log(err)
     })
 })
 

@@ -43,7 +43,7 @@
                 <a href="{{url('password')}}" class="dropdown-item" role="button">
                     <i class="mdi mdi-18px mdi-lock-outline"></i><span>Ubah password</span>
                 </a>
-                <a class="dropdown-item" id="logout" role="button">
+                <a class="dropdown-item" id="logout" role="button" data-toggle="modal" data-target="#modal-logout">
                     <i class="mdi mdi-18px mdi-login-variant"></i><span>Logout</span>
                 </a>
             </div>
@@ -101,6 +101,20 @@
 	<div class="overlay"></div>
 	<div class="main">@yield('content')</div>
 	<div class="customAlert d-flex align-items-center small"></div>
+	<div class="modal" id="modal-logout" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-keyboard="false" data-backdrop="static">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content bg-transparent border-0">
+                <div class="d-flex flex-column justify-content-center align-items-center">
+                    <div class="loader">
+                        <svg class="circular" viewBox="25 25 50 50">
+                            <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="5" stroke-miterlimit="10" />
+                        </svg>
+                    </div>
+                    <h6 class="text-light mt-3">Logout...</h6>
+                </div>
+            </div>
+        </div>
+    </div>
 	@include('layouts.partials.script')
 	@yield('script')
 </body>
