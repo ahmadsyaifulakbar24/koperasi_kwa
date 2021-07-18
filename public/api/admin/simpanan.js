@@ -71,13 +71,13 @@ function get_data(page, day, month, year, approved) {
                     }
                 })
                 append = `<tr>
-	        		<td class="text-center font-weight-bold pl-4">${from}.</td>
+	        		<td class="text-center">${from}.</td>
 	        		<td class="text-truncate">${value.title}</td>
 	        		<td>${value.message}</td>
 	        		<td class="text-truncate"><ul class="pl-3 mb-0">${sub_append}</ul></td>
 	        		<td class="text-truncate">${bukti_pembayaran}</td>
 	        		<td class="text-truncate" id="approved_date${value.id}">${approved_date}</td>
-	        		<td class="text-truncate pr-4" id="approve${value.id}">${action}</td>
+	        		<td class="text-truncate" id="approve${value.id}">${action}</td>
 	        	</tr>`
                 $('#table').append(append)
                 from++

@@ -34,14 +34,14 @@ function get_data(page, status) {
                 }
                 value.paid_off_date == null ? paid_off_date = '' : paid_off_date = tanggal(value.paid_off_date)
                 append = `<tr>
-	        		<td class="text-center font-weight-bold pl-4">${from}.</td>
-	        		<td class="text-truncate font-weight-bold" id="title${value.id}">${title}</td>
+	        		<td class="text-center">${from}.</td>
+	        		<td class="text-truncate" id="title${value.id}">${title}</td>
 	        		<td class="text-truncate">${convert(value.tenor)} Bulan</td>
 	        		<td class="text-truncate">Rp${convert(value.angsuran)}<small class="text-secondary">/bulan</small></td>
 	        		<td class="text-truncate" id="status${value.id}">${get_status(value.status)}</td>
 	        		<td class="text-truncate" id="approved_date${value.id}">${approved_date}</td>
 	        		<td class="text-truncate" id="contract${value.id}">${contract}</td>
-	        		<td class="text-truncate pr-4" id="paid_off_date${value.id}">${paid_off_date}</td>
+	        		<td class="text-truncate" id="paid_off_date${value.id}">${paid_off_date}</td>
 	        	</tr>`
                 $('#table').append(append)
                 from++
