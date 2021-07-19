@@ -2,7 +2,7 @@ axios.get('api/user/' + user).then((response) => {
     let value = response.data.data
     // console.log(value)
     $('title').prepend('Pinjaman ' + value.name)
-    $('.user').prepend(value.name)
+    $('.user').prepend(String(value.name).toLowerCase())
     $('#name').attr('href', `${root}admin/pinjaman/${value.id}`)
 }).catch((err) => {
     // console.log(err.response)

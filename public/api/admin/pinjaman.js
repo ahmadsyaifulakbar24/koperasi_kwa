@@ -2,7 +2,7 @@ axios.get('api/user/' + id).then((response) => {
     // console.log(response)
     let value = response.data.data
     $('title').prepend('Pinjaman ' + value.name)
-    $('.user').prepend(value.name)
+    $('.user').prepend(String(value.name).toLowerCase())
 }).catch((err) => {
     // console.log(err.response)
 })

@@ -4,7 +4,7 @@
 	<div class="container">
 		<div class="d-flex justify-content-between align-items-center mb-2">
 			<h4>Simpanan</h4>
-			<div class="text-secondary" id="name"></div>
+			<div class="text-secondary text-capitalize" id="name"></div>
 		</div>
 		<div class="row">
 			<div class="col-md-6 col-lg-5 col-xl-4 mb-4">

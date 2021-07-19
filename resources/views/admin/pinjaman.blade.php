@@ -13,7 +13,7 @@
 		<div class="card card-custom">
 			<div class="card-header border-bottom-0">
 				<div class="d-flex align-items-center">
-					<div class="text-secondary user"></div>
+					<div class="text-secondary user text-capitalize"></div>
 				</div>
 			</div>
 			<div class="table-custom">

@@ -8,7 +8,7 @@ axios.get('api/user/' + id).then((response) => {
     // console.log(response)
     let value = response.data.data
     $('title').prepend('Simpanan ' + value.name)
-    $('#name').html(value.name)
+    $('#name').html(String(value.name).toLowerCase())
     $('#approve-name').prepend(value.name)
     $('#balance').html(rupiah(value.user_koperasi_detail.saldo_simpanan))
 }).catch((err) => {
