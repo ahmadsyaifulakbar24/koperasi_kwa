@@ -181,7 +181,7 @@ $('#download_kredit').click(function() {
         		<td>${tanggal(value.date)}</td>
         		<td>${value.name}</td>
         		<td>'${value.nik}</td>
-        		<td>Pinjaman</td>
+        		<td>${value.jenis_transaksi}</td>
         		<td>${value.tenor}</td>
         		<td>Approve</td>
         		<td>${rupiah(value.jumlah)}</td>
@@ -233,8 +233,59 @@ $('#add_saldo').submit(function(e) {
 
 $('#modal-add').on('hidden.bs.modal', function(e) {
     $('#besaran').val('')
+
+    $('#besaran').removeClass('is-invalid')
+    $('#besaran-feedback').html('')
 })
 
+// Min Saldo Koperasi
+    $('#modal-min').on('shown.bs.modal', function(e) {
+        $('#minSaldo').focus()
+    })
+    $('#minSaldo').keyup(function() {
+        $(this).val(convert($(this).val()))
+    })
+
+    $('#modal-min').on('hidden.bs.modal', function(e) {
+        $('#minSaldo').val('')
+
+        $('#minSaldo').removeClass('is-invalid')
+        $('#minSaldo-feedback').html('')
+
+        $('#description').removeClass('is-invalid')
+        $('#description-feedback').html('')
+    })
+
+    $('#min_saldo').submit(function(e) {
+        e.preventDefault()
+        $('#min').attr('disabled', true)
+        let formData = new FormData()
+        formData.append('transaction_type', 'min_admin')
+        formData.append('total', number($('#minSaldo').val()))
+        formData.append('description', $('#description').val())
+        axios.post('api/main_setting/min_saldo_koperasi', formData).then((response) => {
+            // console.log(response)
+            $('#min').attr('disabled', false)
+            $('#modal-min').modal('hide')
+            customAlert('success', 'Saldo berhasil dikurangi')
+            main_setting()
+        }).catch((xhr) => {
+            $('#min').attr('disabled', false)
+            let err = xhr.response.data.errors
+            // console.clear()
+            console.log(xhr.response)
+            if (err.total) {
+                $('#minSaldo').addClass('is-invalid')
+                $('#minSaldo-feedback').html('Masukkan jumlah saldo yang ingin dikurangi')
+            }
+
+            if (err.description) {
+                $('#description').addClass('is-invalid')
+                $('#description-feedback').html('Masukan keterangan')
+            }
+        })
+    })
+// End Min Saldo Koperasi
 $('#form').submit(function(e) {
     addLoading()
     e.preventDefault()

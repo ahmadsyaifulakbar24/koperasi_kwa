@@ -25,8 +25,16 @@
 							<div class="notification none"></div>
 						</div>
 					</div>
-					<div class="card-footer d-flex justify-content-center text-primary" data-toggle="modal" data-target="#modal-add" role="button" style="height: 48px">
-						<i class="mdi mdi-plus"></i>Tambah saldo
+					<div class="card-footer container text-primary" style="height: 48px">
+						<div class="row">
+							<div class="col" data-toggle="modal" data-target="#modal-add" role="button">
+								<i class="mdi mdi-plus"></i>Tambah saldo
+							</div>
+	
+							<div class="col" data-toggle="modal" data-target="#modal-min" role="button">
+								<i class="mdi mdi-minus"></i>Kurangi saldo
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -200,6 +208,43 @@
 				</div>
 			</div>
 		</div>
+
+		<div class="modal fade" id="modal-min" tabindex="-1" aria-hidden="true">
+			<div class="modal-sm modal-dialog modal-dialog-centered" role="document">
+				<div class="modal-content">
+					<div class="modal-header border-bottom-0">
+						<h5 class="modal-title">Kurangi Saldo</h5>
+						<div role="button" class="close" data-dismiss="modal" aria-label="Close">
+							<i class="mdi mdi-close mdi-18px pr-0"></i>
+						</div>
+					</div>
+					<form id="min_saldo">
+						<div class="modal-body py-0">
+							<div class="form-group">
+								<!-- <label for="besaran">Besaran</label> -->
+								<div class="input-group mt-2">
+									<div class="input-group-prepend">
+										<small class="input-group-text">Rp</small>
+									</div>
+									<input type="tel" id="minSaldo" class="form-control rounded-right">
+									<div class="invalid-feedback" id="minSaldo-feedback"></div>
+								</div>
+								<div class="form-group mt-2">
+									<label for="description">keterangan</label>
+									<textarea class="form-control" id="description" rows="3"></textarea>
+									<div class="invalid-feedback" id="description-feedback"></div>
+								  </div>
+							</div>
+						</div>
+						<div class="modal-footer border-top-0">
+							<div class="btn btn-sm btn-link" data-dismiss="modal">Batal</div>
+							<button class="btn btn-sm btn-primary" id="min">Kurangi</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+
 		<div class="none">
 			<table id="table_debit" border="1"></table>
 			<table id="table_kredit" border="1"></table>

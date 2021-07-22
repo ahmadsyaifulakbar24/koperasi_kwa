@@ -38,10 +38,16 @@ class SaldoKoperasiController extends Controller
                     'besaran' => $request->besaran
                 ]
             ];
+
+            // Insert Transaction and Subtrasaction data
             $this->transaction($transaction_data, $sub_transaction_data);
+
+            // Update saldo koperasi
             $saldo = MainSetting::where('name_setting', 'saldo')->first();
             $total_saldo = $saldo->value + $request->besaran;
             $saldo->update([ 'value' => $total_saldo ]);
+
+            // return data
             return response()->json([
                 'data' => [
                     'saldo' => $saldo->value
