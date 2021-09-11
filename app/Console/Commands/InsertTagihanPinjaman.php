@@ -39,7 +39,7 @@ class InsertTagihanPinjaman extends Command
      */
     public function handle()
     {
-        $pinjamans = Pinjaman::whereNull('paid_off_date')->orWhere('sisa_bayar', '>', 0)->get();
+        $pinjamans = Pinjaman::where('status', 'approved')->whereNull('paid_off_date')->orWhere([['sisa_bayar', '>', 0], ['status','approved']])->get();
         foreach($pinjamans as $pinjaman) {
             $transaction_data = [
                 'user_id' => $pinjaman->user_id,
