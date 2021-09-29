@@ -1,6 +1,8 @@
+let status = ''
+
 get_data()
 
-function get_data(page, status) {
+function get_data(page) {
     $('#table').empty()
     $('#pagination').addClass('hide')
     $('#loading_table').show()
@@ -55,11 +57,11 @@ $(document).on('change', 'input[type=radio][name=type]', function() {
 })
 $('#filter').click(function() {
 	let type = $('input[type=radio][name=type]:checked').val()
-	let status = $('input[type=radio][name=status]:checked').val()
+	status = $('input[type=radio][name=status]:checked').val()
 	if (type == 'history') {
 		$('#all').hide()
 		$('#history').show()
-	    get_data(1, status)
+	    get_data(1)
 	} else {
 		$('#all').show()
 		$('#history').hide()
