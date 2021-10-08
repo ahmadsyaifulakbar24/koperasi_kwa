@@ -70,7 +70,6 @@ function get_data() {
                     }
                 }
                 month = value.created_at.substr(5, 2)
-                month.length == 2 ? month = month.substr(1, 1) : ''
                 year = value.created_at.substr(0, 4)
                 append = `<tr>
 	        		<td class="text-center">${index + 1}.</td>
