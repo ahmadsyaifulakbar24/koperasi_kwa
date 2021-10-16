@@ -147,7 +147,7 @@
 					<div class="form-group" id="status">
 						<label class="mb-0">Status</label>
 						<div class="form-check">
-							<input class="form-check-input" type="radio" name="status" id="s1" value="" checked>
+							<input class="form-check-input" type="radio" name="status" id="s1" value="">
 							<label class="form-check-label" for="s1" role="button">Semua status</label>
 						</div>
 						<div class="form-check">
@@ -155,7 +155,7 @@
 							<label class="form-check-label" for="s2" role="button">Pending</label>
 						</div>
 						<div class="form-check">
-							<input class="form-check-input" type="radio" name="status" id="s3" value="approved">
+							<input class="form-check-input" type="radio" name="status" id="s3" value="approved" checked>
 							<label class="form-check-label" for="s3" role="button">Disetujui</label>
 						</div>
 						<div class="form-check">
