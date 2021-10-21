@@ -18,7 +18,8 @@ axios.get('api/pinjaman/get/' + id).then((response) => {
             $('#kontrak_pinjaman').parents('.hide').remove()
         } else {
             $('#kontrak_pinjaman').parents('.hide').removeClass('hide')
-            $('#kontrak_pinjaman').html(`<a href="${value.contract}" class="btn btn-sm btn-outline-primary px-5" target="_blank">Lihat</a>`)
+            // $('#kontrak_pinjaman').html(`<a href="${value.contract}" class="btn btn-sm btn-outline-primary px-5" target="_blank">Lihat</a>`)
+            $('#kontrak_pinjaman').html(`<a href="${value.contract}" target="_blank">${value.contract.split('/').pop()}</a>`)
         }
         get_data()
     } else {
@@ -49,24 +50,29 @@ function get_data() {
         // console.log(response.data.data)
         let value = response.data
         if (value.data.transaction != '') {
-            let append, bukti_pembayaran, approved_date, month, year
             $.each(value.data.transaction, function(index, value) {
+            	if (value.approved_date == null) {
+            		status = 'Belum Lunas'
+            	} else {
+            		status = 'Lunas'
+            	}
                 value.approved_date == null ? approved_date = '' : approved_date = tanggal(value.approved_date)
                 if (value.bukti_pembayaran == null) {
-                    bukti_pembayaran = `<a href="${root}confirm/pinjaman/${value.user_id}/${id}/${value.id}" class="btn btn-sm btn-primary px-4">Upload</a>`
+                    bukti_pembayaran = `<div class="btn btn-sm btn-outline-primary upload px-4">Upload</div>`
                 } else {
-                    bukti_pembayaran = `<a href="${value.bukti_pembayaran}" class="btn btn-sm btn-outline-primary px-5" target="_blank">Lihat</a>`
+                    bukti_pembayaran = `<a href="${value.bukti_pembayaran}" target="_blank">${value.bukti_pembayaran.split('/').pop()}</a>`
                 }
+                // if (value.approved_date)
                 month = value.created_at.substr(5, 2)
-                month.length == 2 ? month = month.substr(1, 1) : ''
                 year = value.created_at.substr(0, 4)
-                append = `<tr>
+                append = `<tr data-id="${value.id}">
 	        		<td class="text-center">${index + 1}.</td>
-	        		<td class="text-truncate">${value.title}</td>
+	        		<!--<td class="text-truncate">${value.title}</td>-->
 	        		<td class="text-truncate">${bulan_tahun(month, year)}</td>
 	        		<td class="text-truncate">${rupiah(value.sub_transaction[0].besaran)}</td>
-	        		<td class="text-truncate">${bukti_pembayaran}</td>
+	        		<td class="text-truncate">${status}</td>
 	        		<td class="text-truncate">${approved_date}</td>
+	        		<td class="text-truncate" id="bukti_pembayaran${value.id}">${bukti_pembayaran}</td>
 	        	</tr>`
                 $('#table').append(append)
             })
@@ -85,6 +91,29 @@ function get_data() {
 }
 
 currentDate()
+
+$(document).on('click', '.upload', function() {
+    let id = $(this).parents('tr').data('id')
+    $('#file').attr('data-id', id)
+    $('#file').val('')
+    $('#file').click()
+})
+
+$(document).on('change', '#file', function() {
+    let id = $(this).data('id')
+    let file = $(this).get(0).files[0]
+    let formData = new FormData()
+    formData.append('bukti_pembayaran', file)
+    axios.post('api/transaction/bukti_pembayaran/' + id, formData).then((response) => {
+        // console.log(response)
+        let value = response.data.data
+        $('#bukti_pembayaran' + id).html(`<a href="${value.bukti_pembayaran}" target="_blank">${value.bukti_pembayaran.split('/').pop()}</a>`)
+	    customAlert('success', 'Bukti pembayaran berhasil diupload')
+    }).catch((xhr) => {
+        let err = xhr.response.data.errors
+        // console.log(err)
+    })
+})
 
 $('#form').submit(function(e) {
     e.preventDefault()
