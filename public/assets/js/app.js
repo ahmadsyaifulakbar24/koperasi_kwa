@@ -1,4 +1,4 @@
-axios.defaults.baseURL = 'https://koperasi.lekarlwig.com/'
+axios.defaults.baseURL = root
 axios.defaults.withCredentials = true
 
 const session = JSON.parse(localStorage.getItem('session'))
