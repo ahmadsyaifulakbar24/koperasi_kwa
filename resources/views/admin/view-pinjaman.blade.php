@@ -84,8 +84,8 @@
 					<div class="card-body d-flex align-items-center">
 						<div class="font-italic text-uppercase text-secondary">
 							<div class="font-weight-bold">Untuk pembayaran ke rekening bendahara</div>
-							<div>Mandiri: 1330015140981</div>
-							<div>Atas nama Robertus Sulistyo Ardi</div>
+							<div>Mandiri: <b>1330023519838</b></div>
+							<div>Atas nama <b>ROBERTUS SULISTYO ARDI</b></div>
 						</div>
 					</div>
 				</div>
