@@ -13,18 +13,21 @@ class GetPinjamanController extends Controller
     public function filter(Request $request, $user_id = NULL)
     {
         $this->validate($request, [
-            'status' => ['nullable', 'in:approved,rejected,pending,paid_off']
+            'status' => ['nullable', 'in:approved,rejected,pending,paid_off'],
+            'search' => ['nullable', 'string']
         ]);
 
-        !empty($user_id) ? $pinjamanQuery = Pinjaman::where('user_id', $user_id) : $pinjamanQuery = new Pinjaman;
+        $pinjamanQuery = Pinjaman::join('users', 'users.id', '=', 'pinjaman.user_id');
+        (!empty($user_id)) ? $pinjamanQuery->where('user_id', $user_id) : $pinjamanQuery;
         $status = $request->status;
+        if($request->search) {
+        	$pinjamanQuery->where('users.name', 'like', '%'. $request->search .'%');
+        }
         if(!empty($status)) {
-            $pinjaman = $pinjamanQuery->where('status', $status)->paginate(15);
-        } else {
-            $pinjaman = $pinjamanQuery->paginate(15);
+            $pinjamanQuery->where('status', $status);
         }
 
-        return PinjamanResource::collection($pinjaman);
+        return PinjamanResource::collection($pinjamanQuery->orderBy('pinjaman.created_at', 'desc')->paginate(15));
     }
 
     public function byId($pinjaman_id)

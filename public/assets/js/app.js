@@ -268,6 +268,17 @@ $('.page').click(function() {
     }
 })
 
+$('.page_pinjaman').click(function() {
+    if (!$(this).is('.active, .disabled')) {
+        let page = $(this).data('id')
+        let status = $('input[type=radio][name=status]:checked').val()
+        let search = $('#search').val()
+        $('#pagination').addClass('hide')
+        $('#loading_table').removeClass('hide')
+        get_data(page, status, search)
+    }
+})
+
 $('.page_transaction').click(function() {
     if (!$(this).is('.active, .disabled')) {
         let page = $(this).data('id')

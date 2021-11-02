@@ -6,8 +6,12 @@
 	<div class="container">
 		<div class="d-flex justify-content-between align-items-center mb-2">
 			<h4>Pinjaman</h4>
-			<div class="ml-auto mb-1">
-				<div class="form-control form-control-sm" role="button" data-toggle="modal" data-target="#modal-filter">
+			<div class="d-flex align-items-center mb-1">
+				<div class="position-relative">
+					<i class="mdi mdi-close-circle position-absolute hide px-2" id="search-close" role="button" style="right: 0;padding: 5px 0"></i>
+					<input class="form-control form-control-sm pr-4" placeholder="Cari Anggota" id="search" autocomplete="off">
+				</div>
+				<div class="form-control form-control-sm col-4 ml-3" role="button" data-toggle="modal" data-target="#modal-filter">
 					Filter <i class="mdi mdi-chevron-down pr-0 pl-1"></i>
 				</div>
 			</div>
@@ -47,21 +51,21 @@
 					<small class="text-secondary pb-3 pb-md-0" id="pagination-label"></small>
 					<nav>
 						<ul class="pagination pagination-sm mb-0" data-filter="request">
-							<li class="page page-item disabled" id="first">
+							<li class="page_pinjaman page-item disabled" id="first">
 								<span class="page-link"><i class="mdi mdi-chevron-double-left"></i></span>
 							</li>
-							<li class="page page-item disabled" id="prev">
+							<li class="page_pinjaman page-item disabled" id="prev">
 								<span class="page-link"><i class="mdi mdi-chevron-left"></i></span>
 							</li>
-							<li class="page page-item" id="prevCurrentDouble"><span class="page-link"></span></li>
-							<li class="page page-item" id="prevCurrent"><span class="page-link"></span></li>
-							<li class="page page-item" id="current"><span class="page-link"></span></li>
-							<li class="page page-item" id="nextCurrent"><span class="page-link"></span></li>
-							<li class="page page-item" id="nextCurrentDouble"><span class="page-link"></span></li>
-							<li class="page page-item" id="next">
+							<li class="page_pinjaman page-item" id="prevCurrentDouble"><span class="page-link"></span></li>
+							<li class="page_pinjaman page-item" id="prevCurrent"><span class="page-link"></span></li>
+							<li class="page_pinjaman page-item" id="current"><span class="page-link"></span></li>
+							<li class="page_pinjaman page-item" id="nextCurrent"><span class="page-link"></span></li>
+							<li class="page_pinjaman page-item" id="nextCurrentDouble"><span class="page-link"></span></li>
+							<li class="page_pinjaman page-item" id="next">
 								<span class="page-link"><i class="mdi mdi-chevron-right"></i></span>
 							</li>
-							<li class="page page-item" id="last">
+							<li class="page_pinjaman page-item" id="last">
 								<span class="page-link"><i class="mdi mdi-chevron-double-right"></i></span>
 							</li>
 						</ul>
