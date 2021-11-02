@@ -47,7 +47,6 @@ function get_data(page, search) {
     })
 }
 
-let formData = new FormData()
 $('#search').keyup(function(e) {
     let param = $(this).val()
     let keyCode = e.originalEvent.keyCode
