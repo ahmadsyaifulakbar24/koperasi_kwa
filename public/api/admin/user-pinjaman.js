@@ -7,7 +7,7 @@ function get_data(page = null, status = 'approved', search = null) {
     // alert(search)
 	let url = null,
 		params = null
-    if (search == null) {
+    if (search == null || search == '') {
     	url = 'api/pinjaman/filter'
     	params = {
 	    	page,
