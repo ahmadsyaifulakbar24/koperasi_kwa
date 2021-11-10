@@ -63,8 +63,9 @@ Route::group(['middleware'  => 'auth:sanctum'], function () {
     });
 
     Route::group(['prefix' => 'pinjaman'], function () {
-        Route::get('/get/{pinjaman_id}', [GetPinjamanController::class, 'byId']);
         Route::get('/filter/{user_id?}', [GetPinjamanController::class, 'filter']);
+        Route::get('/search/{user_id?}', [GetPinjamanController::class, 'search']);
+        Route::get('/get/{pinjaman_id}', [GetPinjamanController::class, 'byId']);
         Route::post('/detail', [CreatePinjamanController::class, 'detail']);
         Route::post('/create_pinjaman/detail', [CreatePinjamanController::class, 'detail']);
         Route::post('/create_pinjaman', [CreatePinjamanController::class, 'create_pinjaman']);

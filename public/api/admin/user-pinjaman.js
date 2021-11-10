@@ -5,12 +5,24 @@ function get_data(page = null, status = 'approved', search = null) {
     $('#pagination').addClass('hide')
     $('#loading_table').show()
     // alert(search)
-    axios.get('api/pinjaman/filter', {
-        params: {
-            page,
-            status,
-            search
-        }
+	let url = null,
+		params = null
+    if (search == null) {
+    	url = 'api/pinjaman/filter'
+    	params = {
+	    	page,
+	    	status
+	    }
+	} else {
+    	url = 'api/pinjaman/search'
+    	params = {
+	    	page,
+	    	status,
+	    	search
+	    }
+    }
+    axios.get(url, {
+        params: params
     }).then((response) => {
         // console.log(response)
         let value = response.data
@@ -43,7 +55,7 @@ function get_data(page = null, status = 'approved', search = null) {
         }
         $('#loading_table').hide()
     }).catch((err) => {
-        // console.log(err.response.data.message)
+        console.log(err.response.data.message)
     })
 }
 
