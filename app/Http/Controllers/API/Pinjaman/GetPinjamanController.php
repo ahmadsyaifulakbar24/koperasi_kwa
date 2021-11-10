@@ -19,12 +19,12 @@ class GetPinjamanController extends Controller
         !empty($user_id) ? $pinjamanQuery = Pinjaman::where('user_id', $user_id) : $pinjamanQuery = new Pinjaman;
         $status = $request->status;
         if(!empty($status)) {
-            $pinjaman = $pinjamanQuery->where('status', $status)->paginate(15);
+            $pinjaman = $pinjamanQuery->orderBy('created_at', 'desc')->where('status', $status)->where('user_id', '!=', 1);
         } else {
-            $pinjaman = $pinjamanQuery->paginate(15);
+            $pinjaman = $pinjamanQuery->orderBy('created_at', 'desc');
         }
         
-        return PinjamanResource::collection($pinjaman);
+        return PinjamanResource::collection($pinjaman->paginate(15));
     }
     
     public function search(Request $request, $user_id = NULL)
