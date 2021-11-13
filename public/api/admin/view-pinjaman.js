@@ -52,10 +52,11 @@ function get_data() {
     $('#pagination').addClass('hide')
     $('#loading_table').show()
     axios.get('api/pinjaman/get/' + id).then((response) => {
-        // console.log(response.data.data)
         let value = response.data
+        // console.log(value.data)
         if (value.data.transaction != '') {
-            $.each(value.data.transaction, function(index, value) {
+        	let transactions = value.data.transaction.sort((a, b) => parseFloat(b.id) - parseFloat(a.id))
+            $.each(transactions, function(index, value) {
                 value.approved_date == null ? approved_date = '' : approved_date = tanggal(value.approved_date)
                 if (value.approved_date == null) {
                     status = 'Belum Lunas'
