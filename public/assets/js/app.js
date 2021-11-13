@@ -156,7 +156,24 @@ function tanggal(date) {
     let y = date.substr(0, 4)
     if (d.toString().length < 2) d = '0' + d
     if (m.toString().length < 2) m = '0' + m
-    return (d + '/' + m + '/' + y)
+    return `${d} ${bulan(m)} ${y}`
+}
+
+function bulan(month) {
+    let bulan = []
+    bulan['01'] = 'Jan'
+    bulan['02'] = 'Feb'
+    bulan['03'] = 'Mar'
+    bulan['04'] = 'Apr'
+    bulan['05'] = 'Mei'
+    bulan['06'] = 'Jun'
+    bulan['07'] = 'Jul'
+    bulan['08'] = 'Agu'
+    bulan['09'] = 'Sep'
+    bulan['10'] = 'Okt'
+    bulan['11'] = 'Nov'
+    bulan['12'] = 'Des'
+    return bulan[month]
 }
 
 function addLoading(attr, param) {
