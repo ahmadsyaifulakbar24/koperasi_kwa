@@ -2,38 +2,46 @@ let date = new Date()
 let month = date.getMonth() + 1
 let year = date.getFullYear()
 
+currentDate()
+
 get_data(1, month, year)
 
 function get_data(page, month, year) {
     $('#table').empty()
     $('#pagination').addClass('hide')
     $('#loading_table').show()
-	$('#bulan').html(`(${bulan_tahun(month, year)})`)
+    $('#bulan').html(`(${bulan_tahun(month, year)})`)
     axios.get('api/transaction/get_simpanan_perbulan', {
-    	params: {
-    		page: page,
-    		month: month,
-    		year: year
-    	}
+        params: {
+            page: page,
+            month: month,
+            year: year
+        }
     }).then((response) => {
-        // console.log(response)
         let value = response.data
+        // console.log(value)
         let from = value.from
-        let path = 'https://koperasi.lekarlwig.com/api/transaction/get_simpanan_perbulan'
+        let path = response.config.baseURL + response.config.url
+        let next = null
+        if (value.next_page < value.last_page) {
+            next = value.next_page_url
+        } else if (value.next_page == value.last_page) {
+            next = `${root}api/transaction/get_simpanan_perbulan?page=${value.last_page}`
+        }
         const links = {
-        	first: path + '?page=1',
-        	last: path + '?page=' + value.last_page,
-        	prev: value.prev_page_url,
-        	next: value.next_page_url
+            first: `${path}?page=1`,
+            last: `${path}?page=${value.last_page}`,
+            prev: value.prev_page_url,
+            next: next
         }
         const meta = {
-        	current_page: parseInt(value.current_page),
-        	from: value.from,
-        	last_page: value.last_page,
-        	path: path,
-        	per_page: value.per_page,
-        	to: value.to,
-        	total: value.total
+            current_page: parseInt(value.current_page),
+            from: value.from,
+            last_page: value.last_page,
+            path: path,
+            per_page: value.per_page,
+            to: value.to,
+            total: value.total
         }
         if (value.data != null) {
             let append
@@ -58,13 +66,11 @@ function get_data(page, month, year) {
         }
         $('#loading_table').hide()
     }).catch((err) => {
-        // console.log(err.response)
+        console.log(err)
     })
 }
 
-currentDate()
-
-$('.page').click(function() {
+$('.page-item').click(function() {
     if (!$(this).is('.active, .disabled')) {
         let page = $(this).data('id')
         $('#pagination').addClass('hide')
@@ -75,7 +81,6 @@ $('.page').click(function() {
 
 $('#filter').click(function() {
     month = $('#month').val().substr(5, 2)
-    month.length == 2 ? month = month.substr(1, 1) : ''
     year = $('#month').val().substr(0, 4)
     get_data(1, month, year)
     $('#modal-filter').modal('hide')

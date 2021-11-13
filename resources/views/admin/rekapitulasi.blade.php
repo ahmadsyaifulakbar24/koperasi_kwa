@@ -49,21 +49,21 @@
 					<small class="text-secondary pb-3 pb-md-0" id="pagination-label"></small>
 					<nav>
 						<ul class="pagination pagination-sm mb-0" data-filter="request">
-							<li class="page page-item disabled" id="first">
+							<li class="page-item disabled" id="first">
 								<span class="page-link"><i class="mdi mdi-chevron-double-left"></i></span>
 							</li>
-							<li class="page page-item disabled" id="prev">
+							<li class="page-item disabled" id="prev">
 								<span class="page-link"><i class="mdi mdi-chevron-left"></i></span>
 							</li>
-							<li class="page page-item" id="prevCurrentDouble"><span class="page-link"></span></li>
-							<li class="page page-item" id="prevCurrent"><span class="page-link"></span></li>
-							<li class="page page-item" id="current"><span class="page-link"></span></li>
-							<li class="page page-item" id="nextCurrent"><span class="page-link"></span></li>
-							<li class="page page-item" id="nextCurrentDouble"><span class="page-link"></span></li>
-							<li class="page page-item" id="next">
+							<li class="page-item" id="prevCurrentDouble"><span class="page-link"></span></li>
+							<li class="page-item" id="prevCurrent"><span class="page-link"></span></li>
+							<li class="page-item" id="current"><span class="page-link"></span></li>
+							<li class="page-item" id="nextCurrent"><span class="page-link"></span></li>
+							<li class="page-item" id="nextCurrentDouble"><span class="page-link"></span></li>
+							<li class="page-item" id="next">
 								<span class="page-link"><i class="mdi mdi-chevron-right"></i></span>
 							</li>
-							<li class="page page-item" id="last">
+							<li class="page-item" id="last">
 								<span class="page-link"><i class="mdi mdi-chevron-double-right"></i></span>
 							</li>
 						</ul>
