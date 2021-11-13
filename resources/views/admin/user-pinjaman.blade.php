@@ -19,7 +19,7 @@
 		<div class="card card-custom" id="history">
 			<div class="table-custom">
 				<div class="table-responsive">
-					<table class="table mb-0">
+					<table class="table table-middle mb-0">
 						<thead>
 							<tr>
 								<th class="text-truncate">No.</th>

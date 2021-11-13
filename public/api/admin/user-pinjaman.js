@@ -39,7 +39,9 @@ function get_data(page = null, status = 'approved', search = null) {
 	        		<td class="text-truncate">${convert(value.tenor)} Bulan</td>
 	        		<td class="text-truncate">${rupiah(value.angsuran)}<small class="text-secondary">/bulan</small></td>
 	        		<td class="text-truncate">${get_status(value.status)}</td>
-	        		<td class="text-truncate"></td>
+	        		<td class="text-truncate">
+	        			<a href="${root}admin/pinjaman/${value.user_id}/${value.id}" class="btn btn-sm btn-outline-primary">Detail</a>
+	        		</td>
 	        	</tr>`
                 $('#table').append(append)
                 from++
