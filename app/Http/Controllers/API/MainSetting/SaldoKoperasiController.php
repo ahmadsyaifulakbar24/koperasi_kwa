@@ -71,10 +71,11 @@ class SaldoKoperasiController extends Controller
         $user_id = auth()->user()->id;
         $pinjaman = Pinjaman::create([
             'user_id' => $user_id,
-            'transaction_type' => $request->transaction_type,
-            'description' => $request->description,
             'besar_pinjaman' => $request->total,
+            'sisa_bayar' => 0,
             'approved_date' => \Carbon\Carbon::now(),
+            'transaction_type' => $request->transaction_type,
+            'description' => $request->description
         ]);
         
         $saldo_koperasi = MainSetting::where('name_setting', 'saldo')->first();
