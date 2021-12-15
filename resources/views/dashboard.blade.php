@@ -95,87 +95,61 @@
 				</div>
 			</div>
 		</div>
-		<h6 class="text-secondary">Menu</h6>
-		<div class="row">
-			<div class="col-6 col-md-4 col-xl-3 mb-4">
-				<a href="{{url('admin/anggota')}}">
-					<div class="card card-custom">
-						<div class="card-body">
-							<h6>Anggota</h6>
-							<div class="d-flex justify-content-between align-items-center position-relative">
-								<i class="mdi mdi-account-circle-outline mdi-36px"></i>
-								<h4 class="mb-0" id="">
-									<!-- <div class="loader loader-sm btn-loading">
-										<svg class="circular" viewBox="25 25 50 50">
-											<circle class="path-dark" cx="50" cy="50" r="20" fill="none" stroke-width="6" stroke-miterlimit="1"/>
-										</svg>
-									</div> -->
-								</h4>
-								<div class="notification none"></div>
-							</div>
-						</div>
-					</div>
-				</a>
+		<div class="d-flex justify-content-between align-items-center mb-2">
+			<h4>History</h4>
+		</div>
+		<div class="card card-custom">
+			<div class="table-custom">
+				<div class="table-responsive">
+					<table class="table table-middle mb-0">
+						<thead class="thead-blue">
+							<tr>
+								<th class="text-truncate">No.</th>
+								<th class="text-truncate">Keterangan</th>
+								<th class="text-truncate">Jumlah</th>
+								<th class="text-truncate">Tanggal</th>
+							</tr>
+						</thead>
+						<tbody id="table"></tbody>
+						<tbody id="loading_table">
+							<tr>
+								<td colspan="10" class="text-center">
+									<div class="loader loader-sm btn-loading">
+									<svg class="circular" viewBox="25 25 50 50">
+										<circle class="path-dark" cx="50" cy="50" r="20" fill="none" stroke-width="6" stroke-miterlimit="1"/>
+									</svg>
+								</div>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
 			</div>
-			<div class="col-6 col-md-4 col-xl-3 mb-4">
-				<a href="{{url('admin/simpanan')}}">
-					<div class="card card-custom">
-						<div class="card-body">
-							<h6>Simpanan</h6>
-							<div class="d-flex justify-content-between align-items-center position-relative">
-								<i class="mdi mdi-wallet-outline mdi-36px"></i>
-								<h4 class="mb-0" id="">
-									<!-- <div class="loader loader-sm btn-loading">
-										<svg class="circular" viewBox="25 25 50 50">
-											<circle class="path-dark" cx="50" cy="50" r="20" fill="none" stroke-width="6" stroke-miterlimit="1"/>
-										</svg>
-									</div> -->
-								</h4>
-								<div class="notification none"></div>
-							</div>
-						</div>
-					</div>
-				</a>
-			</div>
-			<div class="col-6 col-md-4 col-xl-3 mb-4">
-				<a href="{{url('admin/pinjaman')}}">
-					<div class="card card-custom">
-						<div class="card-body">
-							<h6>Pinjaman</h6>
-							<div class="d-flex justify-content-between align-items-center position-relative">
-								<i class="mdi mdi-notebook-outline mdi-36px"></i>
-								<h4 class="mb-0" id="">
-									<!-- <div class="loader loader-sm btn-loading">
-										<svg class="circular" viewBox="25 25 50 50">
-											<circle class="path-dark" cx="50" cy="50" r="20" fill="none" stroke-width="6" stroke-miterlimit="1"/>
-										</svg>
-									</div> -->
-								</h4>
-								<div class="notification none"></div>
-							</div>
-						</div>
-					</div>
-				</a>
-			</div>
-			<div class="col-6 col-md-4 col-xl-3 mb-4">
-				<a href="{{url('admin/rekapitulasi')}}">
-					<div class="card card-custom">
-						<div class="card-body">
-							<h6>Rekapitulasi</h6>
-							<div class="d-flex justify-content-between align-items-center position-relative">
-								<i class="mdi mdi-file-table-box-outline mdi-36px"></i>
-								<h4 class="mb-0" id="">
-									<!-- <div class="loader loader-sm btn-loading">
-										<svg class="circular" viewBox="25 25 50 50">
-											<circle class="path-dark" cx="50" cy="50" r="20" fill="none" stroke-width="6" stroke-miterlimit="1"/>
-										</svg>
-									</div> -->
-								</h4>
-								<div class="notification none"></div>
-							</div>
-						</div>
-					</div>
-				</a>
+			<div class="card-footer hide" id="pagination">
+				<div class="d-flex flex-column flex-md-row justify-content-between align-items-center">
+					<small class="text-secondary pb-3 pb-md-0" id="pagination-label"></small>
+					<nav>
+						<ul class="pagination pagination-sm mb-0" data-filter="request">
+							<li class="page page-item disabled" id="first">
+								<span class="page-link"><i class="mdi mdi-chevron-double-left"></i></span>
+							</li>
+							<li class="page page-item disabled" id="prev">
+								<span class="page-link"><i class="mdi mdi-chevron-left"></i></span>
+							</li>
+							<li class="page page-item" id="prevCurrentDouble"><span class="page-link"></span></li>
+							<li class="page page-item" id="prevCurrent"><span class="page-link"></span></li>
+							<li class="page page-item" id="current"><span class="page-link"></span></li>
+							<li class="page page-item" id="nextCurrent"><span class="page-link"></span></li>
+							<li class="page page-item" id="nextCurrentDouble"><span class="page-link"></span></li>
+							<li class="page page-item" id="next">
+								<span class="page-link"><i class="mdi mdi-chevron-right"></i></span>
+							</li>
+							<li class="page page-item" id="last">
+								<span class="page-link"><i class="mdi mdi-chevron-double-right"></i></span>
+							</li>
+						</ul>
+					</nav>
+				</div>
 			</div>
 		</div>
 		<div class="modal fade" id="modal-add" tabindex="-1" aria-hidden="true">
@@ -208,7 +182,6 @@
 				</div>
 			</div>
 		</div>
-
 		<div class="modal fade" id="modal-min" tabindex="-1" aria-hidden="true">
 			<div class="modal-sm modal-dialog modal-dialog-centered" role="document">
 				<div class="modal-content">
@@ -244,7 +217,6 @@
 				</div>
 			</div>
 		</div>
-
 		<div class="none">
 			<table id="table_debit" border="1"></table>
 			<table id="table_kredit" border="1"></table>
@@ -444,5 +416,8 @@
 @section('script')
 	<script src="{{asset('assets/js/number.js')}}"></script>
 	<script src="{{asset('assets/js/exportCsv.js')}}"></script>
-	<script type="text/javascript" src="{{asset('api/dashboard.js')}}"></script>
+	<script src="{{asset('api/dashboard.js')}}"></script>
+	@if(session("level") == 1 || session("level") == 100)
+	<script src="{{asset('api/admin/history.js')}}"></script>
+	@endif
 @endsection
