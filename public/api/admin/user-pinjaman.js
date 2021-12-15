@@ -30,18 +30,22 @@ function get_data(page = null, status = 'approved', search = null) {
         if (value.data != '') {
             let append
             $.each(value.data, function(index, value) {
+            	// console.log(value)
+            	if (value.user_id == "1") {
+            		name = `${String(value.name).toLowerCase()}`
+            		detail = ``
+            	} else {
+            		name = `<a href="${root}admin/pinjaman/${value.user_id}">${String(value.name).toLowerCase()}</a>`
+            		detail = `<a href="${root}admin/pinjaman/${value.user_id}/${value.id}" class="btn btn-sm btn-outline-primary" target="_blank">Detail</a>`
+            	}
                 append = `<tr>
 	        		<td class="text-center">${from}.</td>
-	        		<td class="text-truncate text-capitalize">
-	        			<a href="${root}admin/pinjaman/${value.user_id}">${String(value.name).toLowerCase()}</a>
-	        		</td>
+	        		<td class="text-truncate text-capitalize">${name}</td>
 	        		<td class="text-truncate">${rupiah(value.besar_pinjaman)}</td>
 	        		<td class="text-truncate">${convert(value.tenor)} Bulan</td>
 	        		<td class="text-truncate">${rupiah(value.angsuran)}<small class="text-secondary">/bulan</small></td>
 	        		<td class="text-truncate">${get_status(value.status)}</td>
-	        		<td class="text-truncate">
-	        			<a href="${root}admin/pinjaman/${value.user_id}/${value.id}" class="btn btn-sm btn-outline-primary" target="_blank">Detail</a>
-	        		</td>
+	        		<td class="text-truncate">${detail}</td>
 	        	</tr>`
                 $('#table').append(append)
                 from++
