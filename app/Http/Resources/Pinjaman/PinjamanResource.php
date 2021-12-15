@@ -21,6 +21,7 @@ class PinjamanResource extends JsonResource
             'name' => $this->user->name,
             'transaction_type' => $this->transaction_type,
             'angsuran' => !empty($this->angsuran) ? $this->angsuran : NULL,
+            'description' => !empty($this->description) ? $this->description : NULL,
             'besar_pinjaman' => !empty($this->besar_pinjaman) ? $this->besar_pinjaman : NULL,
             'tenor' => !empty($this->tenor) ? $this->tenor : NULL,
             'total_bayar' => !empty($this->total_bayar) ? $this->total_bayar : NULL,
