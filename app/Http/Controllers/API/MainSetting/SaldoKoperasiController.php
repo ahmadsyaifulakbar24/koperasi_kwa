@@ -73,8 +73,10 @@ class SaldoKoperasiController extends Controller
             'user_id' => $user_id,
             'besar_pinjaman' => $request->total,
             'sisa_bayar' => 0,
+            'status' => "paid_off",
             'approved_date' => \Carbon\Carbon::now(),
             'transaction_type' => $request->transaction_type,
+            'paid_off_date' => \Carbon\Carbon::now(),
             'description' => $request->description
         ]);
         
