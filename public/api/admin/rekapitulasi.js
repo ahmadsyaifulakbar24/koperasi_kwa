@@ -2,6 +2,10 @@ let date = new Date()
 let month = date.getMonth() + 1
 let year = date.getFullYear()
 
+if (month < 10) {
+	month = '0'+month
+}
+
 currentDate()
 
 get_data(1, month, year)
