@@ -1,12 +1,3 @@
-axios.get('api/user/1').then((response) => {
-    // console.log(response)
-    let value = response.data.data
-    $('title').prepend('Pinjaman ' + value.name)
-    $('.user').prepend(String(value.name).toLowerCase())
-}).catch((err) => {
-    // console.log(err.response)
-})
-
 get_data()
 
 function get_data(page, status) {
